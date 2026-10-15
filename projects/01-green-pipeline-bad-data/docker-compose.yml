@@ -1,0 +1,12 @@
+name: green-pipeline-bad-data
+services:
+  lab:
+    build: .
+    image: green-pipeline-bad-data:local
+    init: true
+    # Bound the local experiment; Spark uses two worker threads.
+    mem_limit: 4g
+    cpus: 2
+    volumes:
+      - ./data:/opt/project/data
+    command: ["python", "-m", "booking_pipeline.cli", "healthy"]

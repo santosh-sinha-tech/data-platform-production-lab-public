@@ -1,0 +1,19 @@
+contract_version: 1
+dataset: daily_bookings
+currency: USD
+expected_volume: 100000
+# Inclusive fail boundary: 95% is WARN; below 95% is FAIL.
+minimum_volume_percentage: 95
+pass_volume_percentage: 100
+maximum_volume_percentage: 100
+mandatory_fields:
+  - booking_id
+  - customer_id
+  - booking_timestamp
+  - booking_amount
+maximum_null_percentage: 0
+warning_null_percentage: 0
+reconciliation:
+  field: booking_amount
+  warning_tolerance_percentage: 0
+  tolerance_percentage: 0.5
