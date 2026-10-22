@@ -1,0 +1,9 @@
+services:
+  lab:
+    build: .
+    cpus: 2
+    mem_limit: 4g
+    environment:
+      SPARK_LOCAL_IP: 127.0.0.1
+    volumes:
+      - ./runs:/lab/runs

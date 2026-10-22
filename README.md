@@ -7,6 +7,7 @@ Each experiment makes a production failure mode visible, defines a control, and 
 | Reference implementation | Production question |
 | --- | --- |
 | [01 — Green Pipeline, Bad Data](projects/01-green-pipeline-bad-data/) | When every job succeeds, is the resulting data actually ready to publish? |
+| [02 — Small Files Performance Lab](projects/02-small-files-performance-lab/) | When does rewriting fragmented Parquet justify its compute cost? |
 
 ## License
 
