@@ -1,0 +1,21 @@
+== Parsed Logical Plan ==
+'Aggregate ['region], ['region, count(1) AS records#473L, sum('amount_cents) AS amount_cents#475]
++- Relation [event_id#451L,event_timestamp#452,customer_id#453L,region#454,amount_cents#455L,status#456,event_bucket#457] parquet
+
+== Analyzed Logical Plan ==
+region: string, records: bigint, amount_cents: bigint
+Aggregate [region#454], [region#454, count(1) AS records#473L, sum(amount_cents#455L) AS amount_cents#475L]
++- Relation [event_id#451L,event_timestamp#452,customer_id#453L,region#454,amount_cents#455L,status#456,event_bucket#457] parquet
+
+== Optimized Logical Plan ==
+Aggregate [region#454], [region#454, count(1) AS records#473L, sum(amount_cents#455L) AS amount_cents#475L]
++- Project [region#454, amount_cents#455L]
+   +- Relation [event_id#451L,event_timestamp#452,customer_id#453L,region#454,amount_cents#455L,status#456,event_bucket#457] parquet
+
+== Physical Plan ==
+*(2) HashAggregate(keys=[region#454], functions=[count(1), sum(amount_cents#455L)], output=[region#454, records#473L, amount_cents#475L])
++- Exchange hashpartitioning(region#454, 4), ENSURE_REQUIREMENTS, [plan_id=587]
+   +- *(1) HashAggregate(keys=[region#454], functions=[partial_count(1), partial_sum(amount_cents#455L)], output=[region#454, count#482L, sum#483L])
+      +- *(1) Project [region#454, amount_cents#455L]
+         +- *(1) ColumnarToRow
+            +- FileScan parquet [region#454,amount_cents#455L,event_bucket#457] Batched: true, DataFilters: [], Format: Parquet, Location: InMemoryFileIndex(1 paths)[file:/lab/runs/repeatability/20261022T140545675015Z/repetition-5/20261..., PartitionFilters: [], PushedFilters: [], ReadSchema: struct<region:string,amount_cents:bigint>

@@ -11,3 +11,7 @@
 - The fingerprint is order independent and includes every column, but remains probabilistic. Query output SHA-256 is over sorted small aggregate records, not a full-dataset cryptographic digest. Integer cents avoid floating summation variance.
 - Event logs capture executed counters for the whole application. No estimate is labeled measured scan I/O, and planned scan partitions are explicitly a proxy. Per-query bytes/task attribution is deferred rather than guessed.
 - Economic sensitivity is an explicit hypothetical change to read savings and hourly rate. Cloud billing granularity, shared clusters, storage/request costs and operational risk require a separate deployment-specific model.
+
+Independent JVM repetitions address application-to-application variability but do not flush OS caches or guarantee JIT steady state. Use paired per-run differences and retain within-run spread; do not treat all measured iterations from five applications as independent samples. Five applications remain a small descriptive study. Matching normalized operator plans is evidence of a controlled comparison, not equal scan work: file packing, row-group statistics, compression and scheduling may legitimately differ.
+
+Recurring compaction is outside the one-rewrite processing-time break-even. Over a maintenance horizon, compare the sum of rewrite processing times with savings weighted by actual read frequency and query mix; then separately account for infrastructure billing and object-store request charges. Do not imply monetary profitability from a zero-rate time experiment.

@@ -1,0 +1,80 @@
+{
+  "full_aggregation": {
+    "fragmented": {
+      "executions_checked": 6,
+      "metadata": {
+        "Location": "InMemoryFileIndex(1 paths)[file:<INPUT>]",
+        "ReadSchema": "struct<region:string,amount_cents:bigint>",
+        "Format": "Parquet",
+        "Batched": "true",
+        "PartitionFilters": "[]",
+        "PushedFilters": "[]",
+        "DataFilters": "[]"
+      }
+    },
+    "compacted": {
+      "executions_checked": 6,
+      "metadata": {
+        "Location": "InMemoryFileIndex(1 paths)[file:<INPUT>]",
+        "ReadSchema": "struct<region:string,amount_cents:bigint>",
+        "Format": "Parquet",
+        "Batched": "true",
+        "PartitionFilters": "[]",
+        "PushedFilters": "[]",
+        "DataFilters": "[]"
+      }
+    }
+  },
+  "selective": {
+    "fragmented": {
+      "executions_checked": 6,
+      "metadata": {
+        "Location": "InMemoryFileIndex(1 paths)[file:<INPUT>]",
+        "ReadSchema": "struct<customer_id:bigint,region:string,amount_cents:bigint,status:string>",
+        "Format": "Parquet",
+        "Batched": "true",
+        "PartitionFilters": "[]",
+        "PushedFilters": "[IsNotNull(customer_id), IsNotNull(status), LessThan(customer_id,1000), EqualTo(status,confirmed)]",
+        "DataFilters": "[isnotnull(customer_id#ID), isnotnull(status#ID), (customer_id#ID < 1000), (status#ID = confirmed)]"
+      }
+    },
+    "compacted": {
+      "executions_checked": 6,
+      "metadata": {
+        "Location": "InMemoryFileIndex(1 paths)[file:<INPUT>]",
+        "ReadSchema": "struct<customer_id:bigint,region:string,amount_cents:bigint,status:string>",
+        "Format": "Parquet",
+        "Batched": "true",
+        "PartitionFilters": "[]",
+        "PushedFilters": "[IsNotNull(customer_id), IsNotNull(status), LessThan(customer_id,1000), EqualTo(status,confirmed)]",
+        "DataFilters": "[isnotnull(customer_id#ID), isnotnull(status#ID), (customer_id#ID < 1000), (status#ID = confirmed)]"
+      }
+    }
+  },
+  "partition_pruned": {
+    "fragmented": {
+      "executions_checked": 6,
+      "metadata": {
+        "Location": "InMemoryFileIndex(1 paths)[file:<INPUT>]",
+        "ReadSchema": "struct<region:string,amount_cents:bigint>",
+        "Format": "Parquet",
+        "Batched": "true",
+        "PartitionFilters": "[isnotnull(event_bucket#ID), (event_bucket#ID = 0)]",
+        "PushedFilters": "[]",
+        "DataFilters": "[]"
+      }
+    },
+    "compacted": {
+      "executions_checked": 6,
+      "metadata": {
+        "Location": "InMemoryFileIndex(1 paths)[file:<INPUT>]",
+        "ReadSchema": "struct<region:string,amount_cents:bigint>",
+        "Format": "Parquet",
+        "Batched": "true",
+        "PartitionFilters": "[isnotnull(event_bucket#ID), (event_bucket#ID = 0)]",
+        "PushedFilters": "[]",
+        "DataFilters": "[]"
+      }
+    }
+  }
+}

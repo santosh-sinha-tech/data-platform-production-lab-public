@@ -1,0 +1,25 @@
+== Parsed Logical Plan ==
+'Aggregate ['region], ['region, count(1) AS records#984L, sum('amount_cents) AS amount_cents#986]
++- Filter ((customer_id#963L < cast(1000 as bigint)) AND (status#966 = confirmed))
+   +- Relation [event_id#961L,event_timestamp#962,customer_id#963L,region#964,amount_cents#965L,status#966,event_bucket#967] parquet
+
+== Analyzed Logical Plan ==
+region: string, records: bigint, amount_cents: bigint
+Aggregate [region#964], [region#964, count(1) AS records#984L, sum(amount_cents#965L) AS amount_cents#986L]
++- Filter ((customer_id#963L < cast(1000 as bigint)) AND (status#966 = confirmed))
+   +- Relation [event_id#961L,event_timestamp#962,customer_id#963L,region#964,amount_cents#965L,status#966,event_bucket#967] parquet
+
+== Optimized Logical Plan ==
+Aggregate [region#964], [region#964, count(1) AS records#984L, sum(amount_cents#965L) AS amount_cents#986L]
++- Project [region#964, amount_cents#965L]
+   +- Filter ((isnotnull(customer_id#963L) AND isnotnull(status#966)) AND ((customer_id#963L < 1000) AND (status#966 = confirmed)))
+      +- Relation [event_id#961L,event_timestamp#962,customer_id#963L,region#964,amount_cents#965L,status#966,event_bucket#967] parquet
+
+== Physical Plan ==
+*(2) HashAggregate(keys=[region#964], functions=[count(1), sum(amount_cents#965L)], output=[region#964, records#984L, amount_cents#986L])
++- Exchange hashpartitioning(region#964, 4), ENSURE_REQUIREMENTS, [plan_id=1192]
+   +- *(1) HashAggregate(keys=[region#964], functions=[partial_count(1), partial_sum(amount_cents#965L)], output=[region#964, count#992L, sum#993L])
+      +- *(1) Project [region#964, amount_cents#965L]
+         +- *(1) Filter (((isnotnull(customer_id#963L) AND isnotnull(status#966)) AND (customer_id#963L < 1000)) AND (status#966 = confirmed))
+            +- *(1) ColumnarToRow
+               +- FileScan parquet [customer_id#963L,region#964,amount_cents#965L,status#966,event_bucket#967] Batched: true, DataFilters: [isnotnull(customer_id#963L), isnotnull(status#966), (customer_id#963L < 1000), (status#966 = con..., Format: Parquet, Location: InMemoryFileIndex(1 paths)[file:/lab/runs/repeatability/20261022T140742262195Z/repetition-3/20261..., PartitionFilters: [], PushedFilters: [IsNotNull(customer_id), IsNotNull(status), LessThan(customer_id,1000), EqualTo(status,confirmed)], ReadSchema: struct<customer_id:bigint,region:string,amount_cents:bigint,status:string>

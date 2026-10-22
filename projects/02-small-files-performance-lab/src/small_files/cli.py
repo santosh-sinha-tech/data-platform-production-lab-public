@@ -81,7 +81,7 @@ def render(result: dict) -> str:
         lines.append(f"| {name} | {f['median_seconds']:.6f} | {c['median_seconds']:.6f} | {f['median_seconds']/c['median_seconds']:.3f} | {f['iqr_seconds']:.6f} | {c['iqr_seconds']:.6f} |")
     lines += ['', 'Ratio >1 favors compaction; <1 favors fragmentation. See JSON/CSV for every sample and output checksum.', '',
         '## Economics', '', f"Measured rewrite duration: {result['measured_compaction_seconds']:.6f} s. Includes fragmented read, redistribution and write; excludes validation.", '',
-        'Each query is modeled as a separate future workload; do not add these break-even counts.', '',
+        'This is processing-time amortization of one rewrite, not cloud financial payback. Each query is modeled as a separate future workload; do not add these break-even counts. Infrastructure pricing, billing granularity, object-store requests, idle capacity and recurring compaction costs are excluded.', '',
         '```json', json.dumps(result['economics'],indent=2), '```', '',
         'A zero hourly rate means no monetary conclusion. Time break-even still applies. Sensitivity varies observed savings by 0.5/1/1.5 and rate by 0/1/2 of supplied rate; these are scenarios, not confidence intervals.', '',
         '## Measurement boundaries', '',
@@ -123,7 +123,11 @@ def run(config: Config, root: Path) -> Path:
             actual = fingerprint(read(spark,path))
             if actual != expected or actual['rows'] != config.rows:
                 raise ValueError(f'logical equivalence failed: {name}')
-            layouts[name] = dict(file_stats(path), fingerprint=actual)
+            layouts[name] = dict(file_stats(path), fingerprint=actual,
+                schema=read(spark,path).schema.simpleString(),
+                bucket_rows={str(r['event_bucket']):r['count'] for r in
+                    read(spark,path).groupBy('event_bucket').count().collect()},
+                partition_directories=sorted(d.name for d in path.iterdir() if d.is_dir()))
         if layouts['fragmented']['files'] <= layouts['compacted']['files']:
             raise ValueError('layouts are not physically distinct')
         ratio = layouts['fragmented']['parquet_bytes']/layouts['compacted']['parquet_bytes']

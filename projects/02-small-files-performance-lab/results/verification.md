@@ -50,3 +50,7 @@ A supplemental existing-image preflight on Spark 3.5.7 passed 27 tests and compl
 The 5-million-row configuration was not executed. Native host execution was not run because the host lacks Java and Python 3.11. No cold-cache trials, independent-application repetitions, cloud/object-store tests, monetary rate scenario benchmark or distributed cluster validation were executed. Nonzero rates and no-saving cases are unit-tested. Unpartitioned data/query behavior is Spark integration-tested; a full unpartitioned performance run was not executed.
 
 Runtime event counters are application-wide, not per-query. Raw logs and datasets remain under ignored runs/; the committed event-log manifest identifies local raw logs, while report JSON includes parsed counters. Hash-sum equivalence is probabilistic. Local warm-cache behavior, small data, fixed query order, JIT, Docker virtualization, row ordering/compression and host contention limit inference. Cloud compaction policy requires representative distributed workload and billing analysis.
+
+## Subsequent pre-publication review
+
+The original checks above are historical. [Repeatability and scale review](publication-review.md) adds five independent quick applications, five medium applications (~293–311 MB/layout), full scan-metadata audits and an expanded 37-test suite. Use that review for the current evidence and cost-model limitations.

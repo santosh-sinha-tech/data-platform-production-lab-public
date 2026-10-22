@@ -43,3 +43,20 @@ Measured time covers relation construction, metadata listing, planning, executio
 File lengths are measured on disk. Scan partition counts are labeled planning proxies. Spark event logs provide measured application-wide successful task counters, including writes/validation/warmups; they must not be attributed to an individual query. Explain statistics are never reported as runtime I/O or tasks. Output query `matched_records` differs from physical scan input records; the report also records full dataset row counts.
 
 For deeper tuning, Apache's [Spark 3.5.8 performance documentation](https://spark.apache.org/docs/3.5.8/sql-performance-tuning.html) defines file open cost, scan packing, and adaptive execution. `openCostInBytes` is a planning estimate; `maxPartitionBytes` controls packing/splitting. Neither equals observed file-open latency. Several files can share a task and a large file can produce multiple splits. Filter pushdown, partition pruning, column pruning and shuffle aggregation all affect the outcome.
+
+## Pre-publication repeatability and scale checks
+
+Run independent applications sequentially; each repetition starts a fresh Python process and JVM, generates its own files, and retains every sample. Avoid concurrent builds or other heavy work while measuring.
+
+```bash
+docker compose run --rm lab python -m small_files.repeatability --config config/quick.json --repeats 5
+docker compose run --rm lab python -m small_files.repeatability --config config/medium.json --repeats 5
+```
+
+The medium configuration uses 12 million events, 256 fragmented files and 16 compacted files across four identical bucket partitions, with two warmups and five measured rounds per query/layout. Budget at least 5 GiB free disk for a single run and 10 GiB for five retained runs plus logs; image storage is additional. Streaming Spark execution avoids collecting the dataset into Python. Actual compressed bytes, not nominal row count, establish the achieved scale. The original quick configuration remains unchanged for comparisons with the first report.
+
+The repeatability tool writes summary.md, summary.json and run-medians.csv. It reports the distribution, sample standard deviation and coefficient of variation of independent run medians, plus paired savings and the count of runs favoring compaction. It preserves within-run spread separately. It checks matching logical fingerprints, schema, bucket rows, partition directories, runtime settings and query outputs; normalized explain plans must match across layouts. Expression IDs, plan IDs and input URIs are removed for this comparison. Display-truncated DataFilters are restored from full event-log metadata, which is equality-checked across all query executions and archived beside the original plans. Scan packing, file sizes, byte counts, compression and row ordering can still differ.
+
+See [repeatability and scale review](results/publication-review.md) for measured evidence. The single example report is historical evidence, not the aggregate result.
+
+Break-even is **processing-time amortization for one rewrite**. A user-supplied hourly rate only converts modeled compute time into estimated currency. It does not represent cloud infrastructure pricing or billing, object-store request charges, idle/shared capacity, or recurring compaction cycles. A maintenance policy needs a time horizon including every rewrite, the future query mix and deployment-specific billing. If savings change sign or are small relative to variability, do not use a single-run break-even number as a policy recommendation.

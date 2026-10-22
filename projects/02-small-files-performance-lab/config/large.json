@@ -1,9 +1,9 @@
 {
-  "rows": 5000000,
+  "rows": 40000000,
   "seed": 42,
   "partitions": 4,
-  "fragmented_files": 512,
-  "compacted_files": 16,
+  "fragmented_files": 1024,
+  "compacted_files": 64,
   "warmups": 1,
   "iterations": 7,
   "cores": 2,
