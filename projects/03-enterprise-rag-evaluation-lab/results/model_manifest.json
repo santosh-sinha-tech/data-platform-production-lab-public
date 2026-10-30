@@ -1,0 +1,11 @@
+{
+  "model": "sentence-transformers/all-MiniLM-L6-v2",
+  "revision": "c9745ed1d9f207416be6d2e6f8de32d1f16199bf",
+  "filename": "model.safetensors",
+  "bytes": 90868376,
+  "sha256": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db",
+  "trust_remote_code": false,
+  "format": "safetensors",
+  "source": "Official Hugging Face immutable model revision",
+  "limitation": "Measured downloaded-weight checksum; not an independent security attestation"
+}

@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools==75.8.2"]
+requires = ["setuptools==84.1.0"]
 build-backend = "setuptools.build_meta"
 [project]
 name = "enterprise-rag-evaluation-lab"
@@ -7,7 +7,7 @@ version = "1.0.0"
 requires-python = ">=3.11,<3.12"
 dependencies = ["numpy==2.2.6", "rank-bm25==0.2.2", "sentence-transformers==6.2.0", "torch==2.15.0", "transformers==5.22.1", "huggingface-hub==2.4.0", "safetensors==0.8.0"]
 [project.optional-dependencies]
-test = ["pytest==8.3.5", "pip-audit==2.9.0"]
+test = ["pytest==9.0.3", "pip-audit==2.9.0", "pip==26.2.2", "setuptools==84.1.0"]
 [project.scripts]
 rag-lab = "rag_lab.runner:main"
 [tool.setuptools.packages.find]

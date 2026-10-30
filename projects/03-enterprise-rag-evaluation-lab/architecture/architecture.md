@@ -31,7 +31,7 @@ Choose all three local retrieval arms for comparison, rather than treating the l
 
 ## 4. Final Selection
 
-Python, rank-bm25 BM25Okapi, sentence-transformers MiniLM, normalized float32 NumPy exact dot-product search, reciprocal rank fusion and an extractive answer baseline. FAISS is unnecessary at this size. Direct dependencies are pinned in pyproject.toml; a complete transitive hash lock remains a release gate until network installation/audit is available.
+Python, rank-bm25 BM25Okapi, sentence-transformers MiniLM, normalized float32 NumPy exact dot-product search, reciprocal rank fusion and an extractive answer baseline. FAISS is unnecessary at this size. Direct dependencies are pinned in pyproject.toml. The tested Linux ARM64/Python 3.11 CPU environment is fully hash-locked in requirements-linux-arm64.lock, including packaging/test/audit tools; installation with --require-hashes and pip check passed. Other platforms need their own lock and verification.
 
 Pinned model: `sentence-transformers/all-MiniLM-L6-v2`, revision `c9745ed1d9f207416be6d2e6f8de32d1f16199bf`, CPU, 384 dimensions. The [immutable model tree](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/tree/c9745ed1d9f207416be6d2e6f8de32d1f16199bf) lists ~90.9 MB safetensors weights; the whole multi-format repository is larger. Load only safetensors with remote code disabled. The pinned revision is the content identity; dataset SHA-256 digests are recorded separately. [SentenceTransformer documentation](https://sbert.net/docs/package_reference/sentence_transformer/model.html) describes revision selection and embedding normalization.
 
@@ -90,7 +90,7 @@ AWS and GCP are architectural options only. Keep ingestion, serving and evaluati
 
 All content is authored synthetic technology policy. No secrets, real customer records or credentials are needed. Reports retain OS, architecture, memory/CPU counts, library versions and UTC times, but omit usernames, hostnames and absolute home paths. Model loading disables remote code and forces safetensors. Treat all future retrieved text as untrusted data, including prompt injection and forged authority metadata.
 
-Production controls: enforce ACLs before retrieval, deny cross-tenant results, isolate evaluators from write permissions, encrypt storage/transit, use workload identities, redact sensitive telemetry, sign artifacts and enforce retention/deletion. Never place private inputs in this public repository. Package pins are not proof of security; resolve a hash-locked dependency set and run pip-audit plus a dedicated secret scanner before publication.
+Production controls: enforce ACLs before retrieval, deny cross-tenant results, isolate evaluators from write permissions, encrypt storage/transit, use workload identities, redact sensitive telemetry, sign artifacts and enforce retention/deletion. Never place private inputs in this public repository. Package pins are not proof of security. The recorded third-party dependency audit covers known advisories, with the official Torch CPU suffix normalized to its upstream version; model and source review remain separate. Re-run dependency and dedicated secret scans before later publications.
 
 ## 8. Operational Observability
 

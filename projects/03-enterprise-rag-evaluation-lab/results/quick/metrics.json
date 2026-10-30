@@ -18,57 +18,119 @@
     "question_limit": 10,
     "rrf_constant": 60
   },
-  "started_utc": "2026-10-30T12:05:26.480050+00:00",
-  "finished_utc": "2026-10-30T12:05:26.496570+00:00",
+  "started_utc": "2026-10-30T12:50:06.925201+00:00",
+  "finished_utc": "2026-10-30T12:50:13.422844+00:00",
   "libraries": {
-    "numpy": "2.3.5",
-    "rank-bm25": "not installed",
-    "sentence-transformers": "not installed",
-    "torch": "not installed",
-    "transformers": "not installed",
-    "huggingface-hub": "not installed",
-    "safetensors": "not installed",
-    "pytest": "not installed"
+    "numpy": "2.2.6",
+    "rank-bm25": "0.2.2",
+    "sentence-transformers": "6.2.0",
+    "torch": "2.15.0+cpu",
+    "transformers": "5.22.1",
+    "huggingface-hub": "2.4.0",
+    "safetensors": "0.8.0",
+    "pytest": "9.0.3"
   },
   "machine": {
-    "os": "Darwin",
-    "release": "25.6.0",
-    "architecture": "arm64",
-    "python": "3.12.14",
+    "os": "Linux",
+    "release": "6.10.14-linuxkit",
+    "architecture": "aarch64",
+    "python": "3.11.11",
     "logical_cpus": 10,
-    "physical_memory_bytes": 17179869184,
-    "peak_rss_bytes": 32702464
+    "physical_memory_bytes": 8218034176,
+    "cgroup_v2": {
+      "cpu_max": "200000 100000",
+      "memory_max": "4294967296"
+    },
+    "peak_rss_bytes": 556052480
   },
-  "model": null,
-  "mode": "lexical-only",
-  "skipped_methods": [
-    "dense",
-    "hybrid"
-  ],
+  "model": {
+    "id": "sentence-transformers/all-MiniLM-L6-v2",
+    "revision": "c9745ed1d9f207416be6d2e6f8de32d1f16199bf",
+    "device": "cpu",
+    "dimensions": 384
+  },
+  "mode": "all",
+  "skipped_methods": [],
   "index": {
     "documents": 12,
     "passages": 18,
     "chunks": 18,
-    "build_ms": 0.21183304488658905,
-    "vector_bytes": 0
+    "build_ms": 5076.267544005532,
+    "vector_bytes": 27648
   },
   "retrieval": {
-    "bm25_local": {
+    "bm25": {
       "questions": 10,
       "scored_questions": 10,
       "recall": 1.0,
       "precision": 0.36666666666666664,
       "mrr": 0.7666666666666666,
       "ndcg": 0.8261859507142915,
-      "latency_median_ms": 0.09164545917883515,
-      "latency_p95_ms": 0.1562080578878522
+      "latency_median_ms": 0.06429149652831256,
+      "latency_p95_ms": 0.24545800988562405
+    },
+    "dense": {
+      "questions": 10,
+      "scored_questions": 10,
+      "recall": 1.0,
+      "precision": 0.36666666666666664,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "latency_median_ms": 9.473875499679707,
+      "latency_p95_ms": 13.584916974650696
+    },
+    "hybrid": {
+      "questions": 10,
+      "scored_questions": 10,
+      "recall": 1.0,
+      "precision": 0.36666666666666664,
+      "mrr": 0.85,
+      "ndcg": 0.8892789260714372,
+      "latency_median_ms": 9.581999998772517,
+      "latency_p95_ms": 11.801125016063452
     }
   },
   "answers": {
-    "bm25_local": {
+    "bm25": {
       "n": 10,
       "fact_precision": 0.5,
       "fact_recall": 0.9,
+      "claim_support": 1.0,
+      "citation_precision": 1.0,
+      "citation_coverage": 1.0,
+      "abstention_correct": 1,
+      "denominators": {
+        "fact_precision": 10,
+        "fact_recall": 10,
+        "claim_support": 10,
+        "citation_precision": 10,
+        "citation_coverage": 10,
+        "abstention_correct": 10
+      },
+      "unadjudicated_claims": 0
+    },
+    "dense": {
+      "n": 10,
+      "fact_precision": 0.55,
+      "fact_recall": 1.0,
+      "claim_support": 1.0,
+      "citation_precision": 1.0,
+      "citation_coverage": 1.0,
+      "abstention_correct": 1,
+      "denominators": {
+        "fact_precision": 10,
+        "fact_recall": 10,
+        "claim_support": 10,
+        "citation_precision": 10,
+        "citation_coverage": 10,
+        "abstention_correct": 10
+      },
+      "unadjudicated_claims": 0
+    },
+    "hybrid": {
+      "n": 10,
+      "fact_precision": 0.55,
+      "fact_recall": 1.0,
       "claim_support": 1.0,
       "citation_precision": 1.0,
       "citation_coverage": 1.0,
@@ -103,7 +165,7 @@
     }
   },
   "per_category": {
-    "bm25_local": {
+    "bm25": {
       "cost": {
         "n": 2,
         "retrieval": {
@@ -183,6 +245,180 @@
         "answer": {
           "fact_precision": 0.25,
           "fact_recall": 0.5,
+          "claim_support": 1.0,
+          "citation_precision": 1.0,
+          "citation_coverage": 1.0,
+          "abstention_correct": 1
+        }
+      }
+    },
+    "dense": {
+      "cost": {
+        "n": 2,
+        "retrieval": {
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "answer": {
+          "fact_precision": 0.5,
+          "fact_recall": 1.0,
+          "claim_support": 1.0,
+          "citation_precision": 1.0,
+          "citation_coverage": 1.0,
+          "abstention_correct": 1
+        }
+      },
+      "governance": {
+        "n": 2,
+        "retrieval": {
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "answer": {
+          "fact_precision": 0.5,
+          "fact_recall": 1.0,
+          "claim_support": 1.0,
+          "citation_precision": 1.0,
+          "citation_coverage": 1.0,
+          "abstention_correct": 1
+        }
+      },
+      "incident": {
+        "n": 2,
+        "retrieval": {
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "answer": {
+          "fact_precision": 0.5,
+          "fact_recall": 1.0,
+          "claim_support": 1.0,
+          "citation_precision": 1.0,
+          "citation_coverage": 1.0,
+          "abstention_correct": 1
+        }
+      },
+      "quality": {
+        "n": 2,
+        "retrieval": {
+          "recall": 1.0,
+          "precision": 0.5,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "answer": {
+          "fact_precision": 0.75,
+          "fact_recall": 1.0,
+          "claim_support": 1.0,
+          "citation_precision": 1.0,
+          "citation_coverage": 1.0,
+          "abstention_correct": 1
+        }
+      },
+      "sre": {
+        "n": 2,
+        "retrieval": {
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "answer": {
+          "fact_precision": 0.5,
+          "fact_recall": 1.0,
+          "claim_support": 1.0,
+          "citation_precision": 1.0,
+          "citation_coverage": 1.0,
+          "abstention_correct": 1
+        }
+      }
+    },
+    "hybrid": {
+      "cost": {
+        "n": 2,
+        "retrieval": {
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 0.75,
+          "ndcg": 0.8154648767857288
+        },
+        "answer": {
+          "fact_precision": 0.5,
+          "fact_recall": 1.0,
+          "claim_support": 1.0,
+          "citation_precision": 1.0,
+          "citation_coverage": 1.0,
+          "abstention_correct": 1
+        }
+      },
+      "governance": {
+        "n": 2,
+        "retrieval": {
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 0.75,
+          "ndcg": 0.8154648767857288
+        },
+        "answer": {
+          "fact_precision": 0.5,
+          "fact_recall": 1.0,
+          "claim_support": 1.0,
+          "citation_precision": 1.0,
+          "citation_coverage": 1.0,
+          "abstention_correct": 1
+        }
+      },
+      "incident": {
+        "n": 2,
+        "retrieval": {
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 0.75,
+          "ndcg": 0.8154648767857288
+        },
+        "answer": {
+          "fact_precision": 0.5,
+          "fact_recall": 1.0,
+          "claim_support": 1.0,
+          "citation_precision": 1.0,
+          "citation_coverage": 1.0,
+          "abstention_correct": 1
+        }
+      },
+      "quality": {
+        "n": 2,
+        "retrieval": {
+          "recall": 1.0,
+          "precision": 0.5,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "answer": {
+          "fact_precision": 0.75,
+          "fact_recall": 1.0,
+          "claim_support": 1.0,
+          "citation_precision": 1.0,
+          "citation_coverage": 1.0,
+          "abstention_correct": 1
+        }
+      },
+      "sre": {
+        "n": 2,
+        "retrieval": {
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "answer": {
+          "fact_precision": 0.5,
+          "fact_recall": 1.0,
           "claim_support": 1.0,
           "citation_precision": 1.0,
           "citation_coverage": 1.0,

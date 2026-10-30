@@ -1,72 +1,93 @@
-# Release verification — 2026-10-30
+# Release verification — Project 03
 
-## Verdict
+Verified on **30 October 2026 (Asia/Kolkata)**. All data is synthetic. This is a local reference implementation, not a production service certification.
 
-**Local offline diagnostic implementation verified; public release held pending standard-environment verification.** No push, merge, publication or cloud deployment was performed. Projects 01 and 02 were not edited. Work is on `feat/03-enterprise-rag-evaluation-lab` in the public repository checkout.
+## Current outcome
 
-## Executed environment and commands
+- **17 tests passed, zero failures/skips**, including real rank-bm25, dense and hybrid integration, on Python 3.11.11 / pytest 9.0.3.
+- Quick and full evaluations executed with **all three retrieval methods** and the pinned MiniLM model.
+- Independent report reconciliation passed for both runs, including aggregate/category scores, answer denominators and latency samples/median/P95.
+- Complete Linux ARM64/Python 3.11 **CPU** dependency lock generated with wheel hashes; locked installation and `pip check` passed.
+- Dependency audit after remediation: **65 third-party packages, zero known findings, zero skipped packages**, with the official Torch CPU suffix normalized to its upstream advisory version. See `results/dependency_audit.json`.
+- Publication secret/privacy review and exact Git scope are recorded in the [project security audit](../../../docs/security-audits/03-enterprise-rag-evaluation-lab.md). The final history scan must also cover the report/fix commits.
+- User authorized publishing the Project 03 feature branch. No merge into `main` is authorized.
 
-The following are exact shell commands used, with interpreter variables assigned to the existing runtime locations for reproducibility on this machine. Absolute personal workspace paths are intentionally omitted from tracked evidence.
+## Runtime and resource provenance
+
+The release used an isolated venv inside the existing local Project 02 runtime image, without changing Project 02 files or its image. Image ID: `sha256:c5508ff3bfd022207f85528a75aee53dd0deb11842952554d8ba841d44be6bb8`. Spark was not used. The Python base was 3.11.11; the disposable environment had no enterprise credentials.
+
+Docker Engine 28.3.2; Linux aarch64, Docker Linux VM. Container limited to **2 CPUs / 4 GiB RAM**, with `OMP_NUM_THREADS=2` and `MKL_NUM_THREADS=2`. Host-visible VM resources are recorded separately in metrics.json: 10 logical CPUs / 8,218,034,176 bytes RAM. The cgroup CPU quota is `200000 100000`, memory limit `4294967296`. Full-run peak process RSS was 552,247,296 bytes; this is a process high-water mark, not a per-backend incremental allocation.
+
+The model was downloaded once from the pinned immutable public revision, then final tests/benchmarks used `HF_HUB_OFFLINE=1`. `results/model_manifest.json` records the downloaded 90,868,376-byte safetensors weight file and SHA-256 `53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db`. Remote code was disabled. The checksum is measured content identity, not an independent security attestation.
+
+## Exact release commands
+
+Inside the disposable container, from the Project 03 directory:
 
 ```bash
-# Run from projects/03-enterprise-rag-evaluation-lab
-BENCH_PY="$HOME/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3"
-TEST_PY="$HOME/Documents/ChatGPT/Project 03 - Home Buyer Support Agent/.venv/bin/python"
-PYTHONPATH=src "$BENCH_PY" -m unittest discover -s tests -v
-PYTHONPATH=src "$TEST_PY" -m pytest -q
-PYTHONPATH=src "$BENCH_PY" -m rag_lab.runner --mode quick --lexical-only --local-bm25 --output results/quick
-PYTHONPATH=src "$BENCH_PY" -m rag_lab.runner --mode full --lexical-only --local-bm25
-"$BENCH_PY" scripts/validate_reports.py results
-"$BENCH_PY" scripts/validate_reports.py results/quick
-python3 scripts/release_checks.py
-# From repository root
- git diff --check
- git diff --cached --check
- git diff --cached --name-only
+python -m venv /tmp/rag-venv
+/tmp/rag-venv/bin/python -m pip install torch==2.15.0+cpu --index-url https://download.pytorch.org/whl/cpu
+/tmp/rag-venv/bin/python -m pip install -e '.[test]'
+/tmp/rag-venv/bin/python -m pip install --target /tmp/rag-lock-tools uv==0.9.7
+/tmp/rag-lock-tools/bin/uv pip compile pyproject.toml --extra test \
+  --python-version 3.11 --python-platform aarch64-unknown-linux-gnu \
+  --extra-index-url https://download.pytorch.org/whl/cpu \
+  --index-strategy unsafe-best-match --generate-hashes --no-emit-index-url \
+  -o requirements-linux-arm64.lock
+/tmp/rag-venv/bin/python -m pip install --require-hashes --no-deps \
+  --extra-index-url https://download.pytorch.org/whl/cpu \
+  -r requirements-linux-arm64.lock
+/tmp/rag-venv/bin/python -m pip check
+HF_HUB_OFFLINE=1 OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 RAG_TEST_DENSE=1 \
+  /tmp/rag-venv/bin/python -m pytest -q
+HF_HUB_OFFLINE=1 OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 \
+  /tmp/rag-venv/bin/python -m rag_lab.runner --mode quick --output results/quick
+HF_HUB_OFFLINE=1 OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 \
+  /tmp/rag-venv/bin/python -m rag_lab.runner --mode full --output results
+/tmp/rag-venv/bin/python scripts/validate_reports.py results
+/tmp/rag-venv/bin/python scripts/validate_reports.py results/quick
+/tmp/rag-venv/bin/python scripts/audit_dependencies.py
 ```
 
-Benchmarks/unittest: Python 3.12.14, Darwin arm64, 10 logical CPUs, 16 GiB physical RAM. Pytest: existing Python 3.13.3 environment with pytest 9.0.2, reused read-only; no changes made to that other project. The pinned project pytest dependency was not installed. Offline code is stdlib-only; installed NumPy version is recorded as metadata but not used by bm25_local.
+Final pytest output: `17 passed in 5.92s`. The initial real-model integration pass, before the packaging-tool fixes, also passed 17 tests in 21.67s. The final run used the locked, remediated versions.
 
-| Check | Actual outcome |
-|---|---|
-| Unit/integration tests | 15 passed |
-| rank-bm25 integration | Skipped: package unavailable |
-| Real dense/hybrid model integration | Skipped: package stack/model unavailable |
-| Quick evaluation | Executed, 10 questions, 2 warmups, 5 repeats/query; all 10 answer fixtures |
-| Full evaluation | Executed in explicit lexical-only mode, 18 questions, 3 warmups, 15 repeats/query; all 10 fixtures |
-| Independent CSV/JSON reconciliation | Passed both runs: retrieval aggregates/categories, answer means/denominators, latency samples/median/P95 |
-| Reproducibility | Predictions and quality metrics identical across two independent quick runs; timing intentionally varies |
-| Source/fixture privacy and size patterns | Passed scoped project review; no matched personal paths, email addresses, private IPs, credential URLs or supported token/key patterns |
-| Git whitespace/scope | Initial staged check found CSV CRLF line endings; writer and artifacts corrected to LF, then passed. Only Project 03 plus repository README |
-| Dedicated secret scanner | Not executed; Gitleaks unavailable. Mandatory before any future publication |
-| pip-audit | Not executed; dependency environment unavailable |
-| Python 3.11 install/test | Not executed: interpreter unavailable |
-| Dense and hybrid benchmark | Not executed; no substitute or fabricated results |
-| Full transitive hash lock | Not generated: network installation unavailable; direct versions only are pinned |
-| Cloud/concurrency/production load test | Out of scope; architecture recommendations only |
+The lock compiler searched PyPI and the official PyTorch CPU index; the extra source is required for the CPU-specific Torch wheel. Hash verification succeeded. The lock targets Linux ARM64/Python 3.11 and is not claimed portable to other platforms. The local editable package is installed separately; its code/data are versioned in this repository rather than resolved from PyPI.
 
-## Failed checks and blockers
+## Measured full-suite results
 
-`python3.11 --version` failed: interpreter not on PATH; inspected available runtimes did not provide 3.11. A pip download of uv 0.9.7 to a temporary bootstrap directory failed to resolve PyPI in the sandbox. A network-enabled retry was not executed because automatic approval review failed at model capacity; this was not a safety rejection. User guidance/approval was requested. No permission bypass was used.
+Eighteen questions; 16 have passage qrels (including an unanswerable active-conflict case), 15 have reference facts. Each query/method has 3 warmups and 15 measured repetitions. Controlled fixtures always include all 10 examples and are summarized separately.
 
-Default all-method execution was exercised and failed on missing rank-bm25; the CLI now gives an explicit dependency/fallback message. The fallback requires both `--lexical-only --local-bm25`, has a distinct method name, and marks dense/hybrid skipped. Dense initialization also has a clear error for missing packages/model. No credentials or local generative LLM were used.
+| Method | Recall@3 | Precision@3 | MRR | nDCG@3 | Median retrieval ms | P95 retrieval ms |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| BM25 | 1.0000 | 0.4375 | 0.7604 | 0.8118 | 0.0616 | 0.0914 |
+| Dense | 1.0000 | 0.4375 | 0.9063 | 0.9308 | 9.6213 | 15.1532 |
+| Hybrid RRF | 1.0000 | 0.4375 | 0.8125 | 0.8512 | 9.6396 | 15.4917 |
 
-## Dependency review
+| Answer source | Fact precision | Fact recall | Claim support | Citation precision | Citation coverage | Abstention accuracy |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| BM25 pipeline | 0.4722 | 0.9333 | 1.0000 | 1.0000 | 1.0000 | 0.8333 |
+| Dense pipeline | 0.5000 | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 0.8333 |
+| Hybrid pipeline | 0.5000 | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 0.8333 |
+| Controlled fixtures | 0.5000 | 0.5000 | 0.6875 | 0.6250 | 0.5625 | 0.7000 |
 
-Initial candidate Torch 2.6.0 and Transformers 4.49.0 pins were rejected after checking public advisories, including [Torch memory corruption](https://github.com/advisories/GHSA-rrmf-rvhw-rf47), [Transformers ReDoS](https://github.com/advisories/GHSA-jjph-296x-mrcr), and [custom generation code consent](https://github.com/advisories/GHSA-x9r9-c232-4q39). Final candidate pins use sentence-transformers 6.2.0, Torch 2.15.0, Transformers 5.22.1, huggingface-hub 2.4.0 and safetensors 0.8.0. Release existence was checked on the corresponding public PyPI pages; sentence-transformers' versioned pyproject supports Transformers >=5,<6 and Hub >=1.3,<3. These are **uninstalled, unverified candidate pins**, not a clean dependency audit or compatibility proof. Resolve and hash-lock them in Python 3.11, run pip check/pip-audit, and execute model integration before release.
+These are small descriptive development-set results. Dense improved ranking here; RRF did not outperform dense. Every pipeline answered all three cases requiring abstention/clarification. BM25 retrieved but did not select the needed SEV1 fact. Perfect citation support is possible for question-irrelevant copied text and therefore does not establish answer correctness. Exact denominators, category scores and samples are in the generated artifacts.
 
-Model revision existence was checked against the official immutable Hugging Face tree. Runtime code forces safetensors and disables remote code. This reduces particular loading risks; it does not replace supply-chain scanning.
+Retrieval timings include query encoding/fusion where applicable, exclude index construction, and use fixed method order. Full index construction, including model initialization, took 5,875.011 ms; dense vector storage was 27,648 bytes for 18 vectors. No CPU utilization, energy, currency cost or concurrent throughput measurement was taken. No other build/audit job ran during the measured query loops.
 
-## Evidence interpretation
+## Failures found and resolved
 
-Full run: 16 of 18 questions have passage qrels (including one unanswerable conflict case); 15 have reference facts. Macro retrieval Recall@3=1.0, Precision@3=0.4375, MRR=0.7604167, nDCG@3=0.8117900. Baseline fact precision=0.4722222, fact recall=0.9333333, claim support=1.0, citation precision=1.0, citation coverage=1.0, abstention accuracy=0.8333333. It answered all three cases requiring abstention/clarification. The SEV1 case retrieves relevant evidence but does not select it within the two-passage evidence budget.
+- Native Python 3.11 was absent and sandbox PyPI DNS failed in the initial attempt. The early offline diagnostic tests ran under Python 3.12.14/3.13.3. Those lexical-only measurements remain in Git history; current results replace them with the executed Python 3.11 three-arm comparison.
+- Initial automatic approval review failed at model capacity. A later authorized publication turn obtained Docker/network execution approval; no sandbox check was bypassed.
+- The default Linux Torch installation began pulling unnecessary CUDA libraries. That disposable attempt was stopped; the verified environment uses the official `2.15.0+cpu` wheel. No CUDA package is part of the CPU lock.
+- Initial dependency audit found 10 advisories across pip 24.0, pytest 8.3.5 and setuptools 78.1.0. Updated pins to pip 26.2.2, pytest 9.0.3 and setuptools 84.1.0; regenerated/reinstalled the hash lock; reran tests and audit successfully. Build backend is pinned to the remediated setuptools version too.
+- The default auditor could not match the local package or Torch's `+cpu` suffix on PyPI. The audit script excludes the repository's local package and explicitly maps Torch to upstream 2.15.0. The resulting 65-package advisory lookup skipped no third-party packages. Binary integrity, local source review and model review remain separate controls.
+- CSV CRLF endings failed the first staged whitespace check. The writer and artifacts use LF; parsed measurements are unchanged.
+- SSH Git access failed host-key verification. HTTPS fetch authenticated through the existing GitHub CLI is used instead; host-key verification was not disabled.
 
-Controlled fixture macro scores: fact precision=0.5 (8 defined), fact recall=0.5 (7 defined), claim support=0.6875 (8), citation precision=0.625 (8), coverage=0.5625 (8), abstention accuracy=0.7 (10). These intentionally mixed positive/negative examples do not estimate production prevalence.
+## Remaining limits and unexecuted checks
 
-Latency samples and machine metadata are authoritative in metrics.json and latency_samples.csv. Fixed method order and serial execution are confounders. No CPU utilization, energy, currency cost or concurrent throughput measurement was taken. Peak RSS is a whole-process high-water mark.
+No independent human SME adjudication/inter-rater study, held-out enterprise corpus, arbitrary-paraphrase factuality verification, generative LLM adapter, concurrent serving load, OS/container vulnerability scan, cloud deployment or production SLO validation was performed. These remain limitations, not claims of completed checks. The model and dataset are intentionally tiny. Future dependency advisories can change; the audit records a point-in-time result.
 
-## Publication audit scope and retained metadata
+Source labels were explicitly authored independently of the evaluated retriever/answerer, but external expert review has not occurred. Unknown claim text receives conservative zeros and an unadjudicated count. Alternate chunk sizes can make answer comparisons invalid without new fragment/claim labels, as documented in the architecture and reports.
 
-Audit covers the new project files and repository README, not the historical repository or other unpublished commits. Compact synthetic input datasets and reviewed measured result artifacts are intentionally tracked. Local environments, caches, raw runtime logs and unreviewed local run outputs are excluded. Public retained metadata: repository identity, established owner name/GitHub noreply commit identity, public model/package IDs, OS/architecture/CPU/RAM/library versions and run times. No usernames/hostnames/home paths are retained in benchmark artifacts. Pattern checks cannot prove absence of all secrets.
-
-Before approval to publish: obtain Python 3.11 and dependencies/model; generate transitive hash lock; run pip check/audit and all backend tests; run both modes with all three methods; reconcile reports; get human review of labels; run Gitleaks across every unpublished commit against the intended target branch; repeat exact staged scope/privacy review. Then request explicit publication authorization.
+Projects 01 and 02 have no file changes from the starting Project 03 implementation. Publication is limited to the authorized feature branch; `main` and the published Project 02 branch are not modified.

@@ -19,8 +19,8 @@
       "incident-v2/restore"
     ],
     "abstain": false,
-    "id": "bm25_local-q01",
-    "method": "bm25_local",
+    "id": "bm25-q01",
+    "method": "bm25",
     "source": "pipeline"
   },
   {
@@ -43,8 +43,8 @@
       "incident-v2/restore"
     ],
     "abstain": false,
-    "id": "bm25_local-q02",
-    "method": "bm25_local",
+    "id": "bm25-q02",
+    "method": "bm25",
     "source": "pipeline"
   },
   {
@@ -67,8 +67,8 @@
       "quality-v2/threshold"
     ],
     "abstain": false,
-    "id": "bm25_local-q03",
-    "method": "bm25_local",
+    "id": "bm25-q03",
+    "method": "bm25",
     "source": "pipeline"
   },
   {
@@ -91,8 +91,8 @@
       "quality-copy/threshold"
     ],
     "abstain": false,
-    "id": "bm25_local-q04",
-    "method": "bm25_local",
+    "id": "bm25-q04",
+    "method": "bm25",
     "source": "pipeline"
   },
   {
@@ -115,8 +115,8 @@
       "quality-v2/quarantine"
     ],
     "abstain": false,
-    "id": "bm25_local-q05",
-    "method": "bm25_local",
+    "id": "bm25-q05",
+    "method": "bm25",
     "source": "pipeline"
   },
   {
@@ -139,8 +139,8 @@
       "access-v2/expiry"
     ],
     "abstain": false,
-    "id": "bm25_local-q06",
-    "method": "bm25_local",
+    "id": "bm25-q06",
+    "method": "bm25",
     "source": "pipeline"
   },
   {
@@ -163,8 +163,8 @@
       "retention-b/retention"
     ],
     "abstain": false,
-    "id": "bm25_local-q07",
-    "method": "bm25_local",
+    "id": "bm25-q07",
+    "method": "bm25",
     "source": "pipeline"
   },
   {
@@ -187,8 +187,8 @@
       "retention-a/retention"
     ],
     "abstain": false,
-    "id": "bm25_local-q08",
-    "method": "bm25_local",
+    "id": "bm25-q08",
+    "method": "bm25",
     "source": "pipeline"
   },
   {
@@ -211,8 +211,8 @@
       "access-v2/expiry"
     ],
     "abstain": false,
-    "id": "bm25_local-q09",
-    "method": "bm25_local",
+    "id": "bm25-q09",
+    "method": "bm25",
     "source": "pipeline"
   },
   {
@@ -235,8 +235,488 @@
       "access-v2/grant"
     ],
     "abstain": false,
-    "id": "bm25_local-q10",
-    "method": "bm25_local",
+    "id": "bm25-q10",
+    "method": "bm25",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "For a stalled ingestion pipeline, pause the scheduler before replaying the last successful checkpoint.",
+        "citations": [
+          "incident-v2/restore"
+        ]
+      },
+      {
+        "text": "For a stalled ingestion pipeline, notify the data platform on-call within 10 minutes.",
+        "citations": [
+          "incident-v2/notify"
+        ]
+      }
+    ],
+    "evidence": [
+      "incident-v2/restore",
+      "incident-v2/notify"
+    ],
+    "abstain": false,
+    "id": "dense-q01",
+    "method": "dense",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "For a stalled ingestion pipeline, notify the data platform on-call within 10 minutes.",
+        "citations": [
+          "incident-v2/notify"
+        ]
+      },
+      {
+        "text": "For a stalled ingestion pipeline, pause the scheduler before replaying the last successful checkpoint.",
+        "citations": [
+          "incident-v2/restore"
+        ]
+      }
+    ],
+    "evidence": [
+      "incident-v2/notify",
+      "incident-v2/restore"
+    ],
+    "abstain": false,
+    "id": "dense-q02",
+    "method": "dense",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "The orders quality contract requires order_id to be unique and customer_id to be non-null.",
+        "citations": [
+          "quality-copy/threshold"
+        ]
+      },
+      {
+        "text": "The orders quality contract requires order_id to be unique and customer_id to be non-null.",
+        "citations": [
+          "quality-v2/threshold"
+        ]
+      }
+    ],
+    "evidence": [
+      "quality-copy/threshold",
+      "quality-v2/threshold"
+    ],
+    "abstain": false,
+    "id": "dense-q03",
+    "method": "dense",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "Quarantine an orders batch when duplicate order_id values exceed zero.",
+        "citations": [
+          "quality-v2/quarantine"
+        ]
+      },
+      {
+        "text": "For a stalled ingestion pipeline, pause the scheduler before replaying the last successful checkpoint.",
+        "citations": [
+          "incident-v2/restore"
+        ]
+      }
+    ],
+    "evidence": [
+      "quality-v2/quarantine",
+      "incident-v2/restore"
+    ],
+    "abstain": false,
+    "id": "dense-q04",
+    "method": "dense",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "Development compute must shut down after 30 idle minutes.",
+        "citations": [
+          "cost-v2/idle"
+        ]
+      },
+      {
+        "text": "Temporary production data access expires after 24 hours.",
+        "citations": [
+          "access-v2/expiry"
+        ]
+      }
+    ],
+    "evidence": [
+      "cost-v2/idle",
+      "access-v2/expiry"
+    ],
+    "abstain": false,
+    "id": "dense-q05",
+    "method": "dense",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "Monthly cloud spend above 5000 synthetic credits requires FinOps approval.",
+        "citations": [
+          "cost-v2/approval"
+        ]
+      },
+      {
+        "text": "Production data access requires manager approval and data-owner approval.",
+        "citations": [
+          "access-v2/grant"
+        ]
+      }
+    ],
+    "evidence": [
+      "cost-v2/approval",
+      "access-v2/grant"
+    ],
+    "abstain": false,
+    "id": "dense-q06",
+    "method": "dense",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "A SEV1 incident requires paging the primary SRE immediately and the incident commander after 5 minutes without acknowledgement.",
+        "citations": [
+          "sre-v2/sev1"
+        ]
+      },
+      {
+        "text": "A SEV2 incident requires a service-owner ticket within 30 minutes.",
+        "citations": [
+          "sre-v2/sev2"
+        ]
+      }
+    ],
+    "evidence": [
+      "sre-v2/sev1",
+      "sre-v2/sev2"
+    ],
+    "abstain": false,
+    "id": "dense-q07",
+    "method": "dense",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "A SEV2 incident requires a service-owner ticket within 30 minutes.",
+        "citations": [
+          "sre-v2/sev2"
+        ]
+      },
+      {
+        "text": "A SEV1 incident requires paging the primary SRE immediately and the incident commander after 5 minutes without acknowledgement.",
+        "citations": [
+          "sre-v2/sev1"
+        ]
+      }
+    ],
+    "evidence": [
+      "sre-v2/sev2",
+      "sre-v2/sev1"
+    ],
+    "abstain": false,
+    "id": "dense-q08",
+    "method": "dense",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "Production data access requires manager approval and data-owner approval.",
+        "citations": [
+          "access-v2/grant"
+        ]
+      },
+      {
+        "text": "Monthly cloud spend above 5000 synthetic credits requires FinOps approval.",
+        "citations": [
+          "cost-v2/approval"
+        ]
+      }
+    ],
+    "evidence": [
+      "access-v2/grant",
+      "cost-v2/approval"
+    ],
+    "abstain": false,
+    "id": "dense-q09",
+    "method": "dense",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "Temporary production data access expires after 24 hours.",
+        "citations": [
+          "access-v2/expiry"
+        ]
+      },
+      {
+        "text": "The analytics audit retention period is 90 days.",
+        "citations": [
+          "retention-a/retention"
+        ]
+      }
+    ],
+    "evidence": [
+      "access-v2/expiry",
+      "retention-a/retention"
+    ],
+    "abstain": false,
+    "id": "dense-q10",
+    "method": "dense",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "For a stalled ingestion pipeline, pause the scheduler before replaying the last successful checkpoint.",
+        "citations": [
+          "incident-v2/restore"
+        ]
+      },
+      {
+        "text": "For a stalled ingestion pipeline, notify the data platform on-call within 10 minutes.",
+        "citations": [
+          "incident-v2/notify"
+        ]
+      }
+    ],
+    "evidence": [
+      "incident-v2/restore",
+      "incident-v2/notify"
+    ],
+    "abstain": false,
+    "id": "hybrid-q01",
+    "method": "hybrid",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "For a stalled ingestion pipeline, notify the data platform on-call within 10 minutes.",
+        "citations": [
+          "incident-v2/notify"
+        ]
+      },
+      {
+        "text": "For a stalled ingestion pipeline, pause the scheduler before replaying the last successful checkpoint.",
+        "citations": [
+          "incident-v2/restore"
+        ]
+      }
+    ],
+    "evidence": [
+      "incident-v2/notify",
+      "incident-v2/restore"
+    ],
+    "abstain": false,
+    "id": "hybrid-q02",
+    "method": "hybrid",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "The orders quality contract requires order_id to be unique and customer_id to be non-null.",
+        "citations": [
+          "quality-copy/threshold"
+        ]
+      },
+      {
+        "text": "The orders quality contract requires order_id to be unique and customer_id to be non-null.",
+        "citations": [
+          "quality-v2/threshold"
+        ]
+      }
+    ],
+    "evidence": [
+      "quality-copy/threshold",
+      "quality-v2/threshold"
+    ],
+    "abstain": false,
+    "id": "hybrid-q03",
+    "method": "hybrid",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "Quarantine an orders batch when duplicate order_id values exceed zero.",
+        "citations": [
+          "quality-v2/quarantine"
+        ]
+      },
+      {
+        "text": "The orders quality contract requires order_id to be unique and customer_id to be non-null.",
+        "citations": [
+          "quality-copy/threshold"
+        ]
+      }
+    ],
+    "evidence": [
+      "quality-v2/quarantine",
+      "quality-copy/threshold"
+    ],
+    "abstain": false,
+    "id": "hybrid-q04",
+    "method": "hybrid",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "Development compute must shut down after 30 idle minutes.",
+        "citations": [
+          "cost-v2/idle"
+        ]
+      },
+      {
+        "text": "Temporary production data access expires after 24 hours.",
+        "citations": [
+          "access-v2/expiry"
+        ]
+      }
+    ],
+    "evidence": [
+      "cost-v2/idle",
+      "access-v2/expiry"
+    ],
+    "abstain": false,
+    "id": "hybrid-q05",
+    "method": "hybrid",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "Monthly cloud spend above 5000 synthetic credits requires FinOps approval.",
+        "citations": [
+          "cost-v2/approval"
+        ]
+      },
+      {
+        "text": "Production data access requires manager approval and data-owner approval.",
+        "citations": [
+          "access-v2/grant"
+        ]
+      }
+    ],
+    "evidence": [
+      "cost-v2/approval",
+      "access-v2/grant"
+    ],
+    "abstain": false,
+    "id": "hybrid-q06",
+    "method": "hybrid",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "A SEV1 incident requires paging the primary SRE immediately and the incident commander after 5 minutes without acknowledgement.",
+        "citations": [
+          "sre-v2/sev1"
+        ]
+      },
+      {
+        "text": "The analytics audit retention period is 90 days.",
+        "citations": [
+          "retention-a/retention"
+        ]
+      }
+    ],
+    "evidence": [
+      "sre-v2/sev1",
+      "retention-a/retention"
+    ],
+    "abstain": false,
+    "id": "hybrid-q07",
+    "method": "hybrid",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "A SEV2 incident requires a service-owner ticket within 30 minutes.",
+        "citations": [
+          "sre-v2/sev2"
+        ]
+      },
+      {
+        "text": "The analytics audit retention period is 365 days.",
+        "citations": [
+          "retention-b/retention"
+        ]
+      }
+    ],
+    "evidence": [
+      "sre-v2/sev2",
+      "retention-b/retention"
+    ],
+    "abstain": false,
+    "id": "hybrid-q08",
+    "method": "hybrid",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "Production data access requires manager approval and data-owner approval.",
+        "citations": [
+          "access-v2/grant"
+        ]
+      },
+      {
+        "text": "Temporary production data access expires after 24 hours.",
+        "citations": [
+          "access-v2/expiry"
+        ]
+      }
+    ],
+    "evidence": [
+      "access-v2/grant",
+      "access-v2/expiry"
+    ],
+    "abstain": false,
+    "id": "hybrid-q09",
+    "method": "hybrid",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "Temporary production data access expires after 24 hours.",
+        "citations": [
+          "access-v2/expiry"
+        ]
+      },
+      {
+        "text": "Production data access requires manager approval and data-owner approval.",
+        "citations": [
+          "access-v2/grant"
+        ]
+      }
+    ],
+    "evidence": [
+      "access-v2/expiry",
+      "access-v2/grant"
+    ],
+    "abstain": false,
+    "id": "hybrid-q10",
+    "method": "hybrid",
     "source": "pipeline"
   },
   {

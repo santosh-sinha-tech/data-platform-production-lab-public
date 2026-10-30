@@ -12,13 +12,13 @@ Examples: f04 (q11, fixture), f08 (q05, fixture)
 
 Observed: 1 tagged rows. Engineering action: Audit evidence budget and selection; rerank with authority constraints.
 
-Examples: bm25_local-q07 (q07, bm25_local)
+Examples: bm25-q07 (q07, bm25)
 
 ## Incorrect answer synthesis
 
-Observed: 15 tagged rows. Engineering action: Check reference-fact completeness and contradiction handling; expand independently reviewed claim coverage.
+Observed: 33 tagged rows. Engineering action: Check reference-fact completeness and contradiction handling; expand independently reviewed claim coverage.
 
-Examples: bm25_local-q01 (q01, bm25_local), bm25_local-q02 (q02, bm25_local), bm25_local-q04 (q04, bm25_local), bm25_local-q05 (q05, bm25_local), bm25_local-q06 (q06, bm25_local)
+Examples: bm25-q01 (q01, bm25), bm25-q02 (q02, bm25), bm25-q04 (q04, bm25), bm25-q05 (q05, bm25), bm25-q06 (q06, bm25)
 
 ## Unsupported claim
 
@@ -36,7 +36,7 @@ Examples: f02 (q05, fixture), f03 (q13, fixture), f05 (q05, fixture)
 
 Observed: 3 tagged rows. Engineering action: Surface conflicting active sources; route to owner; abstain until resolved.
 
-Examples: bm25_local-q07 (q07, bm25_local), f05 (q05, fixture), f07 (q12, fixture)
+Examples: bm25-q07 (q07, bm25), f05 (q05, fixture), f07 (q12, fixture)
 
 ## Stale source
 

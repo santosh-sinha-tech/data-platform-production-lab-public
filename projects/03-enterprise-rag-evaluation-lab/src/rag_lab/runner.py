@@ -64,6 +64,17 @@ def failure_tags(answer, question, score, ranking, documents, ledger):
     return tags
 
 
+def container_limits() -> dict:
+    """Expose cgroup constraints separately from host-visible CPU/RAM counts."""
+    limits = {}
+    for key, path in [('cpu_max','/sys/fs/cgroup/cpu.max'), ('memory_max','/sys/fs/cgroup/memory.max')]:
+        try:
+            limits[key] = Path(path).read_text().strip()
+        except OSError:
+            limits[key] = None
+    return limits
+
+
 def run(config: dict, output: Path, lexical_only=False, local_bm25=False) -> dict:
     if config['repetitions'] < 2 or config['warmups'] < 1 or config['top_k'] < 1 or config['evidence_limit'] < 1:
         raise ValueError('Require repeated measurements, warmup, positive K and evidence limit')
@@ -138,7 +149,7 @@ def run(config: dict, output: Path, lexical_only=False, local_bm25=False) -> dic
     physical_memory = os.sysconf('SC_PHYS_PAGES')*os.sysconf('SC_PAGE_SIZE') if hasattr(os,'sysconf') and 'SC_PHYS_PAGES' in os.sysconf_names else None
     rss = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
     metrics=dict(dataset_version=documents['version'],dataset_sha256=hashes,seed=config['seed'],configuration=config,started_utc=started,finished_utc=datetime.now(timezone.utc).isoformat(),libraries=libraries,
-        machine=dict(os=platform.system(),release=platform.release(),architecture=platform.machine(),python=platform.python_version(),logical_cpus=os.cpu_count(),physical_memory_bytes=physical_memory,peak_rss_bytes=rss if platform.system()=='Darwin' else rss*1024),
+        machine=dict(os=platform.system(),release=platform.release(),architecture=platform.machine(),python=platform.python_version(),logical_cpus=os.cpu_count(),physical_memory_bytes=physical_memory,cgroup_v2=container_limits(),peak_rss_bytes=rss if platform.system()=='Darwin' else rss*1024),
         model=None if lexical_only else dict(id=MODEL,revision=REVISION,device='cpu',dimensions=384),mode='lexical-only' if lexical_only else 'all',skipped_methods=['dense','hybrid'] if lexical_only else [],
         index=dict(documents=len(documents['documents']),passages=sum(len(d['passages']) for d in documents['documents']),chunks=len(chunks),build_ms=build_ms,vector_bytes=0 if lexical_only else int(index.vectors.nbytes)),retrieval=summary,answers=answer_summary,per_category=categories,
         latency_protocol='Sequential warmed serial queries; retrieval includes tokenization/query embedding/fusion, excludes index build; pipeline adds evidence selection and extractive generation, excludes evaluation and report I/O. P95 nearest rank; each query repeated; method order fixed (thermal/order confounder).',

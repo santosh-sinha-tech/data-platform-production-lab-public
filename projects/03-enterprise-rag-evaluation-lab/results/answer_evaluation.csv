@@ -1,22 +1,58 @@
 id,question_id,method,source,category,kind,fact_precision,fact_recall,claim_support,citation_precision,citation_coverage,contradictions,unadjudicated_claims,abstention_correct,appropriate_abstention,failure_to_abstain,failures
-bm25_local-q01,q01,bm25_local,pipeline,incident,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
-bm25_local-q02,q02,bm25_local,pipeline,incident,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
-bm25_local-q03,q03,bm25_local,pipeline,quality,extractive,1.0,1.0,1.0,1.0,1.0,0,0,1,0,0,
-bm25_local-q04,q04,bm25_local,pipeline,quality,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
-bm25_local-q05,q05,bm25_local,pipeline,cost,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
-bm25_local-q06,q06,bm25_local,pipeline,cost,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
-bm25_local-q07,q07,bm25_local,pipeline,sre,extractive,0.0,0.0,1.0,1.0,1.0,2,0,1,0,0,Relevant evidence retrieved but not used; Incorrect answer synthesis; Conflicting evidence
-bm25_local-q08,q08,bm25_local,pipeline,sre,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
-bm25_local-q09,q09,bm25_local,pipeline,governance,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
-bm25_local-q10,q10,bm25_local,pipeline,governance,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
-bm25_local-q11,q11,bm25_local,pipeline,architecture,extractive,1.0,1.0,1.0,1.0,1.0,0,0,1,0,0,
-bm25_local-q12,q12,bm25_local,pipeline,conflict,extractive,0.0,,1.0,1.0,1.0,2,0,0,0,1,Incorrect answer synthesis; Conflicting evidence; Missing evidence / failure to abstain
-bm25_local-q13,q13,bm25_local,pipeline,missing,extractive,0.0,,1.0,1.0,1.0,2,0,0,0,1,Incorrect answer synthesis; Conflicting evidence; Missing evidence / failure to abstain
-bm25_local-q14,q14,bm25_local,pipeline,ambiguous,extractive,0.0,,1.0,1.0,1.0,2,0,0,0,1,Incorrect answer synthesis; Conflicting evidence; Missing evidence / failure to abstain
-bm25_local-q15,q15,bm25_local,pipeline,governance,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
-bm25_local-q16,q16,bm25_local,pipeline,incident,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
-bm25_local-q17,q17,bm25_local,pipeline,cost,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
-bm25_local-q18,q18,bm25_local,pipeline,quality,extractive,1.0,1.0,1.0,1.0,1.0,0,0,1,0,0,
+bm25-q01,q01,bm25,pipeline,incident,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+bm25-q02,q02,bm25,pipeline,incident,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+bm25-q03,q03,bm25,pipeline,quality,extractive,1.0,1.0,1.0,1.0,1.0,0,0,1,0,0,
+bm25-q04,q04,bm25,pipeline,quality,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+bm25-q05,q05,bm25,pipeline,cost,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+bm25-q06,q06,bm25,pipeline,cost,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+bm25-q07,q07,bm25,pipeline,sre,extractive,0.0,0.0,1.0,1.0,1.0,2,0,1,0,0,Relevant evidence retrieved but not used; Incorrect answer synthesis; Conflicting evidence
+bm25-q08,q08,bm25,pipeline,sre,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+bm25-q09,q09,bm25,pipeline,governance,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+bm25-q10,q10,bm25,pipeline,governance,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+bm25-q11,q11,bm25,pipeline,architecture,extractive,1.0,1.0,1.0,1.0,1.0,0,0,1,0,0,
+bm25-q12,q12,bm25,pipeline,conflict,extractive,0.0,,1.0,1.0,1.0,2,0,0,0,1,Incorrect answer synthesis; Conflicting evidence; Missing evidence / failure to abstain
+bm25-q13,q13,bm25,pipeline,missing,extractive,0.0,,1.0,1.0,1.0,2,0,0,0,1,Incorrect answer synthesis; Conflicting evidence; Missing evidence / failure to abstain
+bm25-q14,q14,bm25,pipeline,ambiguous,extractive,0.0,,1.0,1.0,1.0,2,0,0,0,1,Incorrect answer synthesis; Conflicting evidence; Missing evidence / failure to abstain
+bm25-q15,q15,bm25,pipeline,governance,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+bm25-q16,q16,bm25,pipeline,incident,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+bm25-q17,q17,bm25,pipeline,cost,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+bm25-q18,q18,bm25,pipeline,quality,extractive,1.0,1.0,1.0,1.0,1.0,0,0,1,0,0,
+dense-q01,q01,dense,pipeline,incident,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+dense-q02,q02,dense,pipeline,incident,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+dense-q03,q03,dense,pipeline,quality,extractive,1.0,1.0,1.0,1.0,1.0,0,0,1,0,0,
+dense-q04,q04,dense,pipeline,quality,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+dense-q05,q05,dense,pipeline,cost,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+dense-q06,q06,dense,pipeline,cost,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+dense-q07,q07,dense,pipeline,sre,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+dense-q08,q08,dense,pipeline,sre,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+dense-q09,q09,dense,pipeline,governance,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+dense-q10,q10,dense,pipeline,governance,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+dense-q11,q11,dense,pipeline,architecture,extractive,1.0,1.0,1.0,1.0,1.0,0,0,1,0,0,
+dense-q12,q12,dense,pipeline,conflict,extractive,0.0,,1.0,1.0,1.0,2,0,0,0,1,Incorrect answer synthesis; Conflicting evidence; Missing evidence / failure to abstain
+dense-q13,q13,dense,pipeline,missing,extractive,0.0,,1.0,1.0,1.0,0,0,0,0,1,Incorrect answer synthesis; Missing evidence / failure to abstain
+dense-q14,q14,dense,pipeline,ambiguous,extractive,0.0,,1.0,1.0,1.0,0,0,0,0,1,Incorrect answer synthesis; Missing evidence / failure to abstain
+dense-q15,q15,dense,pipeline,governance,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+dense-q16,q16,dense,pipeline,incident,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+dense-q17,q17,dense,pipeline,cost,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+dense-q18,q18,dense,pipeline,quality,extractive,1.0,1.0,1.0,1.0,1.0,0,0,1,0,0,
+hybrid-q01,q01,hybrid,pipeline,incident,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+hybrid-q02,q02,hybrid,pipeline,incident,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+hybrid-q03,q03,hybrid,pipeline,quality,extractive,1.0,1.0,1.0,1.0,1.0,0,0,1,0,0,
+hybrid-q04,q04,hybrid,pipeline,quality,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+hybrid-q05,q05,hybrid,pipeline,cost,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+hybrid-q06,q06,hybrid,pipeline,cost,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+hybrid-q07,q07,hybrid,pipeline,sre,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+hybrid-q08,q08,hybrid,pipeline,sre,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+hybrid-q09,q09,hybrid,pipeline,governance,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+hybrid-q10,q10,hybrid,pipeline,governance,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+hybrid-q11,q11,hybrid,pipeline,architecture,extractive,1.0,1.0,1.0,1.0,1.0,0,0,1,0,0,
+hybrid-q12,q12,hybrid,pipeline,conflict,extractive,0.0,,1.0,1.0,1.0,2,0,0,0,1,Incorrect answer synthesis; Conflicting evidence; Missing evidence / failure to abstain
+hybrid-q13,q13,hybrid,pipeline,missing,extractive,0.0,,1.0,1.0,1.0,0,0,0,0,1,Incorrect answer synthesis; Missing evidence / failure to abstain
+hybrid-q14,q14,hybrid,pipeline,ambiguous,extractive,0.0,,1.0,1.0,1.0,0,0,0,0,1,Incorrect answer synthesis; Missing evidence / failure to abstain
+hybrid-q15,q15,hybrid,pipeline,governance,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+hybrid-q16,q16,hybrid,pipeline,incident,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+hybrid-q17,q17,hybrid,pipeline,cost,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+hybrid-q18,q18,hybrid,pipeline,quality,extractive,1.0,1.0,1.0,1.0,1.0,0,0,1,0,0,
 f01,q05,fixture,controlled,cost,correct_supported,1.0,1.0,1.0,1.0,1.0,0,0,1,0,0,
 f02,q05,fixture,controlled,cost,correct_wrong_citation,1.0,1.0,1.0,0.0,0.0,0,0,1,0,0,Incorrect citation
 f03,q13,fixture,controlled,missing,unsupported,0.0,,0.0,0.0,0.0,0,0,0,0,1,Incorrect answer synthesis; Unsupported claim; Incorrect citation; Missing evidence / failure to abstain

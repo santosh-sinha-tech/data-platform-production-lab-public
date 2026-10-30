@@ -2,7 +2,7 @@
 
 A synthetic reference implementation showing why retrieval relevance, answer correctness, groundedness and citation support require separate controls. It runs locally without credentials or paid APIs. There is no application UI or cloud deployment.
 
-**Verification status:** the committed artifacts are actual offline lexical-only measurements. Dense and hybrid are implemented but were not executed because dependencies/model downloads were blocked; Python 3.11 verification and a complete transitive dependency lock remain open. See [verification](architecture/verification.md). Do not present these artifacts as a completed three-arm comparison.
+**Verification status:** all 17 tests passed under Python 3.11.11, including real dense/hybrid integration. Quick and full three-method evaluations were executed with the pinned model. Linux ARM64 CPU dependencies are hash-locked and the installed third-party versions passed a known-vulnerability audit. See [verification](architecture/verification.md) and the [security audit record](../../docs/security-audits/03-enterprise-rag-evaluation-lab.md) for scope and limits.
 
 The corpus contains incident runbooks, data-quality contracts, cloud-cost policy, SRE escalation, governance and architecture decisions, with stale versions, near duplicates, contradictions and missing/ambiguous evidence. There are 18 explicit question labels and 10 controlled answer fixtures. The extractive baseline does not see evaluation labels. Read [data provenance](data/PROVENANCE.md) and the [13-part architecture](architecture/architecture.md).
 
@@ -12,17 +12,32 @@ From this project directory:
 
 ```bash
 python3.11 -m venv .venv
-.venv/bin/python -m pip install --upgrade pip
+.venv/bin/python -m pip install --upgrade pip==26.2.2 setuptools==84.1.0
+# On Linux, install the official CPU-only build first:
+# .venv/bin/python -m pip install torch==2.15.0+cpu --index-url https://download.pytorch.org/whl/cpu
 .venv/bin/python -m pip install -e '.[test]'
 .venv/bin/python -m pytest -q
 RAG_TEST_DENSE=1 .venv/bin/python -m pytest -q
 .venv/bin/python -m rag_lab.runner --mode quick --output results/local-quick
 .venv/bin/python -m rag_lab.runner --mode full --output results/local-full
 .venv/bin/python scripts/validate_reports.py results/local-full
-.venv/bin/python -m pip_audit
+.venv/bin/python scripts/audit_dependencies.py
 ```
 
-Direct dependencies are pinned; transitive resolution is not yet hash-locked. The standard installation and model loading have not been validated here. Dense requires the public MiniLM revision in retrieval.py; first load downloads roughly 91 MB of weights plus tokenizer/config and dependencies. Model loading uses CPU, safetensors and no remote code. Cache outside Git; set `HF_HOME` to a local cache and `HF_HUB_OFFLINE=1` after prefetch for disconnected runs. No other model is silently substituted.
+Direct dependencies are pinned. The tested Linux ARM64/Python 3.11 CPU dependency set, including test/audit tools, is hash-locked in requirements-linux-arm64.lock. Other platforms need their own resolved lock and verification; this lock is not claimed portable to macOS or Linux x86. Dense requires the public MiniLM revision in retrieval.py; first load downloads roughly 91 MB of weights plus tokenizer/config and dependencies. Model loading uses CPU, safetensors and no remote code. Cache outside Git; set `HF_HOME` to a local cache and `HF_HUB_OFFLINE=1` after prefetch for disconnected runs. No other model is silently substituted.
+
+For the tested Linux ARM64 CPU environment, install the complete locked set before the editable local package:
+
+```bash
+.venv/bin/python -m pip install --require-hashes --no-deps \
+  --extra-index-url https://download.pytorch.org/whl/cpu \
+  -r requirements-linux-arm64.lock
+.venv/bin/python -m pip install --no-deps --no-build-isolation -e .
+RAG_PYTHON=.venv/bin/python bash scripts/run.sh quick
+RAG_PYTHON=.venv/bin/python bash scripts/run.sh full
+```
+
+The lock was generated with uv 0.9.7, PyPI and the official PyTorch CPU index. Its CPU-specific Torch version is audited against the upstream version with the suffix removed; that advisory lookup does not attest to binary integrity, which is separately constrained by wheel hashes. The local unpublished package is excluded from PyPI advisory lookup and reviewed/tested separately. See results/dependency_audit.json.
 
 ## Explicit offline mode
 
@@ -53,7 +68,7 @@ Each output directory contains:
 | failure_analysis.md | Observed failures and engineering actions |
 | benchmark_report.md | Measured comparison and methodological limits |
 
-Committed full offline results are in results/ and quick results in results/quick/. Use results/local-* for unreviewed local output; these are ignored. See [full benchmark](results/benchmark_report.md) and [failure analysis](results/failure_analysis.md).
+Committed full three-method results are in results/ and quick results in results/quick/. The earlier offline measurements remain in Git history. Use results/local-* for unreviewed local output; these are ignored. See [full benchmark](results/benchmark_report.md) and [failure analysis](results/failure_analysis.md).
 
 ## Reading the metrics
 

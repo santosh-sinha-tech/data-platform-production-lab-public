@@ -2,6 +2,14 @@
 
 These instructions apply to all future work in this repository. They record the owner's requirement to repeat privacy, secrets, and publication audits for every project and subsequent change.
 
+## Required security documentation for every project
+
+- Follow the repository-wide `SECURITY.md` for every current/future project and subsequent change, including documentation and generated evidence.
+- For each new project, create `docs/security-audits/NN-project-name.md` from `docs/security-audit-template.md` and update `docs/security-audits/README.md`. Update the audit evidence for each release or meaningful follow-up change.
+- Record exact audited base/head SHAs, inherited unpublished commits, scanner versions/image digests, commands/outcomes, privacy and dependency review, approved public metadata, and failed/skipped checks. Never put discovered secrets or private raw scanner output in public evidence.
+- If native Gitleaks is unavailable, check the Docker-based route used for Project 02 before declaring the scanner unavailable. Record the actual immutable image digest and version.
+- Keep publication on HOLD until required checks are complete. An earlier project's pass does not cover new changes; review and scan audit-report/fix commits in the final publication range too.
+
 ## Before committing or pushing
 
 - Review the exact staged files and diff. Confirm the changes are within the requested scope and that existing projects are unchanged unless explicitly authorized.
