@@ -66,4 +66,11 @@ Checks are point-in-time evidence, not proof that all leaks or vulnerabilities a
 
 The user explicitly authorized pushing this feature branch and sharing the public Project 03 URL. The existing GitHub CLI account/destination public visibility were verified; SSH host-key verification failed, so verified HTTPS transport is used without disabling SSH verification. Final audited candidate SHA and follow-up report scan are recorded below when complete. `main` and the published Project 02 branch remain unchanged.
 
-**Verdict: implementation/dependency checks and initial security scans PASS; complete the final report-commit history/tree scans before the authorized feature-branch push.**
+## Verified release candidate
+
+- Candidate SHA: `5f4af81a10c964db9b5c615fde6ac10c7b4a79cc`.
+- Candidate history scan: **PASS**, exit 0, **5 commits scanned**, 1,127,630 bytes; no leaks reported. Exact range: `8dfbd27fb9b18ea08d1cf863c85bdd43db30140e..5f4af81a10c964db9b5c615fde6ac10c7b4a79cc`.
+- Candidate tracked-tree scan: **PASS**, exit 0, 1,139,819 bytes; no leaks reported.
+- This audit-result update is documentation only. Review and scan the commit containing it, in addition to the candidate range, immediately before pushing. The exact final head SHA is recorded in the verified publication confirmation; no self-referential commit SHA is fabricated here.
+
+**Verdict: PASS for authorized public reference-implementation publication, subject to the final audit-record commit passing the same history/tree scan.** This is not production-readiness certification. All stated dataset, advisory and evaluation limitations remain applicable.
