@@ -1,0 +1,264 @@
+{
+  "dataset_version": "1.0.0",
+  "dataset_sha256": {
+    "adjudications.json": "878274f254cce0214091f6a5038031295d96ab902625f2f4dc786b85535ab4e1",
+    "answer_fixtures.json": "d0da7a0e3f1fbfb0c01d81206603e1b6348b0ee744c6b27f9368d1c73e1d1ee7",
+    "documents.json": "cfc0e725d7e0d7bb054920ab91ec9561a1d3d42f03467a876d063a56a8971a8d",
+    "references.json": "c5a56a8060fef6d87bdb8f7969dd10247374662b62262ffb80386247dfba7c7c"
+  },
+  "seed": 42,
+  "configuration": {
+    "seed": 42,
+    "chunk_size": 64,
+    "overlap": 8,
+    "top_k": 3,
+    "evidence_limit": 2,
+    "warmups": 3,
+    "repetitions": 15,
+    "question_limit": null,
+    "rrf_constant": 60
+  },
+  "started_utc": "2026-10-30T12:05:57.422320+00:00",
+  "finished_utc": "2026-10-30T12:05:57.461783+00:00",
+  "libraries": {
+    "numpy": "2.3.5",
+    "rank-bm25": "not installed",
+    "sentence-transformers": "not installed",
+    "torch": "not installed",
+    "transformers": "not installed",
+    "huggingface-hub": "not installed",
+    "safetensors": "not installed",
+    "pytest": "not installed"
+  },
+  "machine": {
+    "os": "Darwin",
+    "release": "25.6.0",
+    "architecture": "arm64",
+    "python": "3.12.14",
+    "logical_cpus": 10,
+    "physical_memory_bytes": 17179869184,
+    "peak_rss_bytes": 32604160
+  },
+  "model": null,
+  "mode": "lexical-only",
+  "skipped_methods": [
+    "dense",
+    "hybrid"
+  ],
+  "index": {
+    "documents": 12,
+    "passages": 18,
+    "chunks": 18,
+    "build_ms": 0.19454106222838163,
+    "vector_bytes": 0
+  },
+  "retrieval": {
+    "bm25_local": {
+      "questions": 18,
+      "scored_questions": 16,
+      "recall": 1.0,
+      "precision": 0.4375,
+      "mrr": 0.7604166666666666,
+      "ndcg": 0.8117900000159648,
+      "latency_median_ms": 0.08979142876341939,
+      "latency_p95_ms": 0.1323340693488717
+    }
+  },
+  "answers": {
+    "bm25_local": {
+      "n": 18,
+      "fact_precision": 0.4722222222222222,
+      "fact_recall": 0.9333333333333333,
+      "claim_support": 1.0,
+      "citation_precision": 1.0,
+      "citation_coverage": 1.0,
+      "abstention_correct": 0.8333333333333334,
+      "denominators": {
+        "fact_precision": 18,
+        "fact_recall": 15,
+        "claim_support": 18,
+        "citation_precision": 18,
+        "citation_coverage": 18,
+        "abstention_correct": 18
+      },
+      "unadjudicated_claims": 0
+    },
+    "fixture": {
+      "n": 10,
+      "fact_precision": 0.5,
+      "fact_recall": 0.5,
+      "claim_support": 0.6875,
+      "citation_precision": 0.625,
+      "citation_coverage": 0.5625,
+      "abstention_correct": 0.7,
+      "denominators": {
+        "fact_precision": 8,
+        "fact_recall": 7,
+        "claim_support": 8,
+        "citation_precision": 8,
+        "citation_coverage": 8,
+        "abstention_correct": 10
+      },
+      "unadjudicated_claims": 0
+    }
+  },
+  "per_category": {
+    "bm25_local": {
+      "ambiguous": {
+        "n": 1,
+        "retrieval": {
+          "recall": null,
+          "precision": null,
+          "mrr": null,
+          "ndcg": null
+        },
+        "answer": {
+          "fact_precision": 0.0,
+          "fact_recall": null,
+          "claim_support": 1.0,
+          "citation_precision": 1.0,
+          "citation_coverage": 1.0,
+          "abstention_correct": 0
+        }
+      },
+      "architecture": {
+        "n": 1,
+        "retrieval": {
+          "recall": 1.0,
+          "precision": 0.6666666666666666,
+          "mrr": 1.0,
+          "ndcg": 0.8339912323981488
+        },
+        "answer": {
+          "fact_precision": 1.0,
+          "fact_recall": 1.0,
+          "claim_support": 1.0,
+          "citation_precision": 1.0,
+          "citation_coverage": 1.0,
+          "abstention_correct": 1
+        }
+      },
+      "conflict": {
+        "n": 1,
+        "retrieval": {
+          "recall": 1.0,
+          "precision": 0.6666666666666666,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "answer": {
+          "fact_precision": 0.0,
+          "fact_recall": null,
+          "claim_support": 1.0,
+          "citation_precision": 1.0,
+          "citation_coverage": 1.0,
+          "abstention_correct": 0
+        }
+      },
+      "cost": {
+        "n": 3,
+        "retrieval": {
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 0.6666666666666666,
+          "ndcg": 0.7539531690476383
+        },
+        "answer": {
+          "fact_precision": 0.5,
+          "fact_recall": 1.0,
+          "claim_support": 1.0,
+          "citation_precision": 1.0,
+          "citation_coverage": 1.0,
+          "abstention_correct": 1
+        }
+      },
+      "governance": {
+        "n": 3,
+        "retrieval": {
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 0.6666666666666666,
+          "ndcg": 0.7539531690476383
+        },
+        "answer": {
+          "fact_precision": 0.5,
+          "fact_recall": 1.0,
+          "claim_support": 1.0,
+          "citation_precision": 1.0,
+          "citation_coverage": 1.0,
+          "abstention_correct": 1
+        }
+      },
+      "incident": {
+        "n": 3,
+        "retrieval": {
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 0.6111111111111112,
+          "ndcg": 0.7103099178571525
+        },
+        "answer": {
+          "fact_precision": 0.5,
+          "fact_recall": 1.0,
+          "claim_support": 1.0,
+          "citation_precision": 1.0,
+          "citation_coverage": 1.0,
+          "abstention_correct": 1
+        }
+      },
+      "missing": {
+        "n": 1,
+        "retrieval": {
+          "recall": null,
+          "precision": null,
+          "mrr": null,
+          "ndcg": null
+        },
+        "answer": {
+          "fact_precision": 0.0,
+          "fact_recall": null,
+          "claim_support": 1.0,
+          "citation_precision": 1.0,
+          "citation_coverage": 1.0,
+          "abstention_correct": 0
+        }
+      },
+      "quality": {
+        "n": 3,
+        "retrieval": {
+          "recall": 1.0,
+          "precision": 0.6666666666666666,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "answer": {
+          "fact_precision": 0.8333333333333334,
+          "fact_recall": 1.0,
+          "claim_support": 1.0,
+          "citation_precision": 1.0,
+          "citation_coverage": 1.0,
+          "abstention_correct": 1
+        }
+      },
+      "sre": {
+        "n": 2,
+        "retrieval": {
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 0.6666666666666666,
+          "ndcg": 0.75
+        },
+        "answer": {
+          "fact_precision": 0.25,
+          "fact_recall": 0.5,
+          "claim_support": 1.0,
+          "citation_precision": 1.0,
+          "citation_coverage": 1.0,
+          "abstention_correct": 1
+        }
+      }
+    }
+  },
+  "latency_protocol": "Sequential warmed serial queries; retrieval includes tokenization/query embedding/fusion, excludes index build; pipeline adds evidence selection and extractive generation, excludes evaluation and report I/O. P95 nearest rank; each query repeated; method order fixed (thermal/order confounder).",
+  "correctness_protocol": "Closed-world manually adjudicated exact claim identity; unknown claims conservatively receive zero support/correctness and are counted. Not a general factuality verifier. Null metrics excluded from macro means; empty claims have undefined precision/support; unanswerable cases have undefined retrieval metrics unless conflict qrels exist."
+}

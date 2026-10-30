@@ -1,0 +1,166 @@
+{
+  "version": "1.0.0",
+  "answers": [
+    {
+      "id": "f01",
+      "question_id": "q05",
+      "kind": "correct_supported",
+      "claims": [
+        {
+          "text": "Development compute must shut down after 30 idle minutes.",
+          "citations": [
+            "cost-v2/idle"
+          ]
+        }
+      ],
+      "evidence": [
+        "cost-v2/idle"
+      ],
+      "abstain": false
+    },
+    {
+      "id": "f02",
+      "question_id": "q05",
+      "kind": "correct_wrong_citation",
+      "claims": [
+        {
+          "text": "Development compute must shut down after 30 idle minutes.",
+          "citations": [
+            "cost-v2/approval"
+          ]
+        }
+      ],
+      "evidence": [
+        "cost-v2/idle",
+        "cost-v2/approval"
+      ],
+      "abstain": false
+    },
+    {
+      "id": "f03",
+      "question_id": "q13",
+      "kind": "unsupported",
+      "claims": [
+        {
+          "text": "The billing warehouse recovers in the lunar region.",
+          "citations": [
+            "adr-007/storage"
+          ]
+        }
+      ],
+      "evidence": [
+        "adr-007/storage"
+      ],
+      "abstain": false
+    },
+    {
+      "id": "f04",
+      "question_id": "q11",
+      "kind": "partial_support",
+      "claims": [
+        {
+          "text": "ADR-007 selects Parquet for analytical storage because column pruning reduces scan bytes.",
+          "citations": [
+            "adr-007/storage"
+          ]
+        },
+        {
+          "text": "ADR-007 keeps the transactional index in PostgreSQL to preserve row-level updates.",
+          "citations": []
+        }
+      ],
+      "evidence": [
+        "adr-007/storage"
+      ],
+      "abstain": false
+    },
+    {
+      "id": "f05",
+      "question_id": "q05",
+      "kind": "contradiction",
+      "claims": [
+        {
+          "text": "Development compute must shut down after 120 idle minutes.",
+          "citations": [
+            "cost-v1/idle"
+          ]
+        }
+      ],
+      "evidence": [
+        "cost-v2/idle"
+      ],
+      "abstain": false
+    },
+    {
+      "id": "f06",
+      "question_id": "q13",
+      "kind": "appropriate_abstention",
+      "claims": [],
+      "evidence": [],
+      "abstain": true
+    },
+    {
+      "id": "f07",
+      "question_id": "q12",
+      "kind": "conflicting_evidence",
+      "claims": [
+        {
+          "text": "The analytics audit retention period is 90 days.",
+          "citations": [
+            "retention-a/retention"
+          ]
+        }
+      ],
+      "evidence": [
+        "retention-a/retention",
+        "retention-b/retention"
+      ],
+      "abstain": false
+    },
+    {
+      "id": "f08",
+      "question_id": "q05",
+      "kind": "stale_source",
+      "claims": [
+        {
+          "text": "Development compute must shut down after 120 idle minutes.",
+          "citations": [
+            "cost-v1/idle"
+          ]
+        }
+      ],
+      "evidence": [
+        "cost-v1/idle"
+      ],
+      "abstain": false
+    },
+    {
+      "id": "f09",
+      "question_id": "q11",
+      "kind": "incomplete",
+      "claims": [
+        {
+          "text": "ADR-007 selects Parquet for analytical storage because column pruning reduces scan bytes.",
+          "citations": [
+            "adr-007/storage"
+          ]
+        }
+      ],
+      "evidence": [
+        "adr-007/storage",
+        "adr-007/index"
+      ],
+      "abstain": false
+    },
+    {
+      "id": "f10",
+      "question_id": "q05",
+      "kind": "unnecessary_abstention",
+      "claims": [],
+      "evidence": [
+        "cost-v2/idle"
+      ],
+      "abstain": true
+    }
+  ]
+}

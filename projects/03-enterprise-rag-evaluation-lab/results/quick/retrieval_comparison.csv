@@ -1,0 +1,11 @@
+method,question_id,category,difficulty,recall,precision,mrr,ndcg,latency_median_ms,latency_p95_ms,pipeline_median_ms,passages
+bm25_local,q01,incident,standard,1.0,0.3333333333333333,0.3333333333333333,0.5,0.09049999061971903,0.0914169941097498,0.09208300616592169,incident-v1/restore;incident-v2/notify;incident-v2/restore
+bm25_local,q02,incident,standard,1.0,0.3333333333333333,1.0,1.0,0.12962508480995893,0.16637507360428572,0.13050006236881018,incident-v2/notify;incident-v1/restore;incident-v2/restore
+bm25_local,q03,quality,standard,1.0,0.6666666666666666,1.0,1.0,0.10295805986970663,0.14937506057322025,0.1039999770000577,quality-copy/threshold;quality-v2/threshold;quality-v2/quarantine
+bm25_local,q04,quality,standard,1.0,0.3333333333333333,1.0,1.0,0.09487499482929707,0.1562080578878522,0.0975410221144557,quality-v2/quarantine;quality-copy/threshold;quality-v2/threshold
+bm25_local,q05,cost,standard,1.0,0.3333333333333333,0.5,0.6309297535714575,0.07687497418373823,0.07758301217108965,0.077791977673769,cost-v1/idle;cost-v2/idle;quality-v2/quarantine
+bm25_local,q06,cost,standard,1.0,0.3333333333333333,1.0,1.0,0.0914999982342124,0.10895903687924147,0.09287497960031033,cost-v2/approval;access-draft/grant;access-v2/expiry
+bm25_local,q07,sre,standard,1.0,0.3333333333333333,0.3333333333333333,0.5,0.07279100827872753,0.0743749551475048,0.0743749551475048,retention-a/retention;retention-b/retention;sre-v2/sev1
+bm25_local,q08,sre,standard,1.0,0.3333333333333333,1.0,1.0,0.0706670107319951,0.07129204459488392,0.07145898416638374,sre-v2/sev2;retention-a/retention;retention-b/retention
+bm25_local,q09,governance,standard,1.0,0.3333333333333333,0.5,0.6309297535714575,0.09312492329627275,0.09412493091076612,0.09416695684194565,access-draft/grant;access-v2/grant;access-v2/expiry
+bm25_local,q10,governance,standard,1.0,0.3333333333333333,1.0,1.0,0.09200000204145908,0.09279197547584772,0.09304098784923553,access-v2/expiry;access-draft/grant;access-v2/grant

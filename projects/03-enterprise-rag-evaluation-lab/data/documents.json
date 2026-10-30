@@ -1,0 +1,174 @@
+{
+  "version": "1.0.0",
+  "synthetic": true,
+  "documents": [
+    {
+      "id": "incident-v2",
+      "category": "incident",
+      "effective": "2026-09-01",
+      "current": true,
+      "passages": [
+        {
+          "id": "incident-v2/restore",
+          "text": "For a stalled ingestion pipeline, pause the scheduler before replaying the last successful checkpoint."
+        },
+        {
+          "id": "incident-v2/notify",
+          "text": "For a stalled ingestion pipeline, notify the data platform on-call within 10 minutes."
+        }
+      ]
+    },
+    {
+      "id": "incident-v1",
+      "category": "incident",
+      "effective": "2025-01-01",
+      "current": false,
+      "passages": [
+        {
+          "id": "incident-v1/restore",
+          "text": "For a stalled ingestion pipeline, restart all workers before replaying the checkpoint."
+        }
+      ]
+    },
+    {
+      "id": "quality-v2",
+      "category": "quality",
+      "effective": "2026-08-01",
+      "current": true,
+      "passages": [
+        {
+          "id": "quality-v2/threshold",
+          "text": "The orders quality contract requires order_id to be unique and customer_id to be non-null."
+        },
+        {
+          "id": "quality-v2/quarantine",
+          "text": "Quarantine an orders batch when duplicate order_id values exceed zero."
+        }
+      ]
+    },
+    {
+      "id": "quality-copy",
+      "category": "quality",
+      "effective": "2026-08-02",
+      "current": true,
+      "passages": [
+        {
+          "id": "quality-copy/threshold",
+          "text": "The orders quality contract requires order_id to be unique and customer_id to be non-null."
+        }
+      ]
+    },
+    {
+      "id": "cost-v2",
+      "category": "cost",
+      "effective": "2026-07-01",
+      "current": true,
+      "passages": [
+        {
+          "id": "cost-v2/idle",
+          "text": "Development compute must shut down after 30 idle minutes."
+        },
+        {
+          "id": "cost-v2/approval",
+          "text": "Monthly cloud spend above 5000 synthetic credits requires FinOps approval."
+        }
+      ]
+    },
+    {
+      "id": "cost-v1",
+      "category": "cost",
+      "effective": "2025-02-01",
+      "current": false,
+      "passages": [
+        {
+          "id": "cost-v1/idle",
+          "text": "Development compute must shut down after 120 idle minutes."
+        }
+      ]
+    },
+    {
+      "id": "sre-v2",
+      "category": "sre",
+      "effective": "2026-09-02",
+      "current": true,
+      "passages": [
+        {
+          "id": "sre-v2/sev1",
+          "text": "A SEV1 incident requires paging the primary SRE immediately and the incident commander after 5 minutes without acknowledgement."
+        },
+        {
+          "id": "sre-v2/sev2",
+          "text": "A SEV2 incident requires a service-owner ticket within 30 minutes."
+        }
+      ]
+    },
+    {
+      "id": "access-v2",
+      "category": "governance",
+      "effective": "2026-09-01",
+      "current": true,
+      "passages": [
+        {
+          "id": "access-v2/grant",
+          "text": "Production data access requires manager approval and data-owner approval."
+        },
+        {
+          "id": "access-v2/expiry",
+          "text": "Temporary production data access expires after 24 hours."
+        }
+      ]
+    },
+    {
+      "id": "access-draft",
+      "category": "governance",
+      "effective": "2026-09-03",
+      "current": false,
+      "passages": [
+        {
+          "id": "access-draft/grant",
+          "text": "Production data access requires manager approval only."
+        }
+      ]
+    },
+    {
+      "id": "adr-007",
+      "category": "architecture",
+      "effective": "2026-06-01",
+      "current": true,
+      "passages": [
+        {
+          "id": "adr-007/storage",
+          "text": "ADR-007 selects Parquet for analytical storage because column pruning reduces scan bytes."
+        },
+        {
+          "id": "adr-007/index",
+          "text": "ADR-007 keeps the transactional index in PostgreSQL to preserve row-level updates."
+        }
+      ]
+    },
+    {
+      "id": "retention-a",
+      "category": "governance",
+      "effective": "2026-09-01",
+      "current": true,
+      "passages": [
+        {
+          "id": "retention-a/retention",
+          "text": "The analytics audit retention period is 90 days."
+        }
+      ]
+    },
+    {
+      "id": "retention-b",
+      "category": "governance",
+      "effective": "2026-09-01",
+      "current": true,
+      "passages": [
+        {
+          "id": "retention-b/retention",
+          "text": "The analytics audit retention period is 365 days."
+        }
+      ]
+    }
+  ]
+}

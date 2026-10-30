@@ -1,0 +1,615 @@
+[
+  {
+    "claims": [
+      {
+        "text": "For a stalled ingestion pipeline, notify the data platform on-call within 10 minutes.",
+        "citations": [
+          "incident-v2/notify"
+        ]
+      },
+      {
+        "text": "For a stalled ingestion pipeline, pause the scheduler before replaying the last successful checkpoint.",
+        "citations": [
+          "incident-v2/restore"
+        ]
+      }
+    ],
+    "evidence": [
+      "incident-v2/notify",
+      "incident-v2/restore"
+    ],
+    "abstain": false,
+    "id": "bm25_local-q01",
+    "method": "bm25_local",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "For a stalled ingestion pipeline, notify the data platform on-call within 10 minutes.",
+        "citations": [
+          "incident-v2/notify"
+        ]
+      },
+      {
+        "text": "For a stalled ingestion pipeline, pause the scheduler before replaying the last successful checkpoint.",
+        "citations": [
+          "incident-v2/restore"
+        ]
+      }
+    ],
+    "evidence": [
+      "incident-v2/notify",
+      "incident-v2/restore"
+    ],
+    "abstain": false,
+    "id": "bm25_local-q02",
+    "method": "bm25_local",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "The orders quality contract requires order_id to be unique and customer_id to be non-null.",
+        "citations": [
+          "quality-copy/threshold"
+        ]
+      },
+      {
+        "text": "The orders quality contract requires order_id to be unique and customer_id to be non-null.",
+        "citations": [
+          "quality-v2/threshold"
+        ]
+      }
+    ],
+    "evidence": [
+      "quality-copy/threshold",
+      "quality-v2/threshold"
+    ],
+    "abstain": false,
+    "id": "bm25_local-q03",
+    "method": "bm25_local",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "Quarantine an orders batch when duplicate order_id values exceed zero.",
+        "citations": [
+          "quality-v2/quarantine"
+        ]
+      },
+      {
+        "text": "The orders quality contract requires order_id to be unique and customer_id to be non-null.",
+        "citations": [
+          "quality-copy/threshold"
+        ]
+      }
+    ],
+    "evidence": [
+      "quality-v2/quarantine",
+      "quality-copy/threshold"
+    ],
+    "abstain": false,
+    "id": "bm25_local-q04",
+    "method": "bm25_local",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "Development compute must shut down after 30 idle minutes.",
+        "citations": [
+          "cost-v2/idle"
+        ]
+      },
+      {
+        "text": "Quarantine an orders batch when duplicate order_id values exceed zero.",
+        "citations": [
+          "quality-v2/quarantine"
+        ]
+      }
+    ],
+    "evidence": [
+      "cost-v2/idle",
+      "quality-v2/quarantine"
+    ],
+    "abstain": false,
+    "id": "bm25_local-q05",
+    "method": "bm25_local",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "Monthly cloud spend above 5000 synthetic credits requires FinOps approval.",
+        "citations": [
+          "cost-v2/approval"
+        ]
+      },
+      {
+        "text": "Temporary production data access expires after 24 hours.",
+        "citations": [
+          "access-v2/expiry"
+        ]
+      }
+    ],
+    "evidence": [
+      "cost-v2/approval",
+      "access-v2/expiry"
+    ],
+    "abstain": false,
+    "id": "bm25_local-q06",
+    "method": "bm25_local",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "The analytics audit retention period is 90 days.",
+        "citations": [
+          "retention-a/retention"
+        ]
+      },
+      {
+        "text": "The analytics audit retention period is 365 days.",
+        "citations": [
+          "retention-b/retention"
+        ]
+      }
+    ],
+    "evidence": [
+      "retention-a/retention",
+      "retention-b/retention"
+    ],
+    "abstain": false,
+    "id": "bm25_local-q07",
+    "method": "bm25_local",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "A SEV2 incident requires a service-owner ticket within 30 minutes.",
+        "citations": [
+          "sre-v2/sev2"
+        ]
+      },
+      {
+        "text": "The analytics audit retention period is 90 days.",
+        "citations": [
+          "retention-a/retention"
+        ]
+      }
+    ],
+    "evidence": [
+      "sre-v2/sev2",
+      "retention-a/retention"
+    ],
+    "abstain": false,
+    "id": "bm25_local-q08",
+    "method": "bm25_local",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "Production data access requires manager approval and data-owner approval.",
+        "citations": [
+          "access-v2/grant"
+        ]
+      },
+      {
+        "text": "Temporary production data access expires after 24 hours.",
+        "citations": [
+          "access-v2/expiry"
+        ]
+      }
+    ],
+    "evidence": [
+      "access-v2/grant",
+      "access-v2/expiry"
+    ],
+    "abstain": false,
+    "id": "bm25_local-q09",
+    "method": "bm25_local",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "Temporary production data access expires after 24 hours.",
+        "citations": [
+          "access-v2/expiry"
+        ]
+      },
+      {
+        "text": "Production data access requires manager approval and data-owner approval.",
+        "citations": [
+          "access-v2/grant"
+        ]
+      }
+    ],
+    "evidence": [
+      "access-v2/expiry",
+      "access-v2/grant"
+    ],
+    "abstain": false,
+    "id": "bm25_local-q10",
+    "method": "bm25_local",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "ADR-007 keeps the transactional index in PostgreSQL to preserve row-level updates.",
+        "citations": [
+          "adr-007/index"
+        ]
+      },
+      {
+        "text": "ADR-007 selects Parquet for analytical storage because column pruning reduces scan bytes.",
+        "citations": [
+          "adr-007/storage"
+        ]
+      }
+    ],
+    "evidence": [
+      "adr-007/index",
+      "adr-007/storage"
+    ],
+    "abstain": false,
+    "id": "bm25_local-q11",
+    "method": "bm25_local",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "The analytics audit retention period is 90 days.",
+        "citations": [
+          "retention-a/retention"
+        ]
+      },
+      {
+        "text": "The analytics audit retention period is 365 days.",
+        "citations": [
+          "retention-b/retention"
+        ]
+      }
+    ],
+    "evidence": [
+      "retention-a/retention",
+      "retention-b/retention"
+    ],
+    "abstain": false,
+    "id": "bm25_local-q12",
+    "method": "bm25_local",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "The analytics audit retention period is 90 days.",
+        "citations": [
+          "retention-a/retention"
+        ]
+      },
+      {
+        "text": "The analytics audit retention period is 365 days.",
+        "citations": [
+          "retention-b/retention"
+        ]
+      }
+    ],
+    "evidence": [
+      "retention-a/retention",
+      "retention-b/retention"
+    ],
+    "abstain": false,
+    "id": "bm25_local-q13",
+    "method": "bm25_local",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "The analytics audit retention period is 90 days.",
+        "citations": [
+          "retention-a/retention"
+        ]
+      },
+      {
+        "text": "The analytics audit retention period is 365 days.",
+        "citations": [
+          "retention-b/retention"
+        ]
+      }
+    ],
+    "evidence": [
+      "retention-a/retention",
+      "retention-b/retention"
+    ],
+    "abstain": false,
+    "id": "bm25_local-q14",
+    "method": "bm25_local",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "Production data access requires manager approval and data-owner approval.",
+        "citations": [
+          "access-v2/grant"
+        ]
+      },
+      {
+        "text": "Temporary production data access expires after 24 hours.",
+        "citations": [
+          "access-v2/expiry"
+        ]
+      }
+    ],
+    "evidence": [
+      "access-v2/grant",
+      "access-v2/expiry"
+    ],
+    "abstain": false,
+    "id": "bm25_local-q15",
+    "method": "bm25_local",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "For a stalled ingestion pipeline, pause the scheduler before replaying the last successful checkpoint.",
+        "citations": [
+          "incident-v2/restore"
+        ]
+      },
+      {
+        "text": "For a stalled ingestion pipeline, notify the data platform on-call within 10 minutes.",
+        "citations": [
+          "incident-v2/notify"
+        ]
+      }
+    ],
+    "evidence": [
+      "incident-v2/restore",
+      "incident-v2/notify"
+    ],
+    "abstain": false,
+    "id": "bm25_local-q16",
+    "method": "bm25_local",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "Development compute must shut down after 30 idle minutes.",
+        "citations": [
+          "cost-v2/idle"
+        ]
+      },
+      {
+        "text": "The analytics audit retention period is 90 days.",
+        "citations": [
+          "retention-a/retention"
+        ]
+      }
+    ],
+    "evidence": [
+      "cost-v2/idle",
+      "retention-a/retention"
+    ],
+    "abstain": false,
+    "id": "bm25_local-q17",
+    "method": "bm25_local",
+    "source": "pipeline"
+  },
+  {
+    "claims": [
+      {
+        "text": "Quarantine an orders batch when duplicate order_id values exceed zero.",
+        "citations": [
+          "quality-v2/quarantine"
+        ]
+      },
+      {
+        "text": "The orders quality contract requires order_id to be unique and customer_id to be non-null.",
+        "citations": [
+          "quality-copy/threshold"
+        ]
+      }
+    ],
+    "evidence": [
+      "quality-v2/quarantine",
+      "quality-copy/threshold"
+    ],
+    "abstain": false,
+    "id": "bm25_local-q18",
+    "method": "bm25_local",
+    "source": "pipeline"
+  },
+  {
+    "id": "f01",
+    "question_id": "q05",
+    "kind": "correct_supported",
+    "claims": [
+      {
+        "text": "Development compute must shut down after 30 idle minutes.",
+        "citations": [
+          "cost-v2/idle"
+        ]
+      }
+    ],
+    "evidence": [
+      "cost-v2/idle"
+    ],
+    "abstain": false,
+    "method": "fixture",
+    "source": "controlled"
+  },
+  {
+    "id": "f02",
+    "question_id": "q05",
+    "kind": "correct_wrong_citation",
+    "claims": [
+      {
+        "text": "Development compute must shut down after 30 idle minutes.",
+        "citations": [
+          "cost-v2/approval"
+        ]
+      }
+    ],
+    "evidence": [
+      "cost-v2/idle",
+      "cost-v2/approval"
+    ],
+    "abstain": false,
+    "method": "fixture",
+    "source": "controlled"
+  },
+  {
+    "id": "f03",
+    "question_id": "q13",
+    "kind": "unsupported",
+    "claims": [
+      {
+        "text": "The billing warehouse recovers in the lunar region.",
+        "citations": [
+          "adr-007/storage"
+        ]
+      }
+    ],
+    "evidence": [
+      "adr-007/storage"
+    ],
+    "abstain": false,
+    "method": "fixture",
+    "source": "controlled"
+  },
+  {
+    "id": "f04",
+    "question_id": "q11",
+    "kind": "partial_support",
+    "claims": [
+      {
+        "text": "ADR-007 selects Parquet for analytical storage because column pruning reduces scan bytes.",
+        "citations": [
+          "adr-007/storage"
+        ]
+      },
+      {
+        "text": "ADR-007 keeps the transactional index in PostgreSQL to preserve row-level updates.",
+        "citations": []
+      }
+    ],
+    "evidence": [
+      "adr-007/storage"
+    ],
+    "abstain": false,
+    "method": "fixture",
+    "source": "controlled"
+  },
+  {
+    "id": "f05",
+    "question_id": "q05",
+    "kind": "contradiction",
+    "claims": [
+      {
+        "text": "Development compute must shut down after 120 idle minutes.",
+        "citations": [
+          "cost-v1/idle"
+        ]
+      }
+    ],
+    "evidence": [
+      "cost-v2/idle"
+    ],
+    "abstain": false,
+    "method": "fixture",
+    "source": "controlled"
+  },
+  {
+    "id": "f06",
+    "question_id": "q13",
+    "kind": "appropriate_abstention",
+    "claims": [],
+    "evidence": [],
+    "abstain": true,
+    "method": "fixture",
+    "source": "controlled"
+  },
+  {
+    "id": "f07",
+    "question_id": "q12",
+    "kind": "conflicting_evidence",
+    "claims": [
+      {
+        "text": "The analytics audit retention period is 90 days.",
+        "citations": [
+          "retention-a/retention"
+        ]
+      }
+    ],
+    "evidence": [
+      "retention-a/retention",
+      "retention-b/retention"
+    ],
+    "abstain": false,
+    "method": "fixture",
+    "source": "controlled"
+  },
+  {
+    "id": "f08",
+    "question_id": "q05",
+    "kind": "stale_source",
+    "claims": [
+      {
+        "text": "Development compute must shut down after 120 idle minutes.",
+        "citations": [
+          "cost-v1/idle"
+        ]
+      }
+    ],
+    "evidence": [
+      "cost-v1/idle"
+    ],
+    "abstain": false,
+    "method": "fixture",
+    "source": "controlled"
+  },
+  {
+    "id": "f09",
+    "question_id": "q11",
+    "kind": "incomplete",
+    "claims": [
+      {
+        "text": "ADR-007 selects Parquet for analytical storage because column pruning reduces scan bytes.",
+        "citations": [
+          "adr-007/storage"
+        ]
+      }
+    ],
+    "evidence": [
+      "adr-007/storage",
+      "adr-007/index"
+    ],
+    "abstain": false,
+    "method": "fixture",
+    "source": "controlled"
+  },
+  {
+    "id": "f10",
+    "question_id": "q05",
+    "kind": "unnecessary_abstention",
+    "claims": [],
+    "evidence": [
+      "cost-v2/idle"
+    ],
+    "abstain": true,
+    "method": "fixture",
+    "source": "controlled"
+  }
+]

@@ -1,0 +1,196 @@
+{
+  "dataset_version": "1.0.0",
+  "dataset_sha256": {
+    "adjudications.json": "878274f254cce0214091f6a5038031295d96ab902625f2f4dc786b85535ab4e1",
+    "answer_fixtures.json": "d0da7a0e3f1fbfb0c01d81206603e1b6348b0ee744c6b27f9368d1c73e1d1ee7",
+    "documents.json": "cfc0e725d7e0d7bb054920ab91ec9561a1d3d42f03467a876d063a56a8971a8d",
+    "references.json": "c5a56a8060fef6d87bdb8f7969dd10247374662b62262ffb80386247dfba7c7c"
+  },
+  "seed": 42,
+  "configuration": {
+    "seed": 42,
+    "chunk_size": 64,
+    "overlap": 8,
+    "top_k": 3,
+    "evidence_limit": 2,
+    "warmups": 2,
+    "repetitions": 5,
+    "question_limit": 10,
+    "rrf_constant": 60
+  },
+  "started_utc": "2026-10-30T12:05:26.480050+00:00",
+  "finished_utc": "2026-10-30T12:05:26.496570+00:00",
+  "libraries": {
+    "numpy": "2.3.5",
+    "rank-bm25": "not installed",
+    "sentence-transformers": "not installed",
+    "torch": "not installed",
+    "transformers": "not installed",
+    "huggingface-hub": "not installed",
+    "safetensors": "not installed",
+    "pytest": "not installed"
+  },
+  "machine": {
+    "os": "Darwin",
+    "release": "25.6.0",
+    "architecture": "arm64",
+    "python": "3.12.14",
+    "logical_cpus": 10,
+    "physical_memory_bytes": 17179869184,
+    "peak_rss_bytes": 32702464
+  },
+  "model": null,
+  "mode": "lexical-only",
+  "skipped_methods": [
+    "dense",
+    "hybrid"
+  ],
+  "index": {
+    "documents": 12,
+    "passages": 18,
+    "chunks": 18,
+    "build_ms": 0.21183304488658905,
+    "vector_bytes": 0
+  },
+  "retrieval": {
+    "bm25_local": {
+      "questions": 10,
+      "scored_questions": 10,
+      "recall": 1.0,
+      "precision": 0.36666666666666664,
+      "mrr": 0.7666666666666666,
+      "ndcg": 0.8261859507142915,
+      "latency_median_ms": 0.09164545917883515,
+      "latency_p95_ms": 0.1562080578878522
+    }
+  },
+  "answers": {
+    "bm25_local": {
+      "n": 10,
+      "fact_precision": 0.5,
+      "fact_recall": 0.9,
+      "claim_support": 1.0,
+      "citation_precision": 1.0,
+      "citation_coverage": 1.0,
+      "abstention_correct": 1,
+      "denominators": {
+        "fact_precision": 10,
+        "fact_recall": 10,
+        "claim_support": 10,
+        "citation_precision": 10,
+        "citation_coverage": 10,
+        "abstention_correct": 10
+      },
+      "unadjudicated_claims": 0
+    },
+    "fixture": {
+      "n": 10,
+      "fact_precision": 0.5,
+      "fact_recall": 0.5,
+      "claim_support": 0.6875,
+      "citation_precision": 0.625,
+      "citation_coverage": 0.5625,
+      "abstention_correct": 0.7,
+      "denominators": {
+        "fact_precision": 8,
+        "fact_recall": 7,
+        "claim_support": 8,
+        "citation_precision": 8,
+        "citation_coverage": 8,
+        "abstention_correct": 10
+      },
+      "unadjudicated_claims": 0
+    }
+  },
+  "per_category": {
+    "bm25_local": {
+      "cost": {
+        "n": 2,
+        "retrieval": {
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 0.75,
+          "ndcg": 0.8154648767857288
+        },
+        "answer": {
+          "fact_precision": 0.5,
+          "fact_recall": 1.0,
+          "claim_support": 1.0,
+          "citation_precision": 1.0,
+          "citation_coverage": 1.0,
+          "abstention_correct": 1
+        }
+      },
+      "governance": {
+        "n": 2,
+        "retrieval": {
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 0.75,
+          "ndcg": 0.8154648767857288
+        },
+        "answer": {
+          "fact_precision": 0.5,
+          "fact_recall": 1.0,
+          "claim_support": 1.0,
+          "citation_precision": 1.0,
+          "citation_coverage": 1.0,
+          "abstention_correct": 1
+        }
+      },
+      "incident": {
+        "n": 2,
+        "retrieval": {
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 0.6666666666666666,
+          "ndcg": 0.75
+        },
+        "answer": {
+          "fact_precision": 0.5,
+          "fact_recall": 1.0,
+          "claim_support": 1.0,
+          "citation_precision": 1.0,
+          "citation_coverage": 1.0,
+          "abstention_correct": 1
+        }
+      },
+      "quality": {
+        "n": 2,
+        "retrieval": {
+          "recall": 1.0,
+          "precision": 0.5,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "answer": {
+          "fact_precision": 0.75,
+          "fact_recall": 1.0,
+          "claim_support": 1.0,
+          "citation_precision": 1.0,
+          "citation_coverage": 1.0,
+          "abstention_correct": 1
+        }
+      },
+      "sre": {
+        "n": 2,
+        "retrieval": {
+          "recall": 1.0,
+          "precision": 0.3333333333333333,
+          "mrr": 0.6666666666666666,
+          "ndcg": 0.75
+        },
+        "answer": {
+          "fact_precision": 0.25,
+          "fact_recall": 0.5,
+          "claim_support": 1.0,
+          "citation_precision": 1.0,
+          "citation_coverage": 1.0,
+          "abstention_correct": 1
+        }
+      }
+    }
+  },
+  "latency_protocol": "Sequential warmed serial queries; retrieval includes tokenization/query embedding/fusion, excludes index build; pipeline adds evidence selection and extractive generation, excludes evaluation and report I/O. P95 nearest rank; each query repeated; method order fixed (thermal/order confounder).",
+  "correctness_protocol": "Closed-world manually adjudicated exact claim identity; unknown claims conservatively receive zero support/correctness and are counted. Not a general factuality verifier. Null metrics excluded from macro means; empty claims have undefined precision/support; unanswerable cases have undefined retrieval metrics unless conflict qrels exist."
+}

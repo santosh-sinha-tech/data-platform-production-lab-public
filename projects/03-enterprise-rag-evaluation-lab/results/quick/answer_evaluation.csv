@@ -1,0 +1,21 @@
+id,question_id,method,source,category,kind,fact_precision,fact_recall,claim_support,citation_precision,citation_coverage,contradictions,unadjudicated_claims,abstention_correct,appropriate_abstention,failure_to_abstain,failures
+bm25_local-q01,q01,bm25_local,pipeline,incident,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+bm25_local-q02,q02,bm25_local,pipeline,incident,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+bm25_local-q03,q03,bm25_local,pipeline,quality,extractive,1.0,1.0,1.0,1.0,1.0,0,0,1,0,0,
+bm25_local-q04,q04,bm25_local,pipeline,quality,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+bm25_local-q05,q05,bm25_local,pipeline,cost,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+bm25_local-q06,q06,bm25_local,pipeline,cost,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+bm25_local-q07,q07,bm25_local,pipeline,sre,extractive,0.0,0.0,1.0,1.0,1.0,2,0,1,0,0,Relevant evidence retrieved but not used; Incorrect answer synthesis; Conflicting evidence
+bm25_local-q08,q08,bm25_local,pipeline,sre,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+bm25_local-q09,q09,bm25_local,pipeline,governance,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+bm25_local-q10,q10,bm25_local,pipeline,governance,extractive,0.5,1.0,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+f01,q05,fixture,controlled,cost,correct_supported,1.0,1.0,1.0,1.0,1.0,0,0,1,0,0,
+f02,q05,fixture,controlled,cost,correct_wrong_citation,1.0,1.0,1.0,0.0,0.0,0,0,1,0,0,Incorrect citation
+f03,q13,fixture,controlled,missing,unsupported,0.0,,0.0,0.0,0.0,0,0,0,0,1,Incorrect answer synthesis; Unsupported claim; Incorrect citation; Missing evidence / failure to abstain
+f04,q11,fixture,controlled,architecture,partial_support,1.0,1.0,0.5,1.0,0.5,0,0,1,0,0,Retrieval miss; Unsupported claim
+f05,q05,fixture,controlled,cost,contradiction,0.0,0.0,0.0,0.0,0.0,1,0,1,0,0,Incorrect answer synthesis; Unsupported claim; Incorrect citation; Conflicting evidence; Stale source
+f06,q13,fixture,controlled,missing,appropriate_abstention,,,,,,0,0,1,1,0,
+f07,q12,fixture,controlled,conflict,conflicting_evidence,0.0,,1.0,1.0,1.0,1,0,0,0,1,Incorrect answer synthesis; Conflicting evidence; Missing evidence / failure to abstain
+f08,q05,fixture,controlled,cost,stale_source,0.0,0.0,1.0,1.0,1.0,0,0,1,0,0,Retrieval miss; Incorrect answer synthesis; Stale source
+f09,q11,fixture,controlled,architecture,incomplete,1.0,0.5,1.0,1.0,1.0,0,0,1,0,0,Incorrect answer synthesis
+f10,q05,fixture,controlled,cost,unnecessary_abstention,,0.0,,,,0,0,0,0,0,Incorrect answer synthesis

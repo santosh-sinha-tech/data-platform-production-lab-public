@@ -1,0 +1,14 @@
+# Dataset provenance — v1.0.0
+
+All documents, questions, reference facts, support judgments and answer fixtures were explicitly authored for this lab as synthetic technology-operations scenarios. They contain no imported enterprise content. The implementation author (an AI coding assistant operating under repository owner instructions) authored this finite ledger; it was not produced by the evaluated retriever or answer baseline. There has been no independent human SME review or inter-rater agreement study. "Manually authored" means explicit scenario labels in files, not automated overlap/similarity labels, and does not imply external expert validation.
+
+- documents.json: 12 versioned documents, 18 atomic passages, six enterprise domains. `current=false` covers superseded versions and a non-approved draft. Two active audit-retention passages conflict; neither is authoritative enough for an answer.
+- references.json: 18 authored questions; 15 answerable, three requiring abstention/clarification. Graded relevance is passage-specific (0 implicit, 1–3 allowed). Multi-fact answers and duplicates are labeled explicitly. Relevant conflict evidence does not imply answerability.
+- adjudications.json: exact authored claim text, supporting passage IDs and explicitly contradictory passage IDs. Unknown relations default to no verified support, not semantic contradiction. Obsolete claims can have supporting stale passages while being wrong against current reference facts.
+- answer_fixtures.json: ten independently specified controlled predictions, separate from labels, exercising positive and negative scoring cases. Every pipeline answer is generated without access to these fixtures or the ledger.
+
+Passage IDs use document version plus authored semantic section; chunks append offsets and a content SHA-256 prefix. References target atomic passage IDs. Labels do not change when chunk size changes; sibling chunks collapse at retrieval. Any-fragment credit is optimistic and must not be interpreted as complete fact retrieval for fragmented chunks. Default chunks fit complete atomic passages.
+
+Reference facts are atomic statements at the authored sentence level (some sentences contain conjunctions); this baseline emits whole statements. Do not infer that this evaluator can validate arbitrary natural-language claims. Claim extraction is structured one-claim-per-extractive-chunk, not a general sentence/semantic parser.
+
+Dataset JSON files are intentionally committed reviewed synthetic inputs. Generated corpora, model caches, local environments and raw runtime logs are not committed. Intentional compact measured result artifacts are retained. Every experiment records source SHA-256 hashes. Change the dataset version when content or labels change, review each relation, regenerate expected judgments, and re-run both modes. Keep a separate held-out set before making product-quality claims.

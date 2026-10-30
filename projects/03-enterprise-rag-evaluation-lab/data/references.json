@@ -1,0 +1,236 @@
+{
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "q01",
+      "question": "How should a stalled ingestion pipeline be restored?",
+      "category": "incident",
+      "expected_facts": [
+        "incident-v2/restore"
+      ],
+      "relevance": {
+        "incident-v2/restore": 3
+      },
+      "answerable": true,
+      "difficulty": "standard"
+    },
+    {
+      "id": "q02",
+      "question": "How soon must data platform on-call be notified for stalled ingestion?",
+      "category": "incident",
+      "expected_facts": [
+        "incident-v2/notify"
+      ],
+      "relevance": {
+        "incident-v2/notify": 3
+      },
+      "answerable": true,
+      "difficulty": "standard"
+    },
+    {
+      "id": "q03",
+      "question": "What uniqueness and nullability rules apply to orders?",
+      "category": "quality",
+      "expected_facts": [
+        "quality-v2/threshold"
+      ],
+      "relevance": {
+        "quality-v2/threshold": 3,
+        "quality-copy/threshold": 3
+      },
+      "answerable": true,
+      "difficulty": "standard"
+    },
+    {
+      "id": "q04",
+      "question": "When should an orders batch be quarantined?",
+      "category": "quality",
+      "expected_facts": [
+        "quality-v2/quarantine"
+      ],
+      "relevance": {
+        "quality-v2/quarantine": 3
+      },
+      "answerable": true,
+      "difficulty": "standard"
+    },
+    {
+      "id": "q05",
+      "question": "When must idle development compute shut down?",
+      "category": "cost",
+      "expected_facts": [
+        "cost-v2/idle"
+      ],
+      "relevance": {
+        "cost-v2/idle": 3
+      },
+      "answerable": true,
+      "difficulty": "standard"
+    },
+    {
+      "id": "q06",
+      "question": "Who approves monthly cloud spend above 5000 credits?",
+      "category": "cost",
+      "expected_facts": [
+        "cost-v2/approval"
+      ],
+      "relevance": {
+        "cost-v2/approval": 3
+      },
+      "answerable": true,
+      "difficulty": "standard"
+    },
+    {
+      "id": "q07",
+      "question": "What is the SEV1 escalation sequence?",
+      "category": "sre",
+      "expected_facts": [
+        "sre-v2/sev1"
+      ],
+      "relevance": {
+        "sre-v2/sev1": 3
+      },
+      "answerable": true,
+      "difficulty": "standard"
+    },
+    {
+      "id": "q08",
+      "question": "What is the SEV2 ticket deadline?",
+      "category": "sre",
+      "expected_facts": [
+        "sre-v2/sev2"
+      ],
+      "relevance": {
+        "sre-v2/sev2": 3
+      },
+      "answerable": true,
+      "difficulty": "standard"
+    },
+    {
+      "id": "q09",
+      "question": "Which approvals are required for production data access?",
+      "category": "governance",
+      "expected_facts": [
+        "access-v2/grant"
+      ],
+      "relevance": {
+        "access-v2/grant": 3
+      },
+      "answerable": true,
+      "difficulty": "standard"
+    },
+    {
+      "id": "q10",
+      "question": "How long does temporary production data access last?",
+      "category": "governance",
+      "expected_facts": [
+        "access-v2/expiry"
+      ],
+      "relevance": {
+        "access-v2/expiry": 3
+      },
+      "answerable": true,
+      "difficulty": "standard"
+    },
+    {
+      "id": "q11",
+      "question": "Why does ADR-007 choose Parquet and where is the transactional index?",
+      "category": "architecture",
+      "expected_facts": [
+        "adr-007/storage",
+        "adr-007/index"
+      ],
+      "relevance": {
+        "adr-007/storage": 3,
+        "adr-007/index": 2
+      },
+      "answerable": true,
+      "difficulty": "hard"
+    },
+    {
+      "id": "q12",
+      "question": "What is the analytics audit retention period?",
+      "category": "conflict",
+      "expected_facts": [],
+      "relevance": {
+        "retention-a/retention": 2,
+        "retention-b/retention": 2
+      },
+      "answerable": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "q13",
+      "question": "What is the approved disaster recovery region for the billing warehouse?",
+      "category": "missing",
+      "expected_facts": [],
+      "relevance": {},
+      "answerable": false,
+      "difficulty": "standard"
+    },
+    {
+      "id": "q14",
+      "question": "What is the timeout?",
+      "category": "ambiguous",
+      "expected_facts": [],
+      "relevance": {},
+      "answerable": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "q15",
+      "question": "Can a manager alone approve production access?",
+      "category": "governance",
+      "expected_facts": [
+        "access-v2/grant"
+      ],
+      "relevance": {
+        "access-v2/grant": 3
+      },
+      "answerable": true,
+      "difficulty": "hard"
+    },
+    {
+      "id": "q16",
+      "question": "Should stalled ingestion restart every worker before checkpoint replay?",
+      "category": "incident",
+      "expected_facts": [
+        "incident-v2/restore"
+      ],
+      "relevance": {
+        "incident-v2/restore": 3
+      },
+      "answerable": true,
+      "difficulty": "hard"
+    },
+    {
+      "id": "q17",
+      "question": "Is 120 minutes the current development idle shutdown policy?",
+      "category": "cost",
+      "expected_facts": [
+        "cost-v2/idle"
+      ],
+      "relevance": {
+        "cost-v2/idle": 3
+      },
+      "answerable": true,
+      "difficulty": "hard"
+    },
+    {
+      "id": "q18",
+      "question": "Which orders violations block publication?",
+      "category": "quality",
+      "expected_facts": [
+        "quality-v2/threshold",
+        "quality-v2/quarantine"
+      ],
+      "relevance": {
+        "quality-v2/threshold": 2,
+        "quality-copy/threshold": 2,
+        "quality-v2/quarantine": 3
+      },
+      "answerable": true,
+      "difficulty": "hard"
+    }
+  ]
+}

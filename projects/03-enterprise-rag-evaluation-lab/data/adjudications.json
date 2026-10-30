@@ -1,0 +1,154 @@
+{
+  "version": "1.0.0",
+  "claims": {
+    "incident-v2/restore": {
+      "text": "For a stalled ingestion pipeline, pause the scheduler before replaying the last successful checkpoint.",
+      "supports": [
+        "incident-v2/restore"
+      ],
+      "contradicts": [
+        "incident-v1/restore"
+      ]
+    },
+    "incident-v2/notify": {
+      "text": "For a stalled ingestion pipeline, notify the data platform on-call within 10 minutes.",
+      "supports": [
+        "incident-v2/notify"
+      ],
+      "contradicts": []
+    },
+    "incident-v1/restore": {
+      "text": "For a stalled ingestion pipeline, restart all workers before replaying the checkpoint.",
+      "supports": [
+        "incident-v1/restore"
+      ],
+      "contradicts": [
+        "incident-v2/restore"
+      ]
+    },
+    "quality-v2/threshold": {
+      "text": "The orders quality contract requires order_id to be unique and customer_id to be non-null.",
+      "supports": [
+        "quality-v2/threshold",
+        "quality-copy/threshold"
+      ],
+      "contradicts": []
+    },
+    "quality-v2/quarantine": {
+      "text": "Quarantine an orders batch when duplicate order_id values exceed zero.",
+      "supports": [
+        "quality-v2/quarantine"
+      ],
+      "contradicts": []
+    },
+    "quality-copy/threshold": {
+      "text": "The orders quality contract requires order_id to be unique and customer_id to be non-null.",
+      "supports": [
+        "quality-copy/threshold",
+        "quality-v2/threshold"
+      ],
+      "contradicts": []
+    },
+    "cost-v2/idle": {
+      "text": "Development compute must shut down after 30 idle minutes.",
+      "supports": [
+        "cost-v2/idle"
+      ],
+      "contradicts": [
+        "cost-v1/idle"
+      ]
+    },
+    "cost-v2/approval": {
+      "text": "Monthly cloud spend above 5000 synthetic credits requires FinOps approval.",
+      "supports": [
+        "cost-v2/approval"
+      ],
+      "contradicts": []
+    },
+    "cost-v1/idle": {
+      "text": "Development compute must shut down after 120 idle minutes.",
+      "supports": [
+        "cost-v1/idle"
+      ],
+      "contradicts": [
+        "cost-v2/idle"
+      ]
+    },
+    "sre-v2/sev1": {
+      "text": "A SEV1 incident requires paging the primary SRE immediately and the incident commander after 5 minutes without acknowledgement.",
+      "supports": [
+        "sre-v2/sev1"
+      ],
+      "contradicts": []
+    },
+    "sre-v2/sev2": {
+      "text": "A SEV2 incident requires a service-owner ticket within 30 minutes.",
+      "supports": [
+        "sre-v2/sev2"
+      ],
+      "contradicts": []
+    },
+    "access-v2/grant": {
+      "text": "Production data access requires manager approval and data-owner approval.",
+      "supports": [
+        "access-v2/grant"
+      ],
+      "contradicts": [
+        "access-draft/grant"
+      ]
+    },
+    "access-v2/expiry": {
+      "text": "Temporary production data access expires after 24 hours.",
+      "supports": [
+        "access-v2/expiry"
+      ],
+      "contradicts": []
+    },
+    "access-draft/grant": {
+      "text": "Production data access requires manager approval only.",
+      "supports": [
+        "access-draft/grant"
+      ],
+      "contradicts": [
+        "access-v2/grant"
+      ]
+    },
+    "adr-007/storage": {
+      "text": "ADR-007 selects Parquet for analytical storage because column pruning reduces scan bytes.",
+      "supports": [
+        "adr-007/storage"
+      ],
+      "contradicts": []
+    },
+    "adr-007/index": {
+      "text": "ADR-007 keeps the transactional index in PostgreSQL to preserve row-level updates.",
+      "supports": [
+        "adr-007/index"
+      ],
+      "contradicts": []
+    },
+    "retention-a/retention": {
+      "text": "The analytics audit retention period is 90 days.",
+      "supports": [
+        "retention-a/retention"
+      ],
+      "contradicts": [
+        "retention-b/retention"
+      ]
+    },
+    "retention-b/retention": {
+      "text": "The analytics audit retention period is 365 days.",
+      "supports": [
+        "retention-b/retention"
+      ],
+      "contradicts": [
+        "retention-a/retention"
+      ]
+    },
+    "invented": {
+      "text": "The billing warehouse recovers in the lunar region.",
+      "supports": [],
+      "contradicts": []
+    }
+  }
+}
