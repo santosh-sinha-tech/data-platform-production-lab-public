@@ -3,9 +3,9 @@
 ## Scope and release identity
 
 - Review date/time: 3 November 2026, Asia/Kolkata.
-- Reviewer: Codex engineering agent; owner approval remains required for publication.
+- Reviewer: Codex engineering agent; owner explicitly authorized security audit and publication in this chat on 3 November 2026.
 - Project: `projects/04-enterprise-llm-gateway/`; repository index and audit documentation included.
-- Destination: `santosh-sinha-tech/data-platform-production-lab-public`, intended public repository. No push/merge/publication performed.
+- Destination: `santosh-sinha-tech/data-platform-production-lab-public`, verified public using GitHub repository metadata. Authorized scope is publication of `feat/04-enterprise-llm-gateway`; no merge or default-branch change.
 - Branch: `feat/04-enterprise-llm-gateway`; comparison target `origin/main`.
 - Verified base: `8dfbd27fb9b18ea08d1cf863c85bdd43db30140e`.
 - Starting implementation parent: `ca2709c01f908984bfeca4c6e755595abe1bb299`.
@@ -46,7 +46,22 @@ Owner/repository identity `Santosh Sinha` / `santosh-sinha-tech`, established Gi
 ## Verdict and publication record
 
 - Local engineering verification: PASS; complete staged-tree and inherited-history scans pass. Initial implementation history passes; the final fix/audit commit is scanned after creation.
-- Publication: **HOLD — no owner authorization to push, merge or publish.**
+- Publication gate: **PASS for the owner-authorized feature-branch push**, after scanning this audit-record commit. No merge or default-branch change is authorized by this record.
 - This is a single-process simulated reference, not production IAM, distributed quotas, DLP, external exactly-once execution or actual cloud billing.
-- Final publication still requires owner authorization and a fresh range/tree/dependency review if anything changes. No scan guarantees absence of all leaks or vulnerabilities.
+- Owner authorization is recorded for this feature-branch publication. Changes after this audit require a fresh range/tree/dependency review. No scan guarantees absence of all leaks or vulnerabilities.
 - Initial implementation scan: seven commits through `31f320a4c72f99e71105332f7841bc0eae7484f5`, exit 0, zero findings. Subsequent benchmark evidence refinement adds a separately accounted post-cooldown recovery probe and regenerates measured reports; all 32 tests, nine drills and report checks pass. The final fix/audit commit receives full-tree and full `origin/main..HEAD` scans after creation; its exact SHA and outcome are reported in delivery to avoid a self-referential identifier.
+
+
+## Publication audit — 3 November 2026 (Asia/Kolkata)
+
+- Explicit owner request: perform the security audit, publish Project 04, and share its link. Publication scope: push the audited feature branch; preserve main and all earlier project files.
+- Fresh HTTPS fetch succeeded. Main base remains `8dfbd27fb9b18ea08d1cf863c85bdd43db30140e`; audited implementation head is `5f579645af712672967db53c746ae3362281062d`. The target Project 04 remote branch did not exist before this push. Six inherited commits remain already reachable from the published Project 03 branch; only the two Project 04 commits and this audit-record commit are newly unpublished work.
+- GitHub connector `get_repo` verified the exact destination, public visibility and write permission. The Git CLI will publish the local audited commit objects without reconstructing them through contents APIs.
+- Gitleaks 8.30.1, verified archive SHA256 `b40ab0ae55c505963e365f271a8d3846efbc170aa17f2607f13df610a9aeb6a5`: `gitleaks git . --log-opts=--all --redact --no-banner` scanned all nine currently reachable commits, exit 0, zero findings. The full final tracked-tree export also passed with zero findings. This is broader than the eight-commit main comparison at the implementation head.
+- Privacy/artifact review covered all 260 tracked files: no personal home paths, private email addresses, internal URLs, credential-bearing URLs or unintended runtime/credential artifacts found. Public metadata is limited to the intentionally retained information above. Project fixtures and benchmark content remain synthetic; no customer data added.
+- Fresh Python 3.11.14 verification: `PYTHONPATH=src python -m pytest -q` — 32 passed, zero failed/skipped; `scripts/scenarios.py` — all nine A–I drills passed; `scripts/validate_results.py` — benchmark arithmetic and scenario invariants passed. Existing benchmark/Docker evidence remains unchanged and was not represented as newly rerun.
+- Fresh pip-audit 2.10.1: `pip-audit -r requirements.txt --no-deps --disable-pip --progress-spinner off` — all 26 pinned packages, zero known vulnerabilities, zero skipped packages. The lock is complete but does not include package hashes.
+- Git whitespace, author/committer metadata, staged diff and unrelated-project review passed. Owner identity uses the established GitHub noreply email. Projects 01, 02 and 03 remain byte-for-byte unchanged relative to the starting parent.
+- This documentation commit is exported and scanned before commit, then the complete final `origin/main..HEAD` range and all reachable history are rescanned before publication. The final audit commit SHA cannot be self-referenced here; it is identified and verified against the remote branch in delivery.
+- Public project URL: `https://github.com/santosh-sinha-tech/data-platform-production-lab-public/tree/feat/04-enterprise-llm-gateway/projects/04-enterprise-llm-gateway`.
+- Publication verdict: **PASS for the authorized public feature-branch publication**. Production IAM, distributed quotas, DLP and real-provider exactly-once processing remain outside this reference's guarantees. No merge, release tag, or deployed service is included.

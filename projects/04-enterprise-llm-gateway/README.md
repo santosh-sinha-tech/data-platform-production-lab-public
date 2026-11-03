@@ -1,6 +1,6 @@
 # Project 04 — Enterprise LLM Gateway
 
-Executable local reference for cost, reliability and governance. All inputs and provider results are synthetic. No paid API, cloud account or secret is required. **Local mock authentication is not production identity management.** Release status is recorded in the security audit; no push is authorized.
+Executable local reference for cost, reliability and governance. All inputs and provider results are synthetic. No paid API, cloud account or secret is required. **Local mock authentication is not production identity management.** Release status and the owner-authorized public feature-branch publication are recorded in the security audit.
 
 ## Run
 
