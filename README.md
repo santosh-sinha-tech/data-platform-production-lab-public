@@ -12,7 +12,8 @@ Santosh Sinha Tech
     └── projects/
         ├── 01-green-pipeline-bad-data/
         ├── 02-small-files-performance-lab/
-        └── 03-enterprise-rag-evaluation-lab/
+        ├── 03-enterprise-rag-evaluation-lab/
+        └── 04-enterprise-llm-gateway/
 ```
 
 | Project | Production question | Start here |
@@ -20,6 +21,7 @@ Santosh Sinha Tech
 | **01 — Green Pipeline, Bad Data** | When every job succeeds, is the resulting data actually ready to publish? | [Project 01](projects/01-green-pipeline-bad-data/README.md) |
 | **02 — Small Files Performance Lab** | When does rewriting fragmented Parquet justify its compute cost? | [Project 02](projects/02-small-files-performance-lab/README.md) |
 | **03 — Enterprise RAG Evaluation Lab** | How do retrieval relevance, answer correctness, and citation support differ? | [Project 03](projects/03-enterprise-rag-evaluation-lab/README.md) |
+| **04 — Enterprise LLM Gateway** | How can an AI platform enforce model access, reliable execution and accountable simulated spend? | [Project 04](projects/04-enterprise-llm-gateway/README.md) |
 
 Workloads are synthetic and illustrative. Results describe the recorded experiments, not customer systems or production deployments. Each project's documentation records its verification outcomes, limitations, and any outstanding checks.
 

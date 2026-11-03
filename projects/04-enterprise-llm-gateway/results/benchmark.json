@@ -1,0 +1,277 @@
+{
+  "environment": {
+    "python": "3.11.14",
+    "os": "Darwin",
+    "machine": "arm64",
+    "transport": "HTTPX in-process ASGI",
+    "concurrency": 8,
+    "requests_per_run": 80,
+    "runs_per_scenario": 3,
+    "warmup": "none; includes cold state",
+    "prices_micro_usd_per_million": {
+      "economy": 1000000,
+      "quality": 10000000,
+      "fallback": 2000000
+    },
+    "provider_latency_ms": {
+      "economy": 5,
+      "quality": 10,
+      "fallback": 5
+    }
+  },
+  "scenarios": {
+    "economy": {
+      "runs": [
+        {
+          "requests": 80,
+          "seconds": 0.3975868330016965,
+          "rps": 201.2139068993229,
+          "p50_ms": 34.24341600111802,
+          "p95_ms": 51.201250000303844,
+          "p99_ms": 60.766791000787634,
+          "statuses": {
+            "200": 80
+          },
+          "routing": {
+            "economy": 80
+          },
+          "cost_micro_usd": 2160,
+          "actual_tokens": 2160,
+          "fallbacks": 0,
+          "retries": 0,
+          "error_rate": 0.0,
+          "rejection_rate": 0.0,
+          "estimated_tokens": 4080,
+          "recovery_injection_at_request": null,
+          "final_primary_circuit": "closed",
+          "provider_attempt_ms_per_request": 17.001181840896606,
+          "gateway_overhead_ms_per_request": 18.174609541893005,
+          "cost_per_success_micro_usd": 27.0
+        },
+        {
+          "requests": 80,
+          "seconds": 0.3292538749992673,
+          "rps": 242.97360205761598,
+          "p50_ms": 31.028000001242617,
+          "p95_ms": 36.365833000672865,
+          "p99_ms": 37.138457999390084,
+          "statuses": {
+            "200": 80
+          },
+          "routing": {
+            "economy": 80
+          },
+          "cost_micro_usd": 2160,
+          "actual_tokens": 2160,
+          "fallbacks": 0,
+          "retries": 0,
+          "error_rate": 0.0,
+          "rejection_rate": 0.0,
+          "estimated_tokens": 4080,
+          "recovery_injection_at_request": null,
+          "final_primary_circuit": "closed",
+          "provider_attempt_ms_per_request": 14.935111999511719,
+          "gateway_overhead_ms_per_request": 15.39895236492157,
+          "cost_per_success_micro_usd": 27.0
+        },
+        {
+          "requests": 80,
+          "seconds": 0.3878015840000444,
+          "rps": 206.2910604305083,
+          "p50_ms": 36.58937500040338,
+          "p95_ms": 44.178332998853875,
+          "p99_ms": 45.25583400027244,
+          "statuses": {
+            "200": 80
+          },
+          "routing": {
+            "economy": 80
+          },
+          "cost_micro_usd": 2160,
+          "actual_tokens": 2160,
+          "fallbacks": 0,
+          "retries": 0,
+          "error_rate": 0.0,
+          "rejection_rate": 0.0,
+          "estimated_tokens": 4080,
+          "recovery_injection_at_request": null,
+          "final_primary_circuit": "closed",
+          "provider_attempt_ms_per_request": 16.77137017250061,
+          "gateway_overhead_ms_per_request": 18.873432278633118,
+          "cost_per_success_micro_usd": 27.0
+        }
+      ],
+      "rps_mean": 216.82618979581574,
+      "rps_stdev": 22.786174492139168
+    },
+    "quality": {
+      "runs": [
+        {
+          "requests": 80,
+          "seconds": 0.45426324999971257,
+          "rps": 176.10933748228723,
+          "p50_ms": 39.97466600048938,
+          "p95_ms": 62.369082999794045,
+          "p99_ms": 63.221374999557156,
+          "statuses": {
+            "200": 80
+          },
+          "routing": {
+            "quality": 80
+          },
+          "cost_micro_usd": 21600,
+          "actual_tokens": 2160,
+          "fallbacks": 0,
+          "retries": 0,
+          "error_rate": 0.0,
+          "rejection_rate": 0.0,
+          "estimated_tokens": 4080,
+          "recovery_injection_at_request": null,
+          "final_primary_circuit": "closed",
+          "provider_attempt_ms_per_request": 22.231224179267883,
+          "gateway_overhead_ms_per_request": 19.744527339935303,
+          "cost_per_success_micro_usd": 270.0
+        },
+        {
+          "requests": 80,
+          "seconds": 0.4112525420005113,
+          "rps": 194.52767297399595,
+          "p50_ms": 38.62145899984171,
+          "p95_ms": 44.08937500011234,
+          "p99_ms": 44.82491700036917,
+          "statuses": {
+            "200": 80
+          },
+          "routing": {
+            "quality": 80
+          },
+          "cost_micro_usd": 21600,
+          "actual_tokens": 2160,
+          "fallbacks": 0,
+          "retries": 0,
+          "error_rate": 0.0,
+          "rejection_rate": 0.0,
+          "estimated_tokens": 4080,
+          "recovery_injection_at_request": null,
+          "final_primary_circuit": "closed",
+          "provider_attempt_ms_per_request": 21.545296907424927,
+          "gateway_overhead_ms_per_request": 16.718050837516785,
+          "cost_per_success_micro_usd": 270.0
+        },
+        {
+          "requests": 80,
+          "seconds": 0.4098704589996487,
+          "rps": 195.18362019856758,
+          "p50_ms": 38.73791700061702,
+          "p95_ms": 46.10437500014086,
+          "p99_ms": 46.84362500120187,
+          "statuses": {
+            "200": 80
+          },
+          "routing": {
+            "quality": 80
+          },
+          "cost_micro_usd": 21600,
+          "actual_tokens": 2160,
+          "fallbacks": 0,
+          "retries": 0,
+          "error_rate": 0.0,
+          "rejection_rate": 0.0,
+          "estimated_tokens": 4080,
+          "recovery_injection_at_request": null,
+          "final_primary_circuit": "closed",
+          "provider_attempt_ms_per_request": 21.489644050598145,
+          "gateway_overhead_ms_per_request": 16.664740443229675,
+          "cost_per_success_micro_usd": 270.0
+        }
+      ],
+      "rps_mean": 188.60687688495025,
+      "rps_stdev": 10.82815473805172
+    },
+    "timeout_recovery": {
+      "runs": [
+        {
+          "requests": 80,
+          "seconds": 0.37832800000069255,
+          "rps": 211.45672538076366,
+          "p50_ms": 28.686792000371497,
+          "p95_ms": 101.98575000140409,
+          "p99_ms": 118.88774999897578,
+          "statuses": {
+            "200": 80
+          },
+          "routing": {
+            "fallback": 80
+          },
+          "cost_micro_usd": 4320,
+          "actual_tokens": 2160,
+          "fallbacks": 80,
+          "retries": 9.0,
+          "error_rate": 0.0,
+          "rejection_rate": 0.0,
+          "estimated_tokens": 4080,
+          "recovery_injection_at_request": 40,
+          "final_primary_circuit": "open",
+          "provider_attempt_ms_per_request": 18.328776955604553,
+          "gateway_overhead_ms_per_request": 13.285326957702637,
+          "cost_per_success_micro_usd": 54.0
+        },
+        {
+          "requests": 80,
+          "seconds": 0.43341166600112047,
+          "rps": 184.58201814944496,
+          "p50_ms": 33.13462500045716,
+          "p95_ms": 106.48454100009985,
+          "p99_ms": 127.99791700126661,
+          "statuses": {
+            "200": 80
+          },
+          "routing": {
+            "fallback": 71,
+            "economy": 9
+          },
+          "cost_micro_usd": 4077,
+          "actual_tokens": 2160,
+          "fallbacks": 71,
+          "retries": 9.0,
+          "error_rate": 0.0,
+          "rejection_rate": 0.0,
+          "estimated_tokens": 4080,
+          "recovery_injection_at_request": 40,
+          "final_primary_circuit": "closed",
+          "provider_attempt_ms_per_request": 19.80404257774353,
+          "gateway_overhead_ms_per_request": 15.752440690994261,
+          "cost_per_success_micro_usd": 50.9625
+        },
+        {
+          "requests": 80,
+          "seconds": 0.3778461249985412,
+          "rps": 211.72640052960412,
+          "p50_ms": 27.37695900032122,
+          "p95_ms": 106.45737499908137,
+          "p99_ms": 118.09462499877554,
+          "statuses": {
+            "200": 80
+          },
+          "routing": {
+            "fallback": 80
+          },
+          "cost_micro_usd": 4320,
+          "actual_tokens": 2160,
+          "fallbacks": 80,
+          "retries": 9.0,
+          "error_rate": 0.0,
+          "rejection_rate": 0.0,
+          "estimated_tokens": 4080,
+          "recovery_injection_at_request": 40,
+          "final_primary_circuit": "open",
+          "provider_attempt_ms_per_request": 18.151691555976868,
+          "gateway_overhead_ms_per_request": 13.367986679077148,
+          "cost_per_success_micro_usd": 54.0
+        }
+      ],
+      "rps_mean": 202.5883813532709,
+      "rps_stdev": 15.594550908652304
+    }
+  }
+}

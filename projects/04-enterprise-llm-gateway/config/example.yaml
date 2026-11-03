@@ -1,0 +1,25 @@
+limits: {input_chars: 4096}
+period: "2026-11"
+tenants:
+  alpha:
+    key: demo-alpha
+    budget: 100000
+    app_budget: 50000
+    apps: [chat, batch]
+    models: [economy, quality, fallback]
+    rpm: 60
+    tpm: 20000
+    concurrency: 8
+  beta:
+    key: demo-beta
+    budget: 100000
+    app_budget: 50000
+    apps: [chat]
+    models: [economy]
+    rpm: 30
+    tpm: 10000
+    concurrency: 4
+models:
+  economy: {price: 100, capability: basic, behavior: normal, latency: 0.005}
+  quality: {price: 1000, capability: quality, behavior: normal, latency: 0.010}
+  fallback: {price: 200, capability: basic, behavior: normal, latency: 0.005}

@@ -1,0 +1,44 @@
+{
+  "A_normal_routing": {
+    "status": 200,
+    "model": "economy"
+  },
+  "B_budget_exhaustion": {
+    "status": 402
+  },
+  "C_rate_limit": {
+    "status": 429,
+    "retry_after": "60"
+  },
+  "D_safe_timeout_fallback": {
+    "model": "fallback",
+    "primary_attempts": 2
+  },
+  "E_circuit_recovery": {
+    "observed": [
+      "open",
+      "half_open",
+      "closed"
+    ],
+    "recovered_model": "economy"
+  },
+  "F_same_budget_race": {
+    "requests": 20,
+    "successful": 3,
+    "budget_rejections": 17,
+    "charged_micro_usd": 3
+  },
+  "G_duplicate_key": {
+    "dispatches": 1,
+    "ledger_rows": 1
+  },
+  "H_tenant_isolation": {
+    "forbidden_model_status": 403,
+    "beta_ledger_rows": 0
+  },
+  "I_restart_unsettled": {
+    "state": "unresolved",
+    "held_micro_usd": 1,
+    "method": "seed durable reservation, recreate exclusive gateway"
+  }
+}
