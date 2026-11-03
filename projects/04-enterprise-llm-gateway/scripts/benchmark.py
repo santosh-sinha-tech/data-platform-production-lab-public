@@ -77,6 +77,45 @@ async def measure(config, policy, failure=False):
         rows = app.state.store.records("requests", "alpha")
         assert sum(r["charged"] for r in rows) == total_cost
         assert sum(statuses.values()) == 80 and sum(routes.values()) == statuses["200"]
+        end_of_load_circuit = app.state.breakers[policy].state
+        recovery_probe = None
+        if failure:
+            # A short load run can end before the open circuit cooldown expires.
+            # Measure a separate recovery probe without adding it to load metrics.
+            await asyncio.sleep(0.11)
+            async with httpx.AsyncClient(
+                transport=httpx.ASGITransport(app=app), base_url="http://local"
+            ) as client:
+                probe_start = time.perf_counter()
+                probe = await client.post(
+                    "/v1/generate",
+                    json=dict(
+                        app="chat",
+                        prompt="synthetic benchmark",
+                        input_tokens=19,
+                        max_output_tokens=32,
+                        model=policy,
+                        allow_fallback=False,
+                    ),
+                    headers={
+                        "X-API-Key": "demo-alpha",
+                        "Idempotency-Key": "recovery-probe",
+                    },
+                )
+                recovery_probe = {
+                    "status": probe.status_code,
+                    "elapsed_ms": (time.perf_counter() - probe_start) * 1000,
+                    "wait_seconds": 0.11,
+                    "model": probe.json().get("model"),
+                    "cost_micro_usd": probe.json().get("cost_micro_usd", 0),
+                }
+            assert (
+                recovery_probe["status"] == 200 and recovery_probe["model"] == "economy"
+            )
+            assert (
+                sum(r["charged"] for r in app.state.store.records("requests", "alpha"))
+                == total_cost + recovery_probe["cost_micro_usd"]
+            )
         # Histogram sums expose actual provider time and gateway elapsed separately.
         sums = {
             line.split(" ")[0]: float(line.split(" ")[1])
@@ -108,6 +147,8 @@ async def measure(config, policy, failure=False):
             / 80,
             estimated_tokens=80 * 51,
             recovery_injection_at_request=40 if failure else None,
+            end_of_load_circuit=end_of_load_circuit,
+            recovery_probe=recovery_probe,
             final_primary_circuit=app.state.breakers[policy].state,
             provider_attempt_ms_per_request=provider_s / 80 * 1000,
             gateway_overhead_ms_per_request=(gateway_s - provider_s) / 80 * 1000,

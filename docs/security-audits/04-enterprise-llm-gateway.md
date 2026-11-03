@@ -9,7 +9,7 @@
 - Branch: `feat/04-enterprise-llm-gateway`; comparison target `origin/main`.
 - Verified base: `8dfbd27fb9b18ea08d1cf863c85bdd43db30140e`.
 - Starting implementation parent: `ca2709c01f908984bfeca4c6e755595abe1bb299`.
-- Exact implementation head scan: recorded after the local implementation commit below; the final audit-record commit must also be scanned and identified in delivery.
+- Exact initial implementation head scanned: `31f320a4c72f99e71105332f7841bc0eae7484f5`; seven commits from the main base, zero Gitleaks findings. The subsequent benchmark-probe/audit-record commit is scanned separately and identified in delivery.
 - Six inherited commits relative to main: `07a02ef`, `7d4baac`, `bfd073a`, `3afdeb3`, `5f4af81`, `ca2709c`. All were reachable from refreshed `origin/feat/03-enterprise-rag-evaluation-lab`; no inherited unpublished commit was found relative to that feature ref. Main comparison still includes all six.
 - SSH fetch failed host-key verification; HTTPS fetch from the same public repository succeeded without changing the configured SSH remote. Remote references were refreshed before scope selection.
 - Scope: complete staged tracked-tree export and full `origin/main..HEAD` history, including inherited commits and audit/fix commits. Runtime environments, caches, SQLite databases, unreviewed logs and temporary scanner reports remain excluded.
@@ -20,7 +20,7 @@
 |---|---|---|---|
 | Staged files, exact diff and whitespace | `git diff --cached --name-status`; `git diff --cached`; `git diff --cached --check` | Git 2.50.1 | Reviewed before each commit; no prior project modifications |
 | Dedicated staged-tree scanner | `git checkout-index --all --prefix=TEMP/`; `gitleaks dir TEMP --redact --no-banner` | Gitleaks 8.30.1 | PASS: complete exported index scanned, zero findings |
-| Full comparison history | `gitleaks git . --log-opts=origin/main..HEAD --redact --no-banner` | Gitleaks 8.30.1 | PASS: six inherited commits through starting parent scanned, zero findings; new heads scanned after commit |
+| Full comparison history | `gitleaks git . --log-opts=origin/main..HEAD --redact --no-banner` | Gitleaks 8.30.1 | PASS: seven commits through initial implementation `31f320a4c72f99e71105332f7841bc0eae7484f5`, zero findings; subsequent final fix/audit commit scanned after creation |
 | Scanner provenance | Official GitHub release v8.30.1 metadata; SHA256 verification of darwin_arm64 archive | `b40ab0ae55c505963e365f271a8d3846efbc170aa17f2607f13df610a9aeb6a5` | PASS; native binary verified. Docker fallback was initially checked while native scanner absent; daemon was stopped, later started for application verification |
 | Privacy and metadata | Review staged text for private home paths, email/phone/contact/account/internal-host patterns; inspect results and Git identity | Manual/context review plus bounded pattern checks | PASS: no private-path/contact/internal-host matches in new staged artifacts; public metadata and limitations listed below |
 | Credentials and artifact hygiene | Redacted dedicated scan; index file-list and sizes; project `.gitignore`/`.dockerignore` review | Git/Gitleaks | Only reviewed synthetic artifacts are staged; no runtime DB, cache, venv, private log or credential file |
@@ -45,8 +45,8 @@ Owner/repository identity `Santosh Sinha` / `santosh-sinha-tech`, established Gi
 
 ## Verdict and publication record
 
-- Local engineering verification: PASS; complete staged-tree and inherited-history scans pass. New implementation/report commits are scanned after creation.
+- Local engineering verification: PASS; complete staged-tree and inherited-history scans pass. Initial implementation history passes; the final fix/audit commit is scanned after creation.
 - Publication: **HOLD — no owner authorization to push, merge or publish.**
 - This is a single-process simulated reference, not production IAM, distributed quotas, DLP, external exactly-once execution or actual cloud billing.
 - Final publication still requires owner authorization and a fresh range/tree/dependency review if anything changes. No scan guarantees absence of all leaks or vulnerabilities.
-- Final implementation scan and audit-record coverage: updated after local commit; final head SHA is also reported in delivery to avoid a self-referential commit identifier.
+- Initial implementation scan: seven commits through `31f320a4c72f99e71105332f7841bc0eae7484f5`, exit 0, zero findings. Subsequent benchmark evidence refinement adds a separately accounted post-cooldown recovery probe and regenerates measured reports; all 32 tests, nine drills and report checks pass. The final fix/audit commit receives full-tree and full `origin/main..HEAD` scans after creation; its exact SHA and outcome are reported in delivery to avoid a self-referential identifier.

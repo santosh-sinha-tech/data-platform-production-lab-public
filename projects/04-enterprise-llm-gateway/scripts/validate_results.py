@@ -12,6 +12,12 @@ for scenario in b["scenarios"].values():
     assert math.isclose(scenario["rps_mean"], statistics.mean(r["rps"] for r in runs))
     assert math.isclose(scenario["rps_stdev"], statistics.stdev(r["rps"] for r in runs))
     for r in runs:
+        if r.get("recovery_probe"):
+            assert (
+                r["recovery_probe"]["status"] == 200
+                and r["recovery_probe"]["model"] == "economy"
+            )
+            assert r["final_primary_circuit"] == "closed"
         assert r["requests"] == sum(r["statuses"].values()) == 80
         assert sum(r["routing"].values()) == r["statuses"].get("200", 0)
         assert math.isclose(r["rps"], 80 / r["seconds"])
