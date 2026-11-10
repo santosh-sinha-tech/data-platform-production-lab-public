@@ -5,7 +5,7 @@
 - Review date/time: 2026-11-10, Asia/Kolkata.
 - Reviewer: Codex engineering review, local execution.
 - Project: `projects/05-ai-platform-observability/`.
-- Destination: public repository `santosh-sinha-tech/data-platform-production-lab-public`; no publication performed.
+- Destination: public repository `santosh-sinha-tech/data-platform-production-lab-public`; publication authorization and fresh checks are recorded below.
 - Branch: `feat/05-ai-platform-observability`; intended comparison: `origin/main`.
 - Verified main base: `8dfbd27fb9b18ea08d1cf863c85bdd43db30140e`, refreshed over public HTTPS. Existing SSH remote retained; SSH fetch failed host-key verification.
 - Implementation parent: `1f7f882cd687b2087ca04795b2938feb659ff936`.
@@ -49,9 +49,9 @@ Approved public repository/owner identity and GitHub noreply author metadata, pu
 
 - Local engineering reference: executable and verified, with documented simulation/security limits.
 - Production deployment: NOT READY; demo authentication, retention, storage and exporters are intentionally local.
-- Publication: **HOLD — explicit owner approval required; no push, merge or publication authorized.** Refresh comparison scope and repeat final-range review before any future publication, including inherited commits and report/fix commits.
+- Publication: **OWNER AUTHORIZED — feature-branch publication only**, following the fresh checks below and a final scan including this audit update. No merge into main is authorized. Repeat scope review and scanning before subsequent publication changes.
 - Scanners/manual review do not guarantee absence of every leak or vulnerability. Current dependency advisory results are time-bounded.
-- Exact post-commit scan evidence follows after execution; no remote branch/SHA verification applies because nothing has been pushed.
+- Historical local implementation checks and fresh publication checks follow. Final remote branch/SHA verification is recorded in the local publication receipt and delivery report after the authorized push.
 
 ## Post-commit and final staged review evidence
 
@@ -67,4 +67,18 @@ Implementation and final-snapshot outcomes are added only after their checks exe
 - Final pre-implementation-commit index snapshot: Gitleaks v8.30.1 immutable image above, `dir /scan --redact --no-banner`, exit 0, about 1.79 MB, no leaks. This includes the complete then-staged audit evidence.
 - Implementation range: `8dfbd27fb9b18ea08d1cf863c85bdd43db30140e..ed96d3559d556bc46595d30453113b97d4e5e799`; Gitleaks `git /repo --log-opts=origin/main..HEAD --redact --no-banner`, exit 0, ten commits, about 1.79 MB, no leaks. Nine inherited commits and implementation author/committer metadata reviewed; all use the established public owner/noreply identity.
 - This evidence-only follow-up changes the audit record and verification summary, not implementation or experiments. Its full index snapshot is rescanned before committing, and the complete main-to-final-HEAD range is scanned after committing. The exact final audit-record SHA and execution result are retained in the final delivery and ignored local audit receipt; this file does not claim to embed its own SHA.
-- Publication remains HOLD solely for explicit owner authorization and fresh publication-time scope/review. No push, merge, release or cloud deployment was performed. Existing OS/image-scan and production-scope limitations remain as stated above.
+- At the end of the earlier implementation turn, publication remained HOLD for owner authorization and fresh publication checks. That historical authorization condition is superseded by the owner request recorded below. Existing OS/image-scan and production-scope limitations remain as stated above.
+
+## Owner-authorized publication review — 2026-11-10 (Asia/Kolkata)
+
+- Owner explicitly requested following the security guidelines, scanning, publishing, and returning the public link. Authorized action: publish `feat/05-ai-platform-observability` to the existing public repository. No main merge, force push, release creation, visibility change, or cloud deployment is included.
+- Repository metadata verified through the GitHub connector: `santosh-sinha-tech/data-platform-production-lab-public`, visibility public, owner account has push permission. GitHub CLI identity verified as the same owner without printing credentials.
+- Public main refreshed over HTTPS: `8dfbd27fb9b18ea08d1cf863c85bdd43db30140e`. Remote feature branch did not exist at the preflight check. Existing SSH remote configuration remains unchanged; authenticated HTTPS Git transport is used to upload local objects.
+- Exact pre-publication head scanned: `8cfbcd09e23693464f5011f1d57ca10fcee1bff4`. Fresh full tracked-index snapshot scan: Gitleaks v8.30.1 immutable image recorded above, `dir /scan --redact --no-banner`, exit 0, about 1.79 MB, zero leaks.
+- Fresh history scan: `git /repo --log-opts=origin/main..HEAD --redact --no-banner`, exit 0, 11 commits through the head above, about 1.79 MB, zero leaks. Includes nine inherited commits and both Project 05 implementation/audit commits. This is a verified-main comparison range, not a claim to scan all earlier reachable repository history.
+- Full tracked-tree privacy/artifact review: 314 tracked files, no unintended personal-home paths, private email addresses or private-network URL matches; no tracked runtime databases, logs, environments, caches or credential files. Existing intentional public owner/noreply identity, public dependency references, synthetic fixture identifiers and measured environment metadata remain approved.
+- Fresh Python 3.11.14 execution: 33 tests passed, zero failed/skipped, 2.93 seconds. Artifact verification reconciled both stored quick (80 requests) and full (900 requests) experiments. Benchmarks were not rerun for this documentation-only publication update; existing measured evidence is retained unchanged.
+- Fresh dependency audit: pip-audit 2.10.1, `--no-deps --disable-pip -r requirements.txt --format json`, exit 0, all 25 packages returned, zero known vulnerabilities, zero skips. No dependency changes; no OS/image vulnerability audit claim.
+- Whitespace, unchanged Projects 01–04, all main-to-head author/committer identities and exact changed-file scope reviewed. Only this audit, its index entry and Project 05's verification wording change for publication; source, configuration and measured experiment values remain unchanged.
+- This authorization/evidence update is staged, reviewed and scanned as a complete index snapshot before committing. The complete main-to-final-head history, including this commit, is scanned again before pushing. Exact final head, remote-SHA equality and public visibility are verified after pushing and retained in the ignored local publication receipt and final delivery; this report cannot embed its own commit SHA.
+- Verdict: approved for the authorized public **local-reference feature branch** once the final update scans pass. Production deployment remains NOT READY. No new scanner suppressions or scope reductions.
