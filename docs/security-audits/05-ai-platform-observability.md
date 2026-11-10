@@ -17,16 +17,16 @@
 
 | Check | Command / method | Tool identity | Outcome |
 |---|---|---|---|
-| Staged scope, diff, whitespace | `git diff --cached --name-status`; `git diff --cached --check`; review exact index diff | Git 2.50.1 | Final staged review recorded below |
-| Dedicated staged-tree scanner | `git checkout-index --all --prefix=TEMP/`; Docker Gitleaks `dir /scan --redact --no-banner` | Gitleaks v8.30.1; `ghcr.io/gitleaks/gitleaks@sha256:c00b6bd0aeb3071cbcb79009cb16a60dd9e0a7c60e2be9ab65d25e6bc8abbb7f` | Final outcome recorded below; native absent, Docker route executed |
-| Full unpublished comparison range | Docker Gitleaks `git /repo --log-opts=origin/main..HEAD --redact --no-banner` | Same immutable image | Post-commit outcome recorded below; includes nine inherited commits |
-| Privacy / credentials / artifacts | Review personal paths, mailbox/phone/account/internal URL categories and complete staged diff; no raw sensitive findings copied | Manual + Python pattern review + Gitleaks | Final outcome recorded below |
+| Staged scope, diff, whitespace | `git diff --cached --name-status`; `git diff --cached --check`; review exact index diff | Git 2.50.1 | PASS; 55 changed files in approved scope; no whitespace errors |
+| Dedicated staged-tree scanner | `git checkout-index --all --prefix=TEMP/`; Docker Gitleaks `dir /scan --redact --no-banner` | Gitleaks v8.30.1; `ghcr.io/gitleaks/gitleaks@sha256:c00b6bd0aeb3071cbcb79009cb16a60dd9e0a7c60e2be9ab65d25e6bc8abbb7f` | PASS, exit 0, zero leaks; final index tree 92f61981669bda03fbf09c11ed3a8cc5f88b8a13; native absent, Docker route executed |
+| Full unpublished comparison range | Docker Gitleaks `git /repo --log-opts=origin/main..HEAD --redact --no-banner` | Same immutable image | PASS, exit 0, zero leaks; ten commits through ed96d3559d556bc46595d30453113b97d4e5e799, including nine inherited commits |
+| Privacy / credentials / artifacts | Review personal paths, mailbox/phone/account/internal URL categories and complete staged diff; no raw sensitive findings copied | Manual + Python pattern review + Gitleaks | PASS; no unintended private metadata or runtime artifacts found |
 | Synthetic provenance | Hand-authored structured synthetic facts, candidate answers, tenants, model profiles and tariffs | Source/config review | PASS; no copied customer or external datasets |
 | Commit identity | `git log --format` plus configured author/committer review | Git 2.50.1 | PASS for inherited range; owner public identity and GitHub noreply mailbox |
 | Dependency vulnerability review | `pip-audit --no-deps --disable-pip -r requirements.txt --format json` | pip-audit 2.10.1 | PASS, 25 pinned packages, zero known vulnerabilities, zero skips |
 | Tests and measured evidence | Standalone Python 3.11 Docker; pytest; quick/full; artifact verifier; live HTTP | Python 3.11.14; pytest 9.2.0; Docker 28.3.2 | PASS: 33 tests, 80 quick requests, 900 full requests; arithmetic/correlation checks pass |
 | Optional monitoring stack | Compose syntax/build/startup; Prometheus target/query; Grafana health and provisioning logs | Digest-pinned images in Compose | PASS; actual generated API request metrics scraped; Grafana dashboard provisioning finished without logged errors |
-| Unrelated projects | Review index names and diff against implementation parent | Git | Final check recorded below; Projects 01–04 must be unchanged |
+| Unrelated projects | Review index names and diff against implementation parent | Git | PASS; zero Project 01–04 diff against implementation parent |
 
 ## Findings and remediation
 
@@ -62,3 +62,9 @@ Implementation and final-snapshot outcomes are added only after their checks exe
 - Privacy review: no personal home paths or private email patterns in staged changes; no unintended runtime/database/cache artifacts. Public author metadata remains the established noreply identity. Metrics cardinality, payload-free storage/logging and synthetic fixture provenance reviewed.
 - Final engineering execution: 33 tests passed, zero failures/skips; quick 80 and full 900 requests. Artifact arithmetic and trace-parent verification pass. Rate-limit integration test covers HTTP 429 and its admission denominator; benchmark runs deliberately remain below quota.
 - Live stack: all ten scenarios passed real HTTP checks; Prometheus scraped generated metrics and returned stored request counts; Grafana database health passed and provisioning logs recorded successful completion. The verifier now waits up to 20 seconds for asynchronous scraping after startup, correcting an initial timing race.
+
+- Exact implementation SHA scanned: `ed96d3559d556bc46595d30453113b97d4e5e799`; exact implementation tree: `92f61981669bda03fbf09c11ed3a8cc5f88b8a13`.
+- Final pre-implementation-commit index snapshot: Gitleaks v8.30.1 immutable image above, `dir /scan --redact --no-banner`, exit 0, about 1.79 MB, no leaks. This includes the complete then-staged audit evidence.
+- Implementation range: `8dfbd27fb9b18ea08d1cf863c85bdd43db30140e..ed96d3559d556bc46595d30453113b97d4e5e799`; Gitleaks `git /repo --log-opts=origin/main..HEAD --redact --no-banner`, exit 0, ten commits, about 1.79 MB, no leaks. Nine inherited commits and implementation author/committer metadata reviewed; all use the established public owner/noreply identity.
+- This evidence-only follow-up changes the audit record and verification summary, not implementation or experiments. Its full index snapshot is rescanned before committing, and the complete main-to-final-HEAD range is scanned after committing. The exact final audit-record SHA and execution result are retained in the final delivery and ignored local audit receipt; this file does not claim to embed its own SHA.
+- Publication remains HOLD solely for explicit owner authorization and fresh publication-time scope/review. No push, merge, release or cloud deployment was performed. Existing OS/image-scan and production-scope limitations remain as stated above.

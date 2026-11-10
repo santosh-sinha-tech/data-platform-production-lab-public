@@ -55,7 +55,7 @@ Equivalent repository-root executions used `-f projects/05-ai-platform-observabi
 - Artifact verifier reconciled scenario counts/costs, all attribution dimensions, exported span parents and trace correlations for quick/full runs.
 - Docker Compose syntax/build/startup and API health passed. The final Docker build permission review initially timed out; its narrower retry succeeded. Prometheus target health and stored generated request count passed; Grafana database health passed. Dashboard provisioning is checked separately in the audit evidence. No screenshot is presented as measurement.
 - Dependency audit: pip-audit 2.10.1 direct pinned audit (`--no-deps --disable-pip -r requirements.txt --format json`): 25 packages, zero known vulnerabilities, zero skips. Resolver-based preliminary audit also passed but returned 24 packages; direct audit closes that coverage difference. Package versions are pinned but wheel hashes are not locked.
-- Dedicated secret/privacy staged-tree and history outcomes are recorded in the repository audit report. No push/merge/publication authorized or executed.
+- Dedicated Gitleaks v8.30.1 staged-tree scan and ten-commit main-to-implementation history scan passed with zero leaks; privacy and unrelated-project checks passed. Exact implementation SHA is `ed96d3559d556bc46595d30453113b97d4e5e799`. The audit-record follow-up is separately scanned. Scope and tool digest are recorded in [the repository audit report](../../../docs/security-audits/05-ai-platform-observability.md). No push/merge/publication authorized or executed.
 
 ## Failures, skips and limits
 
