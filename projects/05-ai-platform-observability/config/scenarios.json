@@ -1,0 +1,12 @@
+{
+ "healthy": {"case":"supported","delay":0.008},
+ "latency_spike": {"case":"supported","delay":0.09},
+ "timeout": {"case":"supported","delay":0.02,"timeouts":3},
+ "retry_amplification": {"case":"supported","delay":0.012,"timeouts":2},
+ "fallback": {"case":"supported","delay":0.02,"timeouts":2,"fallback":true},
+ "unsupported": {"case":"unsupported","delay":0.008},
+ "citation_degradation": {"case":"wrong_citation","delay":0.008},
+ "tenant_cost_spike": {"case":"supported","delay":0.008,"tokens":3000},
+ "mixed_incident": {"case":"incorrect","delay":0.02,"mixed":true},
+ "recovery": {"case":"supported","delay":0.008}
+}

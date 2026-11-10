@@ -1,0 +1,447 @@
+{
+  "mode": "quick",
+  "runs": 2,
+  "per_scenario_per_run": 4,
+  "seed_base": 500,
+  "concurrency": 4,
+  "environment": {
+    "python": "3.11.14",
+    "os": "Linux",
+    "machine": "aarch64"
+  },
+  "experiments": [
+    {
+      "requests": 40,
+      "transport_success": 34,
+      "error_rate": 0.15000000000000002,
+      "quality_failure_rate": 0.29411764705882354,
+      "p50": 0.017848959000048126,
+      "p95": 0.10617845900003431,
+      "p99": 0.1062776250000752,
+      "throughput": 66.09212408677493,
+      "client_p50": 0.02710154099997908,
+      "client_p95": 0.11559233400009816,
+      "client_p99": 0.11608770800000912,
+      "provider_p95": 0.10179137499994795,
+      "retries": 24,
+      "attempts": 68,
+      "retry_amplification": 1.7,
+      "fallbacks": 4,
+      "cost": 0.022360000000000012,
+      "input_tokens": 18400,
+      "output_tokens": 1020,
+      "slo": {
+        "availability": {
+          "good": 34,
+          "total": 40,
+          "target": 0.99,
+          "sli": 0.85,
+          "allowed_bad": 0.40000000000000036,
+          "bad": 6,
+          "remaining": -5.6,
+          "consumption": 14.999999999999988
+        },
+        "latency": {
+          "good": 26,
+          "total": 40,
+          "target": 0.95,
+          "sli": 0.65,
+          "allowed_bad": 2.0000000000000018,
+          "bad": 14,
+          "remaining": -11.999999999999998,
+          "consumption": 6.999999999999994
+        },
+        "quality": {
+          "good": 24,
+          "total": 34,
+          "target": 0.95,
+          "sli": 0.7058823529411765,
+          "allowed_bad": 1.7000000000000015,
+          "bad": 10,
+          "remaining": -8.299999999999999,
+          "consumption": 5.882352941176466
+        },
+        "cost": {
+          "good": 36,
+          "total": 40,
+          "target": 0.99,
+          "sli": 0.9,
+          "allowed_bad": 0.40000000000000036,
+          "bad": 4,
+          "remaining": -3.5999999999999996,
+          "consumption": 9.999999999999991
+        }
+      }
+    },
+    {
+      "requests": 40,
+      "transport_success": 34,
+      "error_rate": 0.15000000000000002,
+      "quality_failure_rate": 0.29411764705882354,
+      "p50": 0.02161545900003148,
+      "p95": 0.10251608400005807,
+      "p99": 0.10254704199996922,
+      "throughput": 69.29906883377745,
+      "client_p50": 0.03146020800011229,
+      "client_p95": 0.10872954199999185,
+      "client_p99": 0.10944179199998416,
+      "provider_p95": 0.09874479199993402,
+      "retries": 24,
+      "attempts": 68,
+      "retry_amplification": 1.7,
+      "fallbacks": 4,
+      "cost": 0.022360000000000012,
+      "input_tokens": 18400,
+      "output_tokens": 1020,
+      "slo": {
+        "availability": {
+          "good": 34,
+          "total": 40,
+          "target": 0.99,
+          "sli": 0.85,
+          "allowed_bad": 0.40000000000000036,
+          "bad": 6,
+          "remaining": -5.6,
+          "consumption": 14.999999999999988
+        },
+        "latency": {
+          "good": 26,
+          "total": 40,
+          "target": 0.95,
+          "sli": 0.65,
+          "allowed_bad": 2.0000000000000018,
+          "bad": 14,
+          "remaining": -11.999999999999998,
+          "consumption": 6.999999999999994
+        },
+        "quality": {
+          "good": 24,
+          "total": 34,
+          "target": 0.95,
+          "sli": 0.7058823529411765,
+          "allowed_bad": 1.7000000000000015,
+          "bad": 10,
+          "remaining": -8.299999999999999,
+          "consumption": 5.882352941176466
+        },
+        "cost": {
+          "good": 36,
+          "total": 40,
+          "target": 0.99,
+          "sli": 0.9,
+          "allowed_bad": 0.40000000000000036,
+          "bad": 4,
+          "remaining": -3.5999999999999996,
+          "consumption": 9.999999999999991
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "requests": 80,
+    "transport_success": 68,
+    "error_rate": 0.15000000000000002,
+    "quality_failure_rate": 0.29411764705882354,
+    "p50": 0.02161545900003148,
+    "p95": 0.10254704199996922,
+    "p99": 0.1062776250000752,
+    "throughput": 67.65761579702743,
+    "client_p50": 0.03146020800011229,
+    "client_p95": 0.10944179199998416,
+    "client_p99": 0.11608770800000912,
+    "provider_p95": 0.10016845799998464,
+    "retries": 48,
+    "attempts": 136,
+    "retry_amplification": 1.7,
+    "fallbacks": 8,
+    "cost": 0.04472000000000003,
+    "input_tokens": 36800,
+    "output_tokens": 2040,
+    "slo": {
+      "availability": {
+        "good": 68,
+        "total": 80,
+        "target": 0.99,
+        "sli": 0.85,
+        "allowed_bad": 0.8000000000000007,
+        "bad": 12,
+        "remaining": -11.2,
+        "consumption": 14.999999999999988
+      },
+      "latency": {
+        "good": 52,
+        "total": 80,
+        "target": 0.95,
+        "sli": 0.65,
+        "allowed_bad": 4.0000000000000036,
+        "bad": 28,
+        "remaining": -23.999999999999996,
+        "consumption": 6.999999999999994
+      },
+      "quality": {
+        "good": 48,
+        "total": 68,
+        "target": 0.95,
+        "sli": 0.7058823529411765,
+        "allowed_bad": 3.400000000000003,
+        "bad": 20,
+        "remaining": -16.599999999999998,
+        "consumption": 5.882352941176466
+      },
+      "cost": {
+        "good": 72,
+        "total": 80,
+        "target": 0.99,
+        "sli": 0.9,
+        "allowed_bad": 0.8000000000000007,
+        "bad": 8,
+        "remaining": -7.199999999999999,
+        "consumption": 9.999999999999991
+      }
+    }
+  },
+  "offline_quality": [
+    {
+      "case": "supported",
+      "correct": true,
+      "grounded": true,
+      "citation": true,
+      "abstention": true,
+      "passed": true
+    },
+    {
+      "case": "incorrect",
+      "correct": false,
+      "grounded": false,
+      "citation": false,
+      "abstention": true,
+      "passed": false
+    },
+    {
+      "case": "unsupported",
+      "correct": true,
+      "grounded": false,
+      "citation": false,
+      "abstention": false,
+      "passed": false
+    },
+    {
+      "case": "wrong_citation",
+      "correct": true,
+      "grounded": true,
+      "citation": false,
+      "abstention": true,
+      "passed": false
+    },
+    {
+      "case": "missing_evidence",
+      "correct": true,
+      "grounded": false,
+      "citation": false,
+      "abstention": false,
+      "passed": false
+    },
+    {
+      "case": "contradictory",
+      "correct": true,
+      "grounded": false,
+      "citation": false,
+      "abstention": false,
+      "passed": false
+    },
+    {
+      "case": "stale",
+      "correct": true,
+      "grounded": false,
+      "citation": false,
+      "abstention": false,
+      "passed": false
+    },
+    {
+      "case": "abstention",
+      "correct": true,
+      "grounded": true,
+      "citation": true,
+      "abstention": true,
+      "passed": true
+    }
+  ],
+  "offline_signal_rates": {
+    "correct": 0.875,
+    "grounded": 0.375,
+    "citation": 0.25,
+    "abstention": 0.5,
+    "passed": 0.25
+  },
+  "offline_appropriate_abstention_rate": 0.2,
+  "online_sampling": {
+    "strategy": "sequence modulo 5; deterministic synthetic sampling, not representative",
+    "eligible": 16,
+    "failures": 4
+  },
+  "attempt_cost_impact": {
+    "extra_attempt_cost": 0.010399999999999998,
+    "fallback_cost": 0.00512,
+    "estimate_total": 0.03600000000000002
+  },
+  "trace_examples": [
+    {
+      "scenario": "healthy",
+      "run": 0,
+      "request_id": "39118920e6d2485a812da8022f493172",
+      "trace_id": "2541b04c9592b898e127b24186b756a8"
+    },
+    {
+      "scenario": "latency_spike",
+      "run": 0,
+      "request_id": "8ffe76701e814c7ebcf52d2494e1d44d",
+      "trace_id": "52f8a654c55ee1e323b841f3ae642d91"
+    },
+    {
+      "scenario": "timeout",
+      "run": 0,
+      "request_id": "1e1ad37dd8aa40d1a70bff1d4469b37a",
+      "trace_id": "2a8de2c38e40322c2e47390a9e45f3fe"
+    },
+    {
+      "scenario": "retry_amplification",
+      "run": 0,
+      "request_id": "e0f6f7ee366c450882eb6c99a2a24ba6",
+      "trace_id": "2d393c5f27f8696a063c3803eb035b12"
+    },
+    {
+      "scenario": "fallback",
+      "run": 0,
+      "request_id": "cdfa861b5226430e9ded0f108f1d5c7f",
+      "trace_id": "6c847738355fa2e0b72441b076b8dcc2"
+    },
+    {
+      "scenario": "unsupported",
+      "run": 0,
+      "request_id": "1b8c5a9d51aa49b887d7ddda4c80f7f0",
+      "trace_id": "c89cfd82347c5e1306930db212598553"
+    },
+    {
+      "scenario": "citation_degradation",
+      "run": 0,
+      "request_id": "b024e9b7906244f19113f1c7a0777761",
+      "trace_id": "70d53b8ef2a97e1ef7f2eed9b70a9baa"
+    },
+    {
+      "scenario": "tenant_cost_spike",
+      "run": 0,
+      "request_id": "7bc154cb20434de5b089627f886f50da",
+      "trace_id": "1b1d2801662c605cb92a3fc2da603dc4"
+    },
+    {
+      "scenario": "mixed_incident",
+      "run": 0,
+      "request_id": "3e7aafe4f73345828dbaa15e14a7934d",
+      "trace_id": "4f5f0de7a6caf5a7966cc881cebf134a"
+    },
+    {
+      "scenario": "recovery",
+      "run": 0,
+      "request_id": "7a19b06599ef492e80af47ab0d7f6dce",
+      "trace_id": "cf5492aed42f7df42b2867e9bdf667f2"
+    },
+    {
+      "scenario": "healthy",
+      "run": 1,
+      "request_id": "7f53d845761343eba6db6000ffbfdad0",
+      "trace_id": "f219013c7b0b0b5f594a332570e11a20"
+    },
+    {
+      "scenario": "latency_spike",
+      "run": 1,
+      "request_id": "322b801ba4394efb80f751347336d947",
+      "trace_id": "231e4701587497be540e33c3eb66797c"
+    },
+    {
+      "scenario": "timeout",
+      "run": 1,
+      "request_id": "8249d828ff114af2aff7782806b9f4a9",
+      "trace_id": "46dc3c09ba58730a8f8a1e61c122519e"
+    },
+    {
+      "scenario": "retry_amplification",
+      "run": 1,
+      "request_id": "0d0c702ebedf4e46a2387764d947ec53",
+      "trace_id": "7854e0690db658bad39ac00065dd943f"
+    },
+    {
+      "scenario": "fallback",
+      "run": 1,
+      "request_id": "4d87824926c14672a6e17aa3436aab74",
+      "trace_id": "3d5e0765890f19980ea53f7b964ff753"
+    },
+    {
+      "scenario": "unsupported",
+      "run": 1,
+      "request_id": "a53a4228415847be844feaa1b2db22d4",
+      "trace_id": "27910d10c66619943de3d4972ab00f90"
+    },
+    {
+      "scenario": "citation_degradation",
+      "run": 1,
+      "request_id": "f88290e00bae488abd0eb7a21c94a1cf",
+      "trace_id": "5613597b7600db4b125fbc48be917c68"
+    },
+    {
+      "scenario": "tenant_cost_spike",
+      "run": 1,
+      "request_id": "3ad67cffb2b94e9aa98b60232bb0e24a",
+      "trace_id": "9a29ed6c01c8539d08f243421af76768"
+    },
+    {
+      "scenario": "mixed_incident",
+      "run": 1,
+      "request_id": "41014691ad5547388a8c33c7712d2962",
+      "trace_id": "62d5e668b9b97af19deb38bc64ffd032"
+    },
+    {
+      "scenario": "recovery",
+      "run": 1,
+      "request_id": "e01b2302837149b9a223ea3af9bd7891",
+      "trace_id": "a99a387580f02296df2b88d8e750a506"
+    }
+  ],
+  "simulated_ttft_seconds": [
+    0.01494383299996116,
+    0.013111958999957096
+  ],
+  "burn_incident": {
+    "rates": {
+      "5": 99.99999999999991,
+      "30": 99.99999999999991,
+      "60": 99.99999999999991,
+      "360": 16.66666666666665
+    },
+    "page": true,
+    "ticket": true
+  },
+  "burn_recovery": {
+    "rates": {
+      "5": 0.0,
+      "30": 0.0,
+      "60": 0.0,
+      "360": 0.0
+    },
+    "page": false,
+    "ticket": false
+  },
+  "variability": {
+    "throughput": {
+      "mean": 67.69559646027619,
+      "stdev": 2.2676523774960615
+    },
+    "p95": {
+      "mean": 0.10434727150004619,
+      "stdev": 0.002589690197731279
+    },
+    "p99": {
+      "mean": 0.10441233350002221,
+      "stdev": 0.0026379205371541933
+    }
+  }
+}

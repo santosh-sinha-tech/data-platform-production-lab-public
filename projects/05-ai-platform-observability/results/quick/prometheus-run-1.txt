@@ -1,0 +1,151 @@
+# HELP ai_requests_total Completed requests
+# TYPE ai_requests_total counter
+ai_requests_total{failure_category="none",status="200"} 35.0
+ai_requests_total{failure_category="provider_timeout",status="503"} 6.0
+# HELP ai_requests_created Completed requests
+# TYPE ai_requests_created gauge
+ai_requests_created{failure_category="none",status="200"} 1.7942956053069675e+09
+ai_requests_created{failure_category="provider_timeout",status="503"} 1.7942956055178242e+09
+# HELP ai_provider_attempts_total All billed simulated attempts
+# TYPE ai_provider_attempts_total counter
+ai_provider_attempts_total{model_profile="primary",status="success"} 31.0
+ai_provider_attempts_total{model_profile="primary",status="timeout"} 34.0
+ai_provider_attempts_total{model_profile="fallback",status="success"} 4.0
+# HELP ai_provider_attempts_created All billed simulated attempts
+# TYPE ai_provider_attempts_created gauge
+ai_provider_attempts_created{model_profile="primary",status="success"} 1.794295605306511e+09
+ai_provider_attempts_created{model_profile="primary",status="timeout"} 1.7942956054698079e+09
+ai_provider_attempts_created{model_profile="fallback",status="success"} 1.7942956056795685e+09
+# HELP ai_admission_attempts_total Valid authenticated admission attempts including rejections
+# TYPE ai_admission_attempts_total counter
+ai_admission_attempts_total 41.0
+# HELP ai_admission_attempts_created Valid authenticated admission attempts including rejections
+# TYPE ai_admission_attempts_created gauge
+ai_admission_attempts_created 1.7942956052871206e+09
+# HELP ai_rate_limit_rejections_total Valid admission attempts rejected by fixed-window tenant quota
+# TYPE ai_rate_limit_rejections_total counter
+ai_rate_limit_rejections_total 0.0
+# HELP ai_rate_limit_rejections_created Valid admission attempts rejected by fixed-window tenant quota
+# TYPE ai_rate_limit_rejections_created gauge
+ai_rate_limit_rejections_created 1.7942956052871263e+09
+# HELP ai_retries_total Additional primary calls
+# TYPE ai_retries_total counter
+ai_retries_total 24.0
+# HELP ai_retries_created Additional primary calls
+# TYPE ai_retries_created gauge
+ai_retries_created 1.7942956052871308e+09
+# HELP ai_fallbacks_total Fallback requests
+# TYPE ai_fallbacks_total counter
+ai_fallbacks_total 4.0
+# HELP ai_fallbacks_created Fallback requests
+# TYPE ai_fallbacks_created gauge
+ai_fallbacks_created 1.7942956052871358e+09
+# HELP ai_quality_failures_total Evaluated successful requests failing quality
+# TYPE ai_quality_failures_total counter
+ai_quality_failures_total 10.0
+# HELP ai_quality_failures_created Evaluated successful requests failing quality
+# TYPE ai_quality_failures_created gauge
+ai_quality_failures_created 1.79429560528714e+09
+# HELP ai_simulated_cost_dollars_total Simulated billed attempt cost
+# TYPE ai_simulated_cost_dollars_total counter
+ai_simulated_cost_dollars_total{model_profile="primary"} 0.019960000000000002
+ai_simulated_cost_dollars_total{model_profile="fallback"} 0.00256
+# HELP ai_simulated_cost_dollars_created Simulated billed attempt cost
+# TYPE ai_simulated_cost_dollars_created gauge
+ai_simulated_cost_dollars_created{model_profile="primary"} 1.7942956053065257e+09
+ai_simulated_cost_dollars_created{model_profile="fallback"} 1.794295605679682e+09
+# HELP ai_stage_seconds Measured durations
+# TYPE ai_stage_seconds histogram
+ai_stage_seconds_bucket{le="0.005",route="/query",stage="queue"} 41.0
+ai_stage_seconds_bucket{le="0.01",route="/query",stage="queue"} 41.0
+ai_stage_seconds_bucket{le="0.025",route="/query",stage="queue"} 41.0
+ai_stage_seconds_bucket{le="0.05",route="/query",stage="queue"} 41.0
+ai_stage_seconds_bucket{le="0.08",route="/query",stage="queue"} 41.0
+ai_stage_seconds_bucket{le="0.1",route="/query",stage="queue"} 41.0
+ai_stage_seconds_bucket{le="0.2",route="/query",stage="queue"} 41.0
+ai_stage_seconds_bucket{le="0.5",route="/query",stage="queue"} 41.0
+ai_stage_seconds_bucket{le="1.0",route="/query",stage="queue"} 41.0
+ai_stage_seconds_bucket{le="+Inf",route="/query",stage="queue"} 41.0
+ai_stage_seconds_count{route="/query",stage="queue"} 41.0
+ai_stage_seconds_sum{route="/query",stage="queue"} 0.00010066800007280108
+ai_stage_seconds_bucket{le="0.005",route="/query",stage="retrieval"} 39.0
+ai_stage_seconds_bucket{le="0.01",route="/query",stage="retrieval"} 41.0
+ai_stage_seconds_bucket{le="0.025",route="/query",stage="retrieval"} 41.0
+ai_stage_seconds_bucket{le="0.05",route="/query",stage="retrieval"} 41.0
+ai_stage_seconds_bucket{le="0.08",route="/query",stage="retrieval"} 41.0
+ai_stage_seconds_bucket{le="0.1",route="/query",stage="retrieval"} 41.0
+ai_stage_seconds_bucket{le="0.2",route="/query",stage="retrieval"} 41.0
+ai_stage_seconds_bucket{le="0.5",route="/query",stage="retrieval"} 41.0
+ai_stage_seconds_bucket{le="1.0",route="/query",stage="retrieval"} 41.0
+ai_stage_seconds_bucket{le="+Inf",route="/query",stage="retrieval"} 41.0
+ai_stage_seconds_count{route="/query",stage="retrieval"} 41.0
+ai_stage_seconds_sum{route="/query",stage="retrieval"} 0.155928334999885
+ai_stage_seconds_bucket{le="0.005",route="/query",stage="provider"} 0.0
+ai_stage_seconds_bucket{le="0.01",route="/query",stage="provider"} 5.0
+ai_stage_seconds_bucket{le="0.025",route="/query",stage="provider"} 23.0
+ai_stage_seconds_bucket{le="0.05",route="/query",stage="provider"} 27.0
+ai_stage_seconds_bucket{le="0.08",route="/query",stage="provider"} 32.0
+ai_stage_seconds_bucket{le="0.1",route="/query",stage="provider"} 40.0
+ai_stage_seconds_bucket{le="0.2",route="/query",stage="provider"} 41.0
+ai_stage_seconds_bucket{le="0.5",route="/query",stage="provider"} 41.0
+ai_stage_seconds_bucket{le="1.0",route="/query",stage="provider"} 41.0
+ai_stage_seconds_bucket{le="+Inf",route="/query",stage="provider"} 41.0
+ai_stage_seconds_count{route="/query",stage="provider"} 41.0
+ai_stage_seconds_sum{route="/query",stage="provider"} 1.617805585000042
+ai_stage_seconds_bucket{le="0.005",route="/query",stage="evaluation"} 35.0
+ai_stage_seconds_bucket{le="0.01",route="/query",stage="evaluation"} 35.0
+ai_stage_seconds_bucket{le="0.025",route="/query",stage="evaluation"} 35.0
+ai_stage_seconds_bucket{le="0.05",route="/query",stage="evaluation"} 35.0
+ai_stage_seconds_bucket{le="0.08",route="/query",stage="evaluation"} 35.0
+ai_stage_seconds_bucket{le="0.1",route="/query",stage="evaluation"} 35.0
+ai_stage_seconds_bucket{le="0.2",route="/query",stage="evaluation"} 35.0
+ai_stage_seconds_bucket{le="0.5",route="/query",stage="evaluation"} 35.0
+ai_stage_seconds_bucket{le="1.0",route="/query",stage="evaluation"} 35.0
+ai_stage_seconds_bucket{le="+Inf",route="/query",stage="evaluation"} 35.0
+ai_stage_seconds_count{route="/query",stage="evaluation"} 35.0
+ai_stage_seconds_sum{route="/query",stage="evaluation"} 0.00015562200030672102
+ai_stage_seconds_bucket{le="0.005",route="/query",stage="application_overhead"} 40.0
+ai_stage_seconds_bucket{le="0.01",route="/query",stage="application_overhead"} 41.0
+ai_stage_seconds_bucket{le="0.025",route="/query",stage="application_overhead"} 41.0
+ai_stage_seconds_bucket{le="0.05",route="/query",stage="application_overhead"} 41.0
+ai_stage_seconds_bucket{le="0.08",route="/query",stage="application_overhead"} 41.0
+ai_stage_seconds_bucket{le="0.1",route="/query",stage="application_overhead"} 41.0
+ai_stage_seconds_bucket{le="0.2",route="/query",stage="application_overhead"} 41.0
+ai_stage_seconds_bucket{le="0.5",route="/query",stage="application_overhead"} 41.0
+ai_stage_seconds_bucket{le="1.0",route="/query",stage="application_overhead"} 41.0
+ai_stage_seconds_bucket{le="+Inf",route="/query",stage="application_overhead"} 41.0
+ai_stage_seconds_count{route="/query",stage="application_overhead"} 41.0
+ai_stage_seconds_sum{route="/query",stage="application_overhead"} 0.04032653999968261
+ai_stage_seconds_bucket{le="0.005",route="/query",stage="end_to_end"} 0.0
+ai_stage_seconds_bucket{le="0.01",route="/query",stage="end_to_end"} 0.0
+ai_stage_seconds_bucket{le="0.025",route="/query",stage="end_to_end"} 21.0
+ai_stage_seconds_bucket{le="0.05",route="/query",stage="end_to_end"} 27.0
+ai_stage_seconds_bucket{le="0.08",route="/query",stage="end_to_end"} 31.0
+ai_stage_seconds_bucket{le="0.1",route="/query",stage="end_to_end"} 37.0
+ai_stage_seconds_bucket{le="0.2",route="/query",stage="end_to_end"} 41.0
+ai_stage_seconds_bucket{le="0.5",route="/query",stage="end_to_end"} 41.0
+ai_stage_seconds_bucket{le="1.0",route="/query",stage="end_to_end"} 41.0
+ai_stage_seconds_bucket{le="+Inf",route="/query",stage="end_to_end"} 41.0
+ai_stage_seconds_count{route="/query",stage="end_to_end"} 41.0
+ai_stage_seconds_sum{route="/query",stage="end_to_end"} 1.814316749999989
+ai_stage_seconds_bucket{le="0.005",route="/stream",stage="simulated_ttft"} 0.0
+ai_stage_seconds_bucket{le="0.01",route="/stream",stage="simulated_ttft"} 0.0
+ai_stage_seconds_bucket{le="0.025",route="/stream",stage="simulated_ttft"} 1.0
+ai_stage_seconds_bucket{le="0.05",route="/stream",stage="simulated_ttft"} 1.0
+ai_stage_seconds_bucket{le="0.08",route="/stream",stage="simulated_ttft"} 1.0
+ai_stage_seconds_bucket{le="0.1",route="/stream",stage="simulated_ttft"} 1.0
+ai_stage_seconds_bucket{le="0.2",route="/stream",stage="simulated_ttft"} 1.0
+ai_stage_seconds_bucket{le="0.5",route="/stream",stage="simulated_ttft"} 1.0
+ai_stage_seconds_bucket{le="1.0",route="/stream",stage="simulated_ttft"} 1.0
+ai_stage_seconds_bucket{le="+Inf",route="/stream",stage="simulated_ttft"} 1.0
+ai_stage_seconds_count{route="/stream",stage="simulated_ttft"} 1.0
+ai_stage_seconds_sum{route="/stream",stage="simulated_ttft"} 0.013111958999957096
+# HELP ai_stage_seconds_created Measured durations
+# TYPE ai_stage_seconds_created gauge
+ai_stage_seconds_created{route="/query",stage="queue"} 1.7942956053068347e+09
+ai_stage_seconds_created{route="/query",stage="retrieval"} 1.7942956053068736e+09
+ai_stage_seconds_created{route="/query",stage="provider"} 1.7942956053068929e+09
+ai_stage_seconds_created{route="/query",stage="evaluation"} 1.794295605306909e+09
+ai_stage_seconds_created{route="/query",stage="application_overhead"} 1.7942956053069272e+09
+ai_stage_seconds_created{route="/query",stage="end_to_end"} 1.7942956053069465e+09
+ai_stage_seconds_created{route="/stream",stage="simulated_ttft"} 1.7942956059014096e+09
