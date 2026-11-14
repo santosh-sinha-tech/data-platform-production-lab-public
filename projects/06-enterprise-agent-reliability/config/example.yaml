@@ -1,0 +1,4 @@
+{"max_steps": 8, "max_retries": 2, "max_cost": 1.0, "deadline_seconds": 30,
+ "approval_ttl": 60, "backoff_seconds": 0.001,
+ "prices": {"planning": 0.001, "tool": 0.002, "state_write": 0.000001,
+ "audit_byte": 0.000000001, "telemetry_event": 0.0000001}}
