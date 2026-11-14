@@ -39,4 +39,19 @@ Public repository identity, established owner GitHub noreply identity, synthetic
 
 ## Verdict and publication record
 
-**PASS for local educational-reference engineering checks; HOLD for publication because the owner has not authorized a push, merge or release.** This is not a production-secure service. The exact implementation scan is above; final audit/fix commit is rechecked after commit and its SHA is returned in the delivery. No required known security finding is being waived. No push, merge, release or cloud deployment is performed. Scans and manual review do not prove the absence of every leak or vulnerability. Re-run the full final commit range including audit/fix commits before any subsequently authorized publication.
+**PASS for educational-reference feature-branch publication under the owner authorization below.** This is not a production-secure service. No required known security finding is being waived. Scans and manual review do not prove the absence of every leak or vulnerability. Any subsequent publication requires a fresh final-range review.
+
+
+## Authorized feature-branch publication — 2026-11-14 Asia/Kolkata
+
+The owner explicitly requested “please publish” after the local-commit report. Authorization is applied to publishing `feat/06-enterprise-agent-reliability` in the existing public repository only. It does not authorize merging main, changing visibility, force-pushing, creating a tagged GitHub Release or deploying resources.
+
+- Destination verified with GitHub repository metadata: `santosh-sinha-tech/data-platform-production-lab-public`, visibility `public`, default branch `main`; connected owner has push permission.
+- HTTPS fetch refreshed references. Base remains `8dfbd27fb9b18ea08d1cf863c85bdd43db30140e`; candidate source head is `b14796750444f9c7d0d071fa7091e9e1b65aaacd`. Target Project 06 branch was absent before this push.
+- Fresh pinned Gitleaks v8.30.1 full tracked-tree export scan: PASS, exit 0, no leaks (~2.74 MB). Fresh history scan over the exact base-to-candidate range: PASS, exit 0, 14 commits, no leaks. This includes all 12 inherited commits and both Project 06 implementation/fix commits.
+- Fresh final-source tests: 96 passed, 0 failed, 0 skipped. Independent retained-results arithmetic verification passed for all 960 samples, 16 scenario outcomes, quantiles, attempts, retries, duplicate suppression, recovery, approval wait and simulated cost.
+- Fresh pip-audit 2.10.1 check of requirements.txt: 25 packages, zero known findings and zero skips. Dependency hash-lock warning remains; container OS CVE scan is not represented as performed.
+- Full tracked-tree privacy inventory plus prior contextual source review: zero personal home paths, credential-bearing URLs, private-key or phone patterns. One email token was the documented synthetic `.invalid` test address. All 14 candidate commit author/committer identities use the established public owner name and GitHub noreply address. Public environment/dependency/synthetic metadata retained as documented above.
+- `git diff --check` passed across the base-to-candidate range. Projects 01–05 have no changes relative to the implementation parent `ed12c34b91ffbd9690a6c592d1bf9723c60ff9bf`. Runtime data, environments and caches remain excluded.
+- This publication-evidence commit is reviewed and scanned as a staged tree before commit, then included in the final complete history scan before push. Its exact SHA and the post-push remote SHA verification are returned in the publication delivery; this avoids a self-referential report SHA.
+- No further benchmark run was needed: source and dependencies are unchanged during publication, and retained measured results reconciled. Production/security limitations and unexecuted optional checks remain in results/verification_report.md.
