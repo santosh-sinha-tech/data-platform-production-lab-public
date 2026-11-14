@@ -4,8 +4,8 @@ Date: 2026-11-14 Asia/Kolkata. Synthetic local reference only. Python 3.11.14 / 
 
 | Check | Executed command / method | Outcome |
 |---|---|---|
-| Image and quick mode | `sh scripts/quickstart.sh` | PASS; 95 tests and 64/64 quick scenario samples |
-| Full mode | `sh scripts/full.sh` | PASS; 95 tests, 960/960 expected outcomes, 7/7 labeled policy cases |
+| Image and quick mode | `sh scripts/quickstart.sh` | PASS; 95 tests at this checkpoint and 64/64 quick scenario samples |
+| Full mode | `sh scripts/full.sh` | PASS; 95 tests at this checkpoint, 960/960 expected outcomes, 7/7 labeled policy cases |
 | Independent retained-artifact reconciliation | `python scripts/verify_artifacts.py results` in Python 3.11 image | PASS; population, quantiles, throughput, attempt/retry/duplicate/failure/recovery/wait counts and synthetic costs recomputed |
 | Actual HTTP/restart smoke | `docker run --rm -v "$PWD:/lab" project06-agent-lab:local python scripts/verify_live.py` | PASS; live socket, pending approval, cross-tenant 404, independent approval, audit, metrics and persisted server restart |
 | Installed package and CLI | Copy source to writable container /tmp; `pip install --no-deps /tmp/package`; unset PYTHONPATH; `agent-lab --mode quick --output /tmp/installed-output`; `pip check` | PASS; wheel built with pinned setuptools; 64/64 samples outside source tree; no broken requirements |
@@ -18,7 +18,9 @@ Date: 2026-11-14 Asia/Kolkata. Synthetic local reference only. Python 3.11.14 / 
 | Secrets/privacy/staged diff | See repository security audit | Dedicated scanner and exact scope recorded there |
 | Projects 01–05 | `git diff --name-only ed12c34 -- projects/0[1-5]*` | Empty; no earlier project files changed. Root index gains current project links |
 
-Final automated population: **95 passed, 0 failed, 0 skipped**. Earlier runs exposed a JSON comment parsing error, corrected before all passing tests. The first wheel check used a read-only source mount; setuptools could not write egg-info. Repeating from a writable temporary copy passed. These initial failures were not concealed as successful checks. Initial SSH fetch failed host-key verification; an HTTPS fetch of the same public repository succeeded without remote configuration changes.
+Final source re-verification also restricts recovery control to the operator or execution owner and tests that a tenant-local reader cannot resume another owner's operator workflow. The original quick/full command checkpoints passed 95 tests before this additional security test; the final source suite passes 96.
+
+Final automated population: **96 passed, 0 failed, 0 skipped**. Earlier runs exposed a JSON comment parsing error, corrected before all passing tests. The first wheel check used a read-only source mount; setuptools could not write egg-info. Repeating from a writable temporary copy passed. These initial failures were not concealed as successful checks. Initial SSH fetch failed host-key verification; an HTTPS fetch of the same public repository succeeded without remote configuration changes.
 
 Full measured results: 49.12 scenario attempts/s, p50/p95/p99 active latency 6.729/20.135/43.723 ms; 43.75% business workflow success because failures/denials are intentionally injected; 100% expected-outcome match. Recovery: 120/120 samples. Sixty duplicate deliveries suppressed. Retry/replay amplification 1.1739. See benchmark_report.md for denominators, per-run variability and sample population. The API smoke and package installation shared the Docker host during part of the benchmark; resource isolation was not enforced.
 

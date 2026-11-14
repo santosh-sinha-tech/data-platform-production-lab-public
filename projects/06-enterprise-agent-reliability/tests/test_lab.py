@@ -411,3 +411,11 @@ def test_actual_otel_spans(engine):
     assert workflow.attributes["execution.id"] == row["id"]
     assert workflow.context.trace_id == tool.context.trace_id
     assert tool.parent.span_id == workflow.context.span_id
+
+
+def test_reader_cannot_resume_operator_execution(engine):
+    row = engine.submit(OP, Request(key="resume-control", workflow="deploy"))
+    with pytest.raises(Denied):
+        engine.recover(row["id"], READER)
+    own = engine.submit(READER, custom("reader-own", "read_quality"))
+    assert engine.recover(own["id"], READER)["status"] == "succeeded"

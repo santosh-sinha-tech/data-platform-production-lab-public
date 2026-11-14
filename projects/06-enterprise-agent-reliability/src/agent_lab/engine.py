@@ -340,6 +340,8 @@ class Engine:
     def recover(self, eid: str, identity: Identity) -> dict[str, Any]:
         with LOCK:
             row = self.row(eid, identity)
+            if identity.role != "operator" and identity.subject != row["subject"]:
+                raise Denied("operator or execution owner required for recovery")
             self.event(eid, "recovery_requested")
             if row["status"] == "pending_approval":
                 ap = self.db.execute(
