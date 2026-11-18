@@ -1,0 +1,27 @@
+[
+  {
+    "run_id": "20261022T140545Z-c61a3a78",
+    "source_run": "runs/repeatability/20261022T140545675015Z/repetition-1/20261022T140545Z-c61a3a78",
+    "archived_at": "results/repeatability-quick/repetition-1"
+  },
+  {
+    "run_id": "20261022T140605Z-d585c00e",
+    "source_run": "runs/repeatability/20261022T140545675015Z/repetition-2/20261022T140605Z-d585c00e",
+    "archived_at": "results/repeatability-quick/repetition-2"
+  },
+  {
+    "run_id": "20261022T140624Z-7a9031a5",
+    "source_run": "runs/repeatability/20261022T140545675015Z/repetition-3/20261022T140624Z-7a9031a5",
+    "archived_at": "results/repeatability-quick/repetition-3"
+  },
+  {
+    "run_id": "20261022T140643Z-a38cd39a",
+    "source_run": "runs/repeatability/20261022T140545675015Z/repetition-4/20261022T140643Z-a38cd39a",
+    "archived_at": "results/repeatability-quick/repetition-4"
+  },
+  {
+    "run_id": "20261022T140703Z-6f6520b1",
+    "source_run": "runs/repeatability/20261022T140545675015Z/repetition-5/20261022T140703Z-6f6520b1",
+    "archived_at": "results/repeatability-quick/repetition-5"
+  }
+]

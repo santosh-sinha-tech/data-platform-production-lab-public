@@ -1,0 +1,20 @@
+services:
+  api:
+    build: .
+    ports: ["127.0.0.1:${LAB_API_PORT:-8000}:8000"]
+    environment:
+      LAB_DB: /runtime/requests.sqlite
+      LAB_TRACE_PATH: /runtime/traces.jsonl
+    volumes: ["./runtime:/runtime"]
+  prometheus:
+    image: prom/prometheus:v3.2.1@sha256:6927e0919a144aa7616fd0137d4816816d42f6b816de3af269ab065250859a62
+    ports: ["127.0.0.1:${LAB_PROMETHEUS_PORT:-9090}:9090"]
+    command: ["--config.file=/etc/prometheus/prometheus.yml", "--storage.tsdb.retention.time=7d"]
+    volumes: ["./observability/prometheus.yml:/etc/prometheus/prometheus.yml:ro"]
+  grafana:
+    image: grafana/grafana:11.6.0@sha256:62d2b9d20a19714ebfe48d1bb405086081bc602aa053e28cf6d73c7537640dfb
+    ports: ["127.0.0.1:${LAB_GRAFANA_PORT:-3000}:3000"]
+    volumes:
+      - ./observability/datasources.yml:/etc/grafana/provisioning/datasources/local.yml:ro
+      - ./observability/dashboards.yml:/etc/grafana/provisioning/dashboards/local.yml:ro
+      - ./observability/dashboard.json:/var/lib/grafana/dashboards/lab.json:ro

@@ -1,0 +1,360 @@
+{
+  "independent_runs": 5,
+  "config": {
+    "rows": 12000000,
+    "seed": 42,
+    "partitions": 4,
+    "fragmented_files": 256,
+    "compacted_files": 16,
+    "warmups": 2,
+    "iterations": 5,
+    "cores": 2,
+    "partitioned": true,
+    "compute_hour_cost": 0.0,
+    "compaction_seconds": null
+  },
+  "queries": {
+    "full_aggregation": {
+      "fragmented_run_medians": {
+        "median_seconds": 1.2034222920000275,
+        "min_seconds": 1.1305715839999948,
+        "max_seconds": 1.2169817509999916,
+        "iqr_seconds": 0.06109649999996236,
+        "samples_seconds": [
+          1.1305715839999948,
+          1.1456262920000313,
+          1.2169817509999916,
+          1.2067227919999937,
+          1.2034222920000275
+        ],
+        "mean": 1.1806649422000077,
+        "sample_stdev": 0.0395375475058987,
+        "cv_percent": 3.348752562452298
+      },
+      "compacted_run_medians": {
+        "median_seconds": 0.7973803340000245,
+        "min_seconds": 0.7114348340000163,
+        "max_seconds": 0.8150574589999451,
+        "iqr_seconds": 0.0954976660000284,
+        "samples_seconds": [
+          0.7114348340000163,
+          0.7167090839999446,
+          0.812206749999973,
+          0.7973803340000245,
+          0.8150574589999451
+        ],
+        "mean": 0.7705576921999807,
+        "sample_stdev": 0.05203247145010956,
+        "cv_percent": 6.752573100860786
+      },
+      "paired_savings_seconds": [
+        0.4191367499999785,
+        0.4289172080000867,
+        0.4047750010000186,
+        0.40934245799996916,
+        0.3883648330000824
+      ],
+      "median_paired_savings_seconds": 0.40934245799996916,
+      "min_paired_savings_seconds": 0.3883648330000824,
+      "max_paired_savings_seconds": 0.4289172080000867,
+      "paired_savings_sample_stdev": 0.015306019023688503,
+      "ratios": [
+        1.589142856055273,
+        1.5984537067764022,
+        1.4983644878598117,
+        1.513359109255329,
+        1.4764876742267916
+      ],
+      "median_ratio": 1.513359109255329,
+      "runs_favoring_compaction": 5
+    },
+    "selective": {
+      "fragmented_run_medians": {
+        "median_seconds": 0.9722502920000125,
+        "min_seconds": 0.9371709589999853,
+        "max_seconds": 0.9880703749999498,
+        "iqr_seconds": 0.0312531249999779,
+        "samples_seconds": [
+          0.9371709589999853,
+          0.9722502920000125,
+          0.9813209590000156,
+          0.9880703749999498,
+          0.9500678340000377
+        ],
+        "mean": 0.9657760838000001,
+        "sample_stdev": 0.021480201427778556,
+        "cv_percent": 2.224138885616351
+      },
+      "compacted_run_medians": {
+        "median_seconds": 0.5615581670000438,
+        "min_seconds": 0.49945966700002487,
+        "max_seconds": 0.5699010840000369,
+        "iqr_seconds": 0.008776124999997137,
+        "samples_seconds": [
+          0.49945966700002487,
+          0.5615581670000438,
+          0.5699010840000369,
+          0.56247941700002,
+          0.5537032920000229
+        ],
+        "mean": 0.5494203254000297,
+        "sample_stdev": 0.028512013852121928,
+        "cv_percent": 5.189471982377517
+      },
+      "paired_savings_seconds": [
+        0.4377112919999604,
+        0.41069212499996866,
+        0.4114198749999787,
+        0.42559095799992974,
+        0.3963645420000148
+      ],
+      "median_paired_savings_seconds": 0.4114198749999787,
+      "min_paired_savings_seconds": 0.3963645420000148,
+      "max_paired_savings_seconds": 0.4377112919999604,
+      "paired_savings_sample_stdev": 0.01579110626562602,
+      "ratios": [
+        1.8763696468806932,
+        1.7313438734120248,
+        1.7219145331542343,
+        1.7566338343006684,
+        1.7158428489169943
+      ],
+      "median_ratio": 1.7313438734120248,
+      "runs_favoring_compaction": 5
+    },
+    "partition_pruned": {
+      "fragmented_run_medians": {
+        "median_seconds": 0.37505912500000704,
+        "min_seconds": 0.3658877919999668,
+        "max_seconds": 0.37795187500000793,
+        "iqr_seconds": 0.004723248999994212,
+        "samples_seconds": [
+          0.3728376669999989,
+          0.37505912500000704,
+          0.3775609159999931,
+          0.37795187500000793,
+          0.3658877919999668
+        ],
+        "mean": 0.3738594749999947,
+        "sample_stdev": 0.004911196005070871,
+        "cv_percent": 1.3136475958168348
+      },
+      "compacted_run_medians": {
+        "median_seconds": 0.23261462499999652,
+        "min_seconds": 0.22683358400001907,
+        "max_seconds": 0.23848658400001455,
+        "iqr_seconds": 0.01014462599999888,
+        "samples_seconds": [
+          0.23848658400001455,
+          0.22714412499999526,
+          0.23261462499999652,
+          0.23728875099999414,
+          0.22683358400001907
+        ],
+        "mean": 0.2324735338000039,
+        "sample_stdev": 0.00546750921402067,
+        "cv_percent": 2.3518845886019637
+      },
+      "paired_savings_seconds": [
+        0.13435108299998433,
+        0.1479150000000118,
+        0.14494629099999656,
+        0.1406631240000138,
+        0.13905420799994772
+      ],
+      "median_paired_savings_seconds": 0.1406631240000138,
+      "min_paired_savings_seconds": 0.13435108299998433,
+      "max_paired_savings_seconds": 0.1479150000000118,
+      "paired_savings_sample_stdev": 0.005261971442042815,
+      "ratios": [
+        1.5633485990976168,
+        1.6511944783956656,
+        1.6231177037987132,
+        1.5927930565912805,
+        1.6130230169088895
+      ],
+      "median_ratio": 1.6130230169088895,
+      "runs_favoring_compaction": 5
+    }
+  },
+  "fairness_audits": [
+    {
+      "run_id": "20261022T140742Z-566049fe",
+      "plans": {
+        "full_aggregation": {
+          "equal_after_normalization": true,
+          "sha256": "e97c60ee5b8f022e6c886b54138ef9590e8e914ddeb4230721fac90db6491daf"
+        },
+        "selective": {
+          "equal_after_normalization": true,
+          "sha256": "400a8f28e3511c6968352c4a73ec4d3f689e781e5579d5e4ca74baae33f64864"
+        },
+        "partition_pruned": {
+          "equal_after_normalization": true,
+          "sha256": "045964e76cfabdbcf8af1506b9843c2987f42b208ba6f286f26f8ec8b95c21e4"
+        }
+      },
+      "file_counts": {
+        "fragmented": 256,
+        "compacted": 16
+      },
+      "parquet_bytes": {
+        "fragmented": 311016365,
+        "compacted": 293014730
+      },
+      "byte_ratio": 1.0614359387324999,
+      "scan_partition_count_proxy": {
+        "full_aggregation/fragmented": 11,
+        "full_aggregation/compacted": 3,
+        "selective/fragmented": 11,
+        "selective/compacted": 3,
+        "partition_pruned/fragmented": 3,
+        "partition_pruned/compacted": 2
+      },
+      "compaction_seconds": 14.781749630999997
+    },
+    {
+      "run_id": "20261022T140909Z-c1c9f575",
+      "plans": {
+        "full_aggregation": {
+          "equal_after_normalization": true,
+          "sha256": "e97c60ee5b8f022e6c886b54138ef9590e8e914ddeb4230721fac90db6491daf"
+        },
+        "selective": {
+          "equal_after_normalization": true,
+          "sha256": "400a8f28e3511c6968352c4a73ec4d3f689e781e5579d5e4ca74baae33f64864"
+        },
+        "partition_pruned": {
+          "equal_after_normalization": true,
+          "sha256": "045964e76cfabdbcf8af1506b9843c2987f42b208ba6f286f26f8ec8b95c21e4"
+        }
+      },
+      "file_counts": {
+        "fragmented": 256,
+        "compacted": 16
+      },
+      "parquet_bytes": {
+        "fragmented": 311016365,
+        "compacted": 293014730
+      },
+      "byte_ratio": 1.0614359387324999,
+      "scan_partition_count_proxy": {
+        "full_aggregation/fragmented": 11,
+        "full_aggregation/compacted": 3,
+        "selective/fragmented": 11,
+        "selective/compacted": 3,
+        "partition_pruned/fragmented": 3,
+        "partition_pruned/compacted": 2
+      },
+      "compaction_seconds": 14.27682296499998
+    },
+    {
+      "run_id": "20261022T141033Z-7dfb2465",
+      "plans": {
+        "full_aggregation": {
+          "equal_after_normalization": true,
+          "sha256": "e97c60ee5b8f022e6c886b54138ef9590e8e914ddeb4230721fac90db6491daf"
+        },
+        "selective": {
+          "equal_after_normalization": true,
+          "sha256": "400a8f28e3511c6968352c4a73ec4d3f689e781e5579d5e4ca74baae33f64864"
+        },
+        "partition_pruned": {
+          "equal_after_normalization": true,
+          "sha256": "045964e76cfabdbcf8af1506b9843c2987f42b208ba6f286f26f8ec8b95c21e4"
+        }
+      },
+      "file_counts": {
+        "fragmented": 256,
+        "compacted": 16
+      },
+      "parquet_bytes": {
+        "fragmented": 311016365,
+        "compacted": 293014730
+      },
+      "byte_ratio": 1.0614359387324999,
+      "scan_partition_count_proxy": {
+        "full_aggregation/fragmented": 11,
+        "full_aggregation/compacted": 3,
+        "selective/fragmented": 11,
+        "selective/compacted": 3,
+        "partition_pruned/fragmented": 3,
+        "partition_pruned/compacted": 2
+      },
+      "compaction_seconds": 15.158522465999965
+    },
+    {
+      "run_id": "20261022T141201Z-07802126",
+      "plans": {
+        "full_aggregation": {
+          "equal_after_normalization": true,
+          "sha256": "e97c60ee5b8f022e6c886b54138ef9590e8e914ddeb4230721fac90db6491daf"
+        },
+        "selective": {
+          "equal_after_normalization": true,
+          "sha256": "400a8f28e3511c6968352c4a73ec4d3f689e781e5579d5e4ca74baae33f64864"
+        },
+        "partition_pruned": {
+          "equal_after_normalization": true,
+          "sha256": "045964e76cfabdbcf8af1506b9843c2987f42b208ba6f286f26f8ec8b95c21e4"
+        }
+      },
+      "file_counts": {
+        "fragmented": 256,
+        "compacted": 16
+      },
+      "parquet_bytes": {
+        "fragmented": 311016365,
+        "compacted": 293014730
+      },
+      "byte_ratio": 1.0614359387324999,
+      "scan_partition_count_proxy": {
+        "full_aggregation/fragmented": 11,
+        "full_aggregation/compacted": 3,
+        "selective/fragmented": 11,
+        "selective/compacted": 3,
+        "partition_pruned/fragmented": 3,
+        "partition_pruned/compacted": 2
+      },
+      "compaction_seconds": 16.068048215999966
+    },
+    {
+      "run_id": "20261022T141330Z-377e3936",
+      "plans": {
+        "full_aggregation": {
+          "equal_after_normalization": true,
+          "sha256": "e97c60ee5b8f022e6c886b54138ef9590e8e914ddeb4230721fac90db6491daf"
+        },
+        "selective": {
+          "equal_after_normalization": true,
+          "sha256": "400a8f28e3511c6968352c4a73ec4d3f689e781e5579d5e4ca74baae33f64864"
+        },
+        "partition_pruned": {
+          "equal_after_normalization": true,
+          "sha256": "045964e76cfabdbcf8af1506b9843c2987f42b208ba6f286f26f8ec8b95c21e4"
+        }
+      },
+      "file_counts": {
+        "fragmented": 256,
+        "compacted": 16
+      },
+      "parquet_bytes": {
+        "fragmented": 311016365,
+        "compacted": 293014730
+      },
+      "byte_ratio": 1.0614359387324999,
+      "scan_partition_count_proxy": {
+        "full_aggregation/fragmented": 11,
+        "full_aggregation/compacted": 3,
+        "selective/fragmented": 11,
+        "selective/compacted": 3,
+        "partition_pruned/fragmented": 3,
+        "partition_pruned/compacted": 2
+      },
+      "compaction_seconds": 14.697288049000008
+    }
+  ],
+  "aggregation": "descriptive statistics across per-run medians; samples not pooled",
+  "plan_normalization": "expression IDs, plan IDs and file URIs; display-truncated DataFilters restored from full, equality-checked executed scan metadata; original plans retained",
+  "limitations": "Fresh JVM per run; sequential runs on one host. OS caches not evicted. Fixed query order; alternating layout order. No statistical significance or causal file-count-only claim."
+}

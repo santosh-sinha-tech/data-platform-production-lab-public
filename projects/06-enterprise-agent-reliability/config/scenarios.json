@@ -1,0 +1,258 @@
+[
+  {
+    "code": "A",
+    "label": "Successful multi-step",
+    "expected": "succeeded",
+    "identity": "operator",
+    "request": {
+      "key": "A",
+      "workflow": "standard"
+    },
+    "control": null,
+    "config": {}
+  },
+  {
+    "code": "B",
+    "label": "Unauthorized tool",
+    "expected": "denied",
+    "identity": "reader",
+    "request": {
+      "key": "B",
+      "workflow": "custom",
+      "actions": [
+        {
+          "tool": "create_ticket"
+        }
+      ]
+    },
+    "control": null,
+    "config": {}
+  },
+  {
+    "code": "C",
+    "label": "Approval granted",
+    "expected": "succeeded",
+    "identity": "operator",
+    "request": {
+      "key": "C",
+      "workflow": "deploy"
+    },
+    "control": "approve",
+    "config": {}
+  },
+  {
+    "code": "D",
+    "label": "Approval rejected",
+    "expected": "failed",
+    "identity": "operator",
+    "request": {
+      "key": "D",
+      "workflow": "deploy"
+    },
+    "control": "reject",
+    "config": {}
+  },
+  {
+    "code": "E",
+    "label": "Approval expired",
+    "expected": "failed",
+    "identity": "operator",
+    "request": {
+      "key": "E",
+      "workflow": "deploy"
+    },
+    "control": "expire",
+    "config": {}
+  },
+  {
+    "code": "F",
+    "label": "Duplicate delivery",
+    "expected": "succeeded",
+    "identity": "operator",
+    "request": {
+      "key": "F",
+      "workflow": "standard"
+    },
+    "control": "duplicate",
+    "config": {}
+  },
+  {
+    "code": "G",
+    "label": "Tool timeout",
+    "expected": "failed",
+    "identity": "operator",
+    "request": {
+      "key": "G",
+      "workflow": "custom",
+      "actions": [
+        {
+          "tool": "read_quality",
+          "fault": "timeout"
+        }
+      ]
+    },
+    "control": null,
+    "config": {}
+  },
+  {
+    "code": "H",
+    "label": "Transient recovery",
+    "expected": "succeeded",
+    "identity": "operator",
+    "request": {
+      "key": "H",
+      "workflow": "custom",
+      "actions": [
+        {
+          "tool": "read_quality",
+          "fault": "transient"
+        }
+      ]
+    },
+    "control": null,
+    "config": {}
+  },
+  {
+    "code": "I",
+    "label": "Uncertain write reconciliation",
+    "expected": "succeeded",
+    "identity": "operator",
+    "request": {
+      "key": "I",
+      "workflow": "custom",
+      "actions": [
+        {
+          "tool": "rerun_pipeline",
+          "fault": "unknown"
+        }
+      ]
+    },
+    "control": "approve_reconcile",
+    "config": {}
+  },
+  {
+    "code": "J",
+    "label": "Process restart",
+    "expected": "succeeded",
+    "identity": "operator",
+    "request": {
+      "key": "J",
+      "workflow": "custom",
+      "actions": [
+        {
+          "tool": "create_ticket",
+          "fault": "interrupt"
+        }
+      ]
+    },
+    "control": null,
+    "config": {}
+  },
+  {
+    "code": "K",
+    "label": "Cost budget",
+    "expected": "failed",
+    "identity": "operator",
+    "request": {
+      "key": "K",
+      "workflow": "custom",
+      "actions": [
+        {
+          "tool": "read_quality",
+          "fault": "transient"
+        }
+      ]
+    },
+    "control": null,
+    "config": {
+      "max_cost": 0.004
+    }
+  },
+  {
+    "code": "L",
+    "label": "Malicious tool output",
+    "expected": "succeeded",
+    "identity": "operator",
+    "request": {
+      "key": "L",
+      "workflow": "custom",
+      "actions": [
+        {
+          "tool": "get_runbook",
+          "fault": "malicious"
+        }
+      ]
+    },
+    "control": null,
+    "config": {}
+  },
+  {
+    "code": "M",
+    "label": "Cross-tenant approval",
+    "expected": "denied",
+    "identity": "operator",
+    "request": {
+      "key": "M",
+      "workflow": "deploy"
+    },
+    "control": "cross_tenant",
+    "config": {}
+  },
+  {
+    "code": "N",
+    "label": "Invalid response",
+    "expected": "failed",
+    "identity": "operator",
+    "request": {
+      "key": "N",
+      "workflow": "custom",
+      "actions": [
+        {
+          "tool": "read_quality",
+          "fault": "invalid"
+        }
+      ]
+    },
+    "control": null,
+    "config": {}
+  },
+  {
+    "code": "O",
+    "label": "Partial workflow failure",
+    "expected": "failed",
+    "identity": "operator",
+    "request": {
+      "key": "O",
+      "workflow": "custom",
+      "actions": [
+        {
+          "tool": "create_ticket"
+        },
+        {
+          "tool": "read_quality",
+          "fault": "permanent"
+        }
+      ]
+    },
+    "control": "compensate",
+    "config": {}
+  },
+  {
+    "code": "P",
+    "label": "Permanent failure",
+    "expected": "failed",
+    "identity": "operator",
+    "request": {
+      "key": "P",
+      "workflow": "custom",
+      "actions": [
+        {
+          "tool": "read_quality",
+          "fault": "permanent"
+        }
+      ]
+    },
+    "control": null,
+    "config": {}
+  }
+]

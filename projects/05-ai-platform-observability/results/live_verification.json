@@ -1,0 +1,117 @@
+{
+  "api_health": true,
+  "healthy": {
+    "status": 200,
+    "cost": 0.00016,
+    "trace_id": "be7373102f2ebf7511d7d7598bd04101",
+    "quality": {
+      "correct": true,
+      "grounded": true,
+      "citation": true,
+      "abstention": true,
+      "passed": true
+    }
+  },
+  "latency_spike": {
+    "status": 200,
+    "cost": 0.00016,
+    "trace_id": "64baa07950f39cff0a2956bd16c7519b",
+    "quality": {
+      "correct": true,
+      "grounded": true,
+      "citation": true,
+      "abstention": true,
+      "passed": true
+    }
+  },
+  "timeout": {
+    "status": 503,
+    "cost": 0.00030000000000000003,
+    "trace_id": "c712ef42e366ff602bf2b16453639619",
+    "quality": null
+  },
+  "retry_amplification": {
+    "status": 200,
+    "cost": 0.00036,
+    "trace_id": "5acf4147ae898e427125047f30f07cd4",
+    "quality": {
+      "correct": true,
+      "grounded": true,
+      "citation": true,
+      "abstention": true,
+      "passed": true
+    }
+  },
+  "fallback": {
+    "status": 200,
+    "cost": 0.00084,
+    "trace_id": "cba6a941e52657ed9928f06b984f868d",
+    "quality": {
+      "correct": true,
+      "grounded": true,
+      "citation": true,
+      "abstention": true,
+      "passed": true
+    }
+  },
+  "unsupported": {
+    "status": 200,
+    "cost": 0.00016,
+    "trace_id": "54a11674cfcccf9437684275e11e06e0",
+    "quality": {
+      "correct": true,
+      "grounded": false,
+      "citation": false,
+      "abstention": false,
+      "passed": false
+    }
+  },
+  "citation_degradation": {
+    "status": 200,
+    "cost": 0.00016,
+    "trace_id": "5be58ac1bf7d88f7fbfe3858a8e18698",
+    "quality": {
+      "correct": true,
+      "grounded": true,
+      "citation": false,
+      "abstention": true,
+      "passed": false
+    }
+  },
+  "tenant_cost_spike": {
+    "status": 200,
+    "cost": 0.00306,
+    "trace_id": "12e1c3c94976b812cf8cb8e8b41c0536",
+    "quality": {
+      "correct": true,
+      "grounded": true,
+      "citation": true,
+      "abstention": true,
+      "passed": true
+    }
+  },
+  "mixed_incident": {
+    "status": 503,
+    "cost": 0.00030000000000000003,
+    "trace_id": "0ca193361e9963c8361242f1d032274d",
+    "quality": null
+  },
+  "recovery": {
+    "status": 200,
+    "cost": 0.00016,
+    "trace_id": "fee88dd79992d2e1dd7c1cc8f612c870",
+    "quality": {
+      "correct": true,
+      "grounded": true,
+      "citation": true,
+      "abstention": true,
+      "passed": true
+    }
+  },
+  "tenant_isolation": true,
+  "metrics": true,
+  "stream": true,
+  "prometheus_scrape": true,
+  "prometheus_real_requests": true,
+  "grafana_database": true
+}

@@ -1,0 +1,10 @@
+[
+ {"id":"supported","reference":"retention=30","claim":"retention=30","evidence":["retention=30"],"citation":"doc1","valid_citation":"doc1","fresh":true,"conflict":false,"should_abstain":false,"abstained":false},
+ {"id":"incorrect","reference":"retention=30","claim":"retention=90","evidence":["retention=30"],"citation":"doc1","valid_citation":"doc1","fresh":true,"conflict":false,"should_abstain":false,"abstained":false},
+ {"id":"unsupported","reference":"retention=30","claim":"retention=30","evidence":["region=local"],"citation":"doc1","valid_citation":"doc1","fresh":true,"conflict":false,"should_abstain":true,"abstained":false},
+ {"id":"wrong_citation","reference":"retention=30","claim":"retention=30","evidence":["retention=30"],"citation":"doc2","valid_citation":"doc1","fresh":true,"conflict":false,"should_abstain":false,"abstained":false},
+ {"id":"missing_evidence","reference":"retention=30","claim":"retention=30","evidence":[],"citation":null,"valid_citation":null,"fresh":true,"conflict":false,"should_abstain":true,"abstained":false},
+ {"id":"contradictory","reference":"retention=30","claim":"retention=30","evidence":["retention=30","retention=90"],"citation":"doc1","valid_citation":"doc1","fresh":true,"conflict":true,"should_abstain":true,"abstained":false},
+ {"id":"stale","reference":"retention=30","claim":"retention=30","evidence":["retention=30"],"citation":"doc1","valid_citation":"doc1","fresh":false,"conflict":false,"should_abstain":true,"abstained":false},
+ {"id":"abstention","reference":"retention=30","claim":null,"evidence":[],"citation":null,"valid_citation":null,"fresh":true,"conflict":false,"should_abstain":true,"abstained":true}
+]

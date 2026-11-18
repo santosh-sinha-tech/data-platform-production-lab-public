@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+cd "$(dirname "$0")/.."
+export PYTHONPATH=src GATEWAY_SERVE=1
+exec python -m uvicorn gateway.app:app --host 127.0.0.1 --port 8000 --workers 1 --no-access-log

@@ -1,0 +1,12 @@
+{
+  "rows": 12000000,
+  "seed": 42,
+  "partitions": 4,
+  "fragmented_files": 256,
+  "compacted_files": 16,
+  "warmups": 2,
+  "iterations": 5,
+  "cores": 2,
+  "partitioned": true,
+  "compute_hour_cost": 0.0
+}

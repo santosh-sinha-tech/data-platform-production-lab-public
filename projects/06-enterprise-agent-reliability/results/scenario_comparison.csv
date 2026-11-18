@@ -1,0 +1,17 @@
+code,scenario,expected,actual,samples,passes
+A,Successful multi-step,succeeded,succeeded,60,60
+B,Unauthorized tool,denied,denied,60,60
+C,Approval granted,succeeded,succeeded,60,60
+D,Approval rejected,failed,failed,60,60
+E,Approval expired,failed,failed,60,60
+F,Duplicate delivery,succeeded,succeeded,60,60
+G,Tool timeout,failed,failed,60,60
+H,Transient recovery,succeeded,succeeded,60,60
+I,Uncertain write reconciliation,succeeded,succeeded,60,60
+J,Process restart,succeeded,succeeded,60,60
+K,Cost budget,failed,failed,60,60
+L,Malicious tool output,succeeded,succeeded,60,60
+M,Cross-tenant approval,denied,denied,60,60
+N,Invalid response,failed,failed,60,60
+O,Partial workflow failure,failed,failed,60,60
+P,Permanent failure,failed,failed,60,60
