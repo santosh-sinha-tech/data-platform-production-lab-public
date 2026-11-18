@@ -74,3 +74,8 @@ The user explicitly authorized pushing this feature branch and sharing the publi
 - This audit-result update is documentation only. Review and scan the commit containing it, in addition to the candidate range, immediately before pushing. The exact final head SHA is recorded in the verified publication confirmation; no self-referential commit SHA is fabricated here.
 
 **Verdict: PASS for authorized public reference-implementation publication, subject to the final audit-record commit passing the same history/tree scan.** This is not production-readiness certification. All stated dataset, advisory and evaluation limitations remain applicable.
+
+
+## Main integration authorization — 2026-11-18
+
+The owner now explicitly authorizes merging Projects 02–06 into main, superseding the earlier feature-branch-only restriction for this consolidation. Fresh cross-project tests, retained-artifact checks, dependency/privacy review and full comparison-range/staged-tree secret scans are documented in [main integration audit](main-integration-02-06.md). Application source and measured results for this project are unchanged. Exact final integration/merge SHAs are verified in delivery; production limitations and unexecuted optional checks remain in force.

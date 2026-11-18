@@ -65,3 +65,8 @@ Owner/repository identity `Santosh Sinha` / `santosh-sinha-tech`, established Gi
 - This documentation commit is exported and scanned before commit, then the complete final `origin/main..HEAD` range and all reachable history are rescanned before publication. The final audit commit SHA cannot be self-referenced here; it is identified and verified against the remote branch in delivery.
 - Public project URL: `https://github.com/santosh-sinha-tech/data-platform-production-lab-public/tree/feat/04-enterprise-llm-gateway/projects/04-enterprise-llm-gateway`.
 - Publication verdict: **PASS for the authorized public feature-branch publication**. Production IAM, distributed quotas, DLP and real-provider exactly-once processing remain outside this reference's guarantees. No merge, release tag, or deployed service is included.
+
+
+## Main integration authorization — 2026-11-18
+
+The owner now explicitly authorizes merging Projects 02–06 into main, superseding the earlier feature-branch-only restriction for this consolidation. Fresh cross-project tests, retained-artifact checks, dependency/privacy review and full comparison-range/staged-tree secret scans are documented in [main integration audit](main-integration-02-06.md). Application source and measured results for this project are unchanged. Exact final integration/merge SHAs are verified in delivery; production limitations and unexecuted optional checks remain in force.

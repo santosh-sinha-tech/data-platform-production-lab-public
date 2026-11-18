@@ -11,6 +11,10 @@ Every project follows the repository-wide [security and privacy policy](../../SE
 | 05 — AI Platform Observability | [Project audit record](05-ai-platform-observability.md); [verification](../../projects/05-ai-platform-observability/results/verification_report.md) | Python 3.11 tests, quick/full synthetic experiments, artifact reconciliation and live monitoring stack executed. Dedicated final tree/history evidence is in the audit record. | Owner authorized feature-branch publication after a fresh tree/history/privacy/dependency audit. Local reference only; production limits remain. No main merge authorized. |
 | 06 — Enterprise Agent Reliability & Governance | [Project audit record](06-enterprise-agent-reliability.md); [executed verification](../../projects/06-enterprise-agent-reliability/results/verification_report.md) | Python 3.11 tests, quick/full failure experiments, arithmetic reconciliation, live API/restart and installed CLI executed. | Owner authorized feature-branch publication after fresh final tree/history/privacy/dependency checks. Final scanner scope and limits in audit record; simulated single-process lab, no main merge. |
 
+## Consolidation into main
+
+The owner authorized merging Projects 02–06 into main on 2026-11-18. See the [fresh integration audit](main-integration-02-06.md) for complete base/head scope, tests, one optional skipped dense test, dependency remediation, privacy review and publication gates. Project 02 now has a [current project audit](02-small-files-performance-lab.md); earlier table entries retain their historical scope. Project 01 remains unchanged.
+
 ## New project checklist
 
 1. Read `SECURITY.md` and `AGENTS.md` before implementation.

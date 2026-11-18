@@ -4,6 +4,8 @@ Engineering portfolio of production-oriented reference implementations for data 
 
 ## Data Platform Production Lab
 
+The default `main` branch is the portfolio of completed reference labs; feature branches are used for development and review.
+
 Each project explores a distinct production engineering question. All projects sit alongside one another under `projects/`, with their own implementation, documentation, tests, and measured evidence.
 
 ```text

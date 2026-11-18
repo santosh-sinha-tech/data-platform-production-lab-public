@@ -86,3 +86,8 @@ docker compose run --rm lab python -m small_files.repeatability --config config/
 ```
 
 Cold-cache experiments, host-activity isolation, more independent runs, randomized query order, query-level runtime-metric attribution, distributed/cloud/object-store validation and recurring-maintenance billing analysis remain unexecuted. The optional 40-million-row large config remains unexecuted. No push or publication was performed.
+
+
+## Main integration review — 2026-11-18
+
+The owner authorized merging the completed project into main alongside Projects 03–06. A fresh vulnerability check found a test-only pytest 8.3.5 advisory; the pin was updated to 9.2.0. All 37 tests passed, including real Spark equivalence checks; pip check and the six-package post-fix advisory scan passed. No benchmark data or measured results changed. Current complete release scope, scanner identity, privacy/metadata review and merge gates are recorded in [Project 02 audit](../../../docs/security-audits/02-small-files-performance-lab.md) and [main integration audit](../../../docs/security-audits/main-integration-02-06.md). Earlier sections remain historical evidence.

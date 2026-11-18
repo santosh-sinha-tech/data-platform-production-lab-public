@@ -55,3 +55,8 @@ The owner explicitly requested “please publish” after the local-commit repor
 - `git diff --check` passed across the base-to-candidate range. Projects 01–05 have no changes relative to the implementation parent `ed12c34b91ffbd9690a6c592d1bf9723c60ff9bf`. Runtime data, environments and caches remain excluded.
 - This publication-evidence commit is reviewed and scanned as a staged tree before commit, then included in the final complete history scan before push. Its exact SHA and the post-push remote SHA verification are returned in the publication delivery; this avoids a self-referential report SHA.
 - No further benchmark run was needed: source and dependencies are unchanged during publication, and retained measured results reconciled. Production/security limitations and unexecuted optional checks remain in results/verification_report.md.
+
+
+## Main integration authorization — 2026-11-18
+
+The owner now explicitly authorizes merging Projects 02–06 into main, superseding the earlier feature-branch-only restriction for this consolidation. Fresh cross-project tests, retained-artifact checks, dependency/privacy review and full comparison-range/staged-tree secret scans are documented in [main integration audit](main-integration-02-06.md). Application source and measured results for this project are unchanged. Exact final integration/merge SHAs are verified in delivery; production limitations and unexecuted optional checks remain in force.

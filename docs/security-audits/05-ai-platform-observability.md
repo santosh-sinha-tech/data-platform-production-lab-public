@@ -82,3 +82,8 @@ Implementation and final-snapshot outcomes are added only after their checks exe
 - Whitespace, unchanged Projects 01–04, all main-to-head author/committer identities and exact changed-file scope reviewed. Only this audit, its index entry and Project 05's verification wording change for publication; source, configuration and measured experiment values remain unchanged.
 - This authorization/evidence update is staged, reviewed and scanned as a complete index snapshot before committing. The complete main-to-final-head history, including this commit, is scanned again before pushing. Exact final head, remote-SHA equality and public visibility are verified after pushing and retained in the ignored local publication receipt and final delivery; this report cannot embed its own commit SHA.
 - Verdict: approved for the authorized public **local-reference feature branch** once the final update scans pass. Production deployment remains NOT READY. No new scanner suppressions or scope reductions.
+
+
+## Main integration authorization — 2026-11-18
+
+The owner now explicitly authorizes merging Projects 02–06 into main, superseding the earlier feature-branch-only restriction for this consolidation. Fresh cross-project tests, retained-artifact checks, dependency/privacy review and full comparison-range/staged-tree secret scans are documented in [main integration audit](main-integration-02-06.md). Application source and measured results for this project are unchanged. Exact final integration/merge SHAs are verified in delivery; production limitations and unexecuted optional checks remain in force.
