@@ -1,0 +1,18 @@
+# TYPE mcp_lab_scenario_trials gauge
+mcp_lab_scenario_trials 42
+# TYPE mcp_lab_policy_denial_ratio gauge
+mcp_lab_policy_denial_ratio 0.6428571428571429
+# TYPE mcp_lab_outcomes gauge
+mcp_lab_outcomes{outcome="approval_expired"} 3
+mcp_lab_outcomes{outcome="approval_replay"} 3
+mcp_lab_outcomes{outcome="credential_audience"} 3
+mcp_lab_outcomes{outcome="definition_drift"} 6
+mcp_lab_outcomes{outcome="duplicate"} 3
+mcp_lab_outcomes{outcome="ok"} 3
+mcp_lab_outcomes{outcome="quarantined"} 3
+mcp_lab_outcomes{outcome="server_unavailable"} 3
+mcp_lab_outcomes{outcome="tenant_mismatch"} 3
+mcp_lab_outcomes{outcome="timeout"} 3
+mcp_lab_outcomes{outcome="unapproved_server"} 3
+mcp_lab_outcomes{outcome="unauthorized_tool"} 3
+mcp_lab_outcomes{outcome="unknown"} 3
