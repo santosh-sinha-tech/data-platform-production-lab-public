@@ -1,0 +1,198 @@
+{
+  "protocol": "2025-11-25",
+  "servers": {
+    "operations": {
+      "trust": "approved",
+      "version": 1,
+      "owner": "platform",
+      "environment": "lab",
+      "transport": "stdio",
+      "tools": [
+        "pipeline_status",
+        "data_contract",
+        "incident_runbook",
+        "create_ticket",
+        "rerun_pipeline",
+        "change_config"
+      ]
+    },
+    "unreviewed": {
+      "trust": "pending",
+      "version": 1,
+      "owner": "platform",
+      "environment": "lab",
+      "transport": "stdio",
+      "tools": [
+        "pipeline_status",
+        "data_contract",
+        "incident_runbook",
+        "create_ticket",
+        "rerun_pipeline",
+        "change_config"
+      ]
+    }
+  },
+  "roles": {
+    "reader": [
+      "read"
+    ],
+    "operator": [
+      "read",
+      "write",
+      "high"
+    ]
+  },
+  "tools": {
+    "pipeline_status": {
+      "description": "Read synthetic pipeline status.",
+      "risk": "read",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "target": {
+            "type": "string",
+            "enum": [
+              "alpha/orders",
+              "beta/orders"
+            ]
+          }
+        },
+        "required": [
+          "target"
+        ],
+        "additionalProperties": false
+      },
+      "roles": [
+        "reader",
+        "operator"
+      ]
+    },
+    "data_contract": {
+      "description": "Retrieve a synthetic data contract.",
+      "risk": "read",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "target": {
+            "type": "string",
+            "enum": [
+              "alpha/orders",
+              "beta/orders"
+            ]
+          }
+        },
+        "required": [
+          "target"
+        ],
+        "additionalProperties": false
+      },
+      "roles": [
+        "operator"
+      ]
+    },
+    "incident_runbook": {
+      "description": "Read a synthetic incident runbook index.",
+      "risk": "read",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "target": {
+            "type": "string",
+            "enum": [
+              "alpha/orders",
+              "beta/orders"
+            ]
+          }
+        },
+        "required": [
+          "target"
+        ],
+        "additionalProperties": false
+      },
+      "roles": [
+        "operator"
+      ]
+    },
+    "create_ticket": {
+      "description": "Create a simulated incident ticket.",
+      "risk": "write",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "target": {
+            "type": "string",
+            "enum": [
+              "alpha/orders",
+              "beta/orders"
+            ]
+          }
+        },
+        "required": [
+          "target"
+        ],
+        "additionalProperties": false
+      },
+      "roles": [
+        "operator"
+      ]
+    },
+    "rerun_pipeline": {
+      "description": "Rerun a simulated pipeline.",
+      "risk": "high",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "target": {
+            "type": "string",
+            "enum": [
+              "alpha/orders",
+              "beta/orders"
+            ]
+          }
+        },
+        "required": [
+          "target"
+        ],
+        "additionalProperties": false
+      },
+      "roles": [
+        "operator"
+      ]
+    },
+    "change_config": {
+      "description": "Change a simulated production setting.",
+      "risk": "high",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "target": {
+            "type": "string",
+            "enum": [
+              "alpha/orders",
+              "beta/orders"
+            ]
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "active",
+              "paused"
+            ]
+          }
+        },
+        "required": [
+          "target",
+          "mode"
+        ],
+        "additionalProperties": false
+      },
+      "roles": [
+        "operator"
+      ]
+    }
+  },
+  "targets": {
+    "alpha/orders": "alpha",
+    "beta/orders": "beta"
+  }
+}

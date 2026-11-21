@@ -1,0 +1,136 @@
+{
+  "scenario_trials": 42,
+  "scenario_passes": 42,
+  "policy_denials": 27,
+  "policy_denial_rate": 0.6428571428571429,
+  "drift_detected": 6,
+  "drift_trials": 6,
+  "prevention_passes": 30,
+  "prevention_trials": 30,
+  "complete_audits": 42,
+  "recovery": {
+    "unauthorized_tool": 3,
+    "ok": 3,
+    "duplicate": 3
+  },
+  "outcomes": {
+    "approval_expired": 3,
+    "approval_replay": 3,
+    "credential_audience": 3,
+    "definition_drift": 6,
+    "duplicate": 3,
+    "ok": 3,
+    "quarantined": 3,
+    "server_unavailable": 3,
+    "tenant_mismatch": 3,
+    "timeout": 3,
+    "unapproved_server": 3,
+    "unauthorized_tool": 3,
+    "unknown": 3
+  },
+  "approval_wait_ms": {
+    "n": 3,
+    "mean": 1000.0,
+    "min": 1000.0,
+    "max": 1000.0,
+    "p50": 1000.0,
+    "p95": 1000.0,
+    "p99": 1000.0
+  },
+  "mode": "full",
+  "protocol": "2025-11-25",
+  "sdk": "1.30.0",
+  "environment": {
+    "os": "Darwin",
+    "architecture": "arm64",
+    "python": "3.13.3",
+    "sqlite": "3.49.1"
+  },
+  "benchmark_concurrency": 4,
+  "benchmark_runs": [
+    {
+      "repeat": 1,
+      "requests": 300,
+      "seconds": 0.6967827499611303,
+      "calls_per_second": 430.55026838241236,
+      "total_ms": {
+        "n": 300,
+        "mean": 7.657173624805485,
+        "min": 5.323208984918892,
+        "max": 13.154291082173586,
+        "p50": 7.642542012035847,
+        "p95": 9.710124926641583,
+        "p99": 12.146583059802651
+      }
+    },
+    {
+      "repeat": 2,
+      "requests": 300,
+      "seconds": 0.6348730000900105,
+      "calls_per_second": 472.5354519052895,
+      "total_ms": {
+        "n": 300,
+        "mean": 6.9523701289047795,
+        "min": 5.266332998871803,
+        "max": 14.023332973010838,
+        "p50": 6.976917036809027,
+        "p95": 8.278332999907434,
+        "p99": 12.407540925778449
+      }
+    },
+    {
+      "repeat": 3,
+      "requests": 300,
+      "seconds": 0.6525901249842718,
+      "calls_per_second": 459.70661907767965,
+      "total_ms": {
+        "n": 300,
+        "mean": 7.10414930828847,
+        "min": 5.286917090415955,
+        "max": 15.474832965992391,
+        "p50": 7.059625000692904,
+        "p95": 8.848124998621643,
+        "p99": 10.983124957419932
+      }
+    }
+  ],
+  "benchmark_calls_per_second": 453.5728214548703,
+  "benchmark_latency_ms": {
+    "discovery_ms": {
+      "n": 900,
+      "mean": 2.9543889215629964,
+      "min": 1.408291980624199,
+      "max": 6.598333013243973,
+      "p50": 2.9952500481158495,
+      "p95": 4.384708008728921,
+      "p99": 5.253250012174249
+    },
+    "authorization_ms": {
+      "n": 900,
+      "mean": 0.06723708292055461,
+      "min": 0.04345795605331659,
+      "max": 0.34379097633063793,
+      "p50": 0.054875039495527744,
+      "p95": 0.12149999383836985,
+      "p99": 0.1453340519219637
+    },
+    "execution_ms": {
+      "n": 900,
+      "mean": 3.012151424255636,
+      "min": 2.356666955165565,
+      "max": 7.609333959408104,
+      "p50": 2.863124944269657,
+      "p95": 3.866374958306551,
+      "p99": 5.253375042229891
+    },
+    "total_ms": {
+      "n": 900,
+      "mean": 7.237897687332912,
+      "min": 5.266332998871803,
+      "max": 15.474832965992391,
+      "p50": 7.139874971471727,
+      "p95": 9.318833937868476,
+      "p99": 11.600541998632252
+    }
+  }
+}

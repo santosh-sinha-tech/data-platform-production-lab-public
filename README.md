@@ -17,7 +17,8 @@ Santosh Sinha Tech
         ├── 03-enterprise-rag-evaluation-lab/
         ├── 04-enterprise-llm-gateway/
         ├── 05-ai-platform-observability/
-        └── 06-enterprise-agent-reliability/
+        ├── 06-enterprise-agent-reliability/
+        └── 07-enterprise-mcp-security-governance/
 ```
 
 | Project | Production question | Start here |
@@ -28,6 +29,7 @@ Santosh Sinha Tech
 | **04 — Enterprise LLM Gateway** | How can an AI platform enforce model access, reliable execution and accountable simulated spend? | [Project 04](projects/04-enterprise-llm-gateway/README.md) |
 | **05 — AI Platform Observability** | How can operational signals distinguish transport success from useful AI outcomes? | [Project 05](projects/05-ai-platform-observability/README.md) |
 | **06 — Enterprise Agent Reliability & Governance** | Can an agent execute the correct tool safely under failure, approval and policy constraints? | [Project 06](projects/06-enterprise-agent-reliability/README.md) |
+| **07 — Enterprise MCP Security & Governance** | Who decides whether a discovered MCP tool is safe and authorized to execute? | [Project 07](projects/07-enterprise-mcp-security-governance/README.md) |
 
 Workloads are synthetic and illustrative. Results describe the recorded experiments, not customer systems or production deployments. Each project's documentation records its verification outcomes, limitations, and any outstanding checks.
 
